@@ -1,0 +1,114 @@
+Base path: 'C:/Program Files/Unity/Hub/Editor/2021.3.18f1/Editor/Data', plugins path 'C:/Program Files/Unity/Hub/Editor/2021.3.18f1/Editor/Data/PlaybackEngines'
+Cmd: initializeCompiler
+
+Cmd: disassembleShader
+ name=Standard platform=gles type=5 mask=6 insize=10411 outsize=10411 ok=1
+
+Cmd: disassembleShader
+ name=Standard platform=gles type=5 mask=6 insize=7065 outsize=7065 ok=1
+
+Cmd: disassembleShader
+ name=Standard platform=gles type=5 mask=6 insize=6425 outsize=6425 ok=1
+
+Cmd: disassembleShader
+ name=Standard platform=gles type=5 mask=6 insize=10348 outsize=10348 ok=1
+
+Cmd: disassembleShader
+ name=Standard platform=gles type=5 mask=6 insize=9197 outsize=9197 ok=1
+
+Cmd: disassembleShader
+ name=Standard platform=gles type=5 mask=6 insize=9264 outsize=9264 ok=1
+
+Cmd: disassembleShader
+ name=Standard platform=gles type=5 mask=6 insize=8025 outsize=8025 ok=1
+
+Cmd: disassembleShader
+ name=Standard platform=gles3 type=4 mask=6 insize=7822 outsize=7822 ok=1
+
+Cmd: disassembleShader
+ name=Standard platform=gles3 type=4 mask=6 insize=7268 outsize=7268 ok=1
+
+Cmd: disassembleShader
+ name=Standard platform=gles3 type=4 mask=6 insize=8102 outsize=8102 ok=1
+
+Cmd: disassembleShader
+ name=Standard platform=gles3 type=4 mask=6 insize=10137 outsize=10137 ok=1
+
+Cmd: disassembleShader
+ name=Standard platform=gles3 type=4 mask=6 insize=9643 outsize=9643 ok=1
+
+Cmd: disassembleShader
+ name=Standard platform=gles3 type=4 mask=6 insize=11780 outsize=11780 ok=1
+
+Cmd: disassembleShader
+ name=Standard platform=gles3 type=4 mask=6 insize=2712 outsize=2712 ok=1
+
+Cmd: disassembleShader
+ name=Standard platform=gles3 type=4 mask=6 insize=3520 outsize=3520 ok=1
+
+Cmd: disassembleShader
+ name=Standard platform=gles type=5 mask=6 insize=4236 outsize=4236 ok=1
+
+Cmd: disassembleShader
+ name=Standard platform=gles type=5 mask=6 insize=5839 outsize=5839 ok=1
+
+Cmd: disassembleShader
+ name=Standard platform=gles3 type=4 mask=6 insize=6488 outsize=6488 ok=1
+
+Cmd: disassembleShader
+ name=Standard platform=gles3 type=4 mask=6 insize=6442 outsize=6442 ok=1
+
+Cmd: disassembleShader
+ name=Standard platform=gles3 type=4 mask=6 insize=8255 outsize=8255 ok=1
+
+Cmd: disassembleShader
+ name=Standard platform=gles type=5 mask=6 insize=11565 outsize=11565 ok=1
+
+Cmd: disassembleShader
+ name=Standard platform=gles type=5 mask=6 insize=8076 outsize=8076 ok=1
+
+Cmd: disassembleShader
+ name=Standard platform=gles type=5 mask=6 insize=8560 outsize=8560 ok=1
+
+Cmd: disassembleShader
+ name=Standard platform=gles3 type=4 mask=6 insize=8750 outsize=8750 ok=1
+
+Cmd: disassembleShader
+ name=Standard platform=gles3 type=4 mask=6 insize=12278 outsize=12278 ok=1
+
+Cmd: disassembleShader
+ name=Standard platform=gles3 type=4 mask=6 insize=10095 outsize=10095 ok=1
+
+Cmd: disassembleShader
+ name=Standard platform=gles3 type=4 mask=6 insize=12384 outsize=12384 ok=1
+
+Cmd: disassembleShader
+ name=Standard platform=gles type=5 mask=6 insize=7877 outsize=7877 ok=1
+
+Cmd: disassembleShader
+ name=Standard platform=gles type=5 mask=6 insize=5576 outsize=5576 ok=1
+
+Cmd: disassembleShader
+ name=Standard platform=gles type=5 mask=6 insize=6417 outsize=6417 ok=1
+
+Cmd: disassembleShader
+ name=Standard platform=gles type=5 mask=6 insize=8285 outsize=8285 ok=1
+
+Cmd: disassembleShader
+ name=Standard platform=gles3 type=4 mask=6 insize=6990 outsize=6990 ok=1
+
+Cmd: disassembleShader
+ name=Standard platform=gles3 type=4 mask=6 insize=7176 outsize=7176 ok=1
+
+Cmd: disassembleShader
+ name=Standard platform=gles3 type=4 mask=6 insize=9503 outsize=9503 ok=1
+
+Cmd: disassembleShader
+ name=Standard platform=gles3 type=4 mask=6 insize=10137 outsize=10137 ok=1
+
+Cmd: disassembleShader
+ name=Standard platform=gles3 type=4 mask=6 insize=8240 outsize=8240 ok=1
+
+Cmd: disassembleShader
+ name=Standard platform=gles type=5 mask=6 insize=2600 outsize=2600 ok=1
+
