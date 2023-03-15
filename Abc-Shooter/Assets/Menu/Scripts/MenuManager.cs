@@ -5,7 +5,9 @@ public class MenuManager : MonoBehaviour
 {
     private void Awake()
     {
-        FindObjectOfType<Shop>(true).SetDefaultSetting();
+        FindObjectOfType<ShopAttachment>(true).SetDefaultSetting();
+
+        FindObjectOfType<AmmunitionShop>(true).ReplenishAmmunition();
 
         if (!Application.isEditor) PlayerPrefs.SetString("selectedLanguage", GS_Language.Current());
     }

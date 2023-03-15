@@ -32,21 +32,17 @@ namespace InfimaGames.LowPolyShooterPack
             weapons = GetComponentsInChildren<WeaponBehaviour>(true);
 
             var weaponsList = new List<WeaponBehaviour>();
-            var weaponsBought = Progress.LoadWeaponsBought();
-            var weaponsSelected = Progress.LoadWeaponsSelected();
             
             foreach (WeaponBehaviour weapon in weapons)
             {
                 //Disable all weapons. This makes it easier for us to only activate the one we need.
                 weapon.gameObject.SetActive(false);
 
-                var nameWeapon = weapon.GetComponent<Weapon>().WeaponName;
-                if (weaponsBought.WeaponsAttachmentsBought[nameWeapon].IsBoughtWeapon)
+                var nameWeapon = weapon.GetComponent<WeaponBehaviour>().GetName();
+                if (Progress.IsBoughtWeapon(nameWeapon))
                 {
                     weaponsList.Add(weapon);
-
-                    weapon.GetComponent<WeaponAttachmentManager>()
-                        .SetAttachment(weaponsSelected.WeaponsAttachmentsSelected[nameWeapon]);
+                    weapon.GetComponent<WeaponAttachmentManager>().SetAttachment(nameWeapon);
                 }    
             }
 

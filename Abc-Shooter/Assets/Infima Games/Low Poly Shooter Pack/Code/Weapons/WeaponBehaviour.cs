@@ -2,16 +2,33 @@
 
 using UnityEngine;
 using InfimaGames.LowPolyShooterPack.Legacy;
+using static InfimaGames.LowPolyShooterPack.Weapon;
 
 namespace InfimaGames.LowPolyShooterPack
 {
     public abstract class WeaponBehaviour : MonoBehaviour
     {
-        public abstract string WeaponName { get; set; }
-
-        public abstract int Cost { get; set; }
-
-        public abstract bool IsBattlepass { get; set; }
+        public enum Name
+        {
+            AR01,
+            AR02,
+            AR03,
+            GL01,
+            HG01,
+            HG02,
+            HG03,
+            HG04,
+            RL01,
+            SG01,
+            SMG01,
+            SMG02,
+            SMG03,
+            SMG04,
+            SMG05,
+            SN01,
+            SN02,
+            SN03
+        }
 
         #region UNITY
 
@@ -175,6 +192,8 @@ namespace InfimaGames.LowPolyShooterPack
         public abstract MagazineBehaviour GetMagazineBehaviour();
 
         public abstract int GetDamageProjectile();
+
+        public abstract Name GetName();
 
         #endregion
 

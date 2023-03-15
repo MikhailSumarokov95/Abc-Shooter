@@ -8,6 +8,7 @@ namespace InfimaGames.LowPolyShooterPack
     /// <summary>
     /// Weapon. This class handles most of the things that weapons need.
     /// </summary>
+    /// 
     public class Weapon : WeaponBehaviour
     {
         #region FIELDS SERIALIZED
@@ -17,17 +18,10 @@ namespace InfimaGames.LowPolyShooterPack
         [SerializeField]
         private bool isShop;
 
-        [SerializeField]
-        private int cost;
-
-        [SerializeField]
-        private bool isBattlepass;
-        
         [Title(label: "Settings")]
         
-        [Tooltip("Weapon Name. Currently not used for anything, but in the future, we will use this for pickups!")]
         [SerializeField] 
-        private string weaponName;
+        private Name nameWeapon;
 
         [Tooltip("How much the character's movement speed is multiplied by when wielding this weapon.")]
         [SerializeField]
@@ -207,21 +201,9 @@ namespace InfimaGames.LowPolyShooterPack
         /// </summary>
         private Transform playerCamera;
 
-        private Progress.WeaponsBought _weaponsBought;
-
         private AmmunitionShop[] _ammunitionShop;
 
         private float _colliderRadiusCharacter;
-
-        #endregion
-
-        #region PROPERTIES
-
-        public override string WeaponName { get { return weaponName; } set { weaponName = value; } }
-
-        public override int Cost { get { return cost; } set { cost = value; } } 
-
-        public override bool IsBattlepass { get { return isBattlepass; } set { isBattlepass = value; } }
 
         #endregion
 
@@ -455,6 +437,8 @@ namespace InfimaGames.LowPolyShooterPack
             else return -1;
         }
 
+        public override Name GetName() => nameWeapon;
+
         #endregion
 
         #region METHODS
@@ -551,21 +535,17 @@ namespace InfimaGames.LowPolyShooterPack
                 Instantiate(prefabCasing, socketEjection.position, socketEjection.rotation);
         }
 
-        #endregion
-
         private void SaveAmmunitionSum()
         {
-            _weaponsBought.WeaponsAttachmentsBought[WeaponName].AmmunitionSum = magazineBehaviour.AmmunitionSum;
-            Progress.SaveWeaponsBought(_weaponsBought);
+            Progress.SaveAmmunitionCount(nameWeapon, magazineBehaviour.AmmunitionSum);
         }
 
         private void RefreshAmminitionSum()
         {
-            _weaponsBought = Progress.LoadWeaponsBought();
-
-            if (magazineBehaviour != null) 
-                magazineBehaviour.AmmunitionSum =
-                    _weaponsBought.WeaponsAttachmentsBought[WeaponName].AmmunitionSum;
+            if (magazineBehaviour != null)
+                magazineBehaviour.AmmunitionSum = Progress.AmmunitionCount(nameWeapon);
         }
+
+        #endregion
     }
 }

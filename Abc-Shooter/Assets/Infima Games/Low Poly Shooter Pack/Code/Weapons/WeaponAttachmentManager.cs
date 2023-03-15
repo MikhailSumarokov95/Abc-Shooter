@@ -204,12 +204,12 @@ namespace InfimaGames.LowPolyShooterPack
 
         #region SETTERS
 
-        public void SetAttachment(Progress.WeaponAttachmentSelected attachment)
+        public void SetAttachment(WeaponBehaviour.Name nameWeapon)
         {
-            SetEquippedScope(attachment.ScopeIndex);
-            SetEquippedMuzzle(attachment.MuzzleIndex);
-            SetEquippedLaser(attachment.LaserIndex);
-            SetEquippedGrip(attachment.GripIndex);
+            SetEquippedScope(Progress.SelectedScope(nameWeapon));
+            SetEquippedMuzzle(Progress.SelectedMuzzle(nameWeapon));
+            SetEquippedLaser(Progress.SelectedLaser(nameWeapon));
+            SetEquippedGrip(Progress.SelectedGrip(nameWeapon));
         }
 
         public void SetEquippedScope(int value)

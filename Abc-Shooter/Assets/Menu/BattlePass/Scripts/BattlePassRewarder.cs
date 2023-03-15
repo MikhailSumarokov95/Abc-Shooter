@@ -1,3 +1,4 @@
+using InfimaGames.LowPolyShooterPack;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
@@ -35,11 +36,10 @@ public class BattlePassRewarder : MonoBehaviour
 
     private void Reward(RewardBattlePass reward)
     {
-        if (reward.NameWeapon != null && reward.NameWeapon != "")
+        if (reward.NameWeapon != null)
         {
-            var weaponsBought = Progress.LoadWeaponsBought();
-            weaponsBought.WeaponsAttachmentsBought[reward.NameWeapon].IsBoughtWeapon = true;
-            Progress.SaveWeaponsBought(weaponsBought);
+            foreach (var weapon in reward.NameWeapon)
+                Progress.SaveBuyWeapon(weapon);
         }
 
         if (reward.AmountMoney != 0) 
@@ -67,7 +67,7 @@ public class BattlePassRewarder : MonoBehaviour
     [Serializable]
     private class RewardBattlePass
     {
-        public string NameWeapon;
+        public WeaponBehaviour.Name[] NameWeapon;
         public int AmountMoney;
     }
 

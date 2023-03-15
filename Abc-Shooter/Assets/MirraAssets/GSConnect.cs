@@ -2,6 +2,7 @@ using GameScore;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using InfimaGames.LowPolyShooterPack;
 
 public class GSConnect : MonoBehaviour {
 
@@ -23,54 +24,18 @@ public class GSConnect : MonoBehaviour {
     // Ключи для rewarded награды:
 
     public const string
-        GrenadesReward = "grenades-reward-max",
-        ContinueReward = "continue-reward",
-        MoneyReward = "money-reward",
-        DoubleMoneyReward = "double-money-reward";
+        GrenadesReward = nameof(GrenadesReward),
+        ContinueReward = nameof(ContinueReward),
+        MoneyReward = nameof(MoneyReward),
+        DoubleMoneyReward = nameof(DoubleMoneyReward);
 
     // Ключи для внутриигровых покупок:
 
     public const string
-        GrenadeLauncher = nameof(GrenadeLauncher),
-        RocketLauncher = nameof(RocketLauncher),
+        GrenadeLauncher = nameof(WeaponBehaviour.Name.GL01),
+        RocketLauncher = nameof(WeaponBehaviour.Name.RL01),
         Battlepass = nameof(Battlepass),
         SuperGrenade = nameof(SuperGrenade);
-
-    //Свойства для чтения / записи переменных игрока:
-
-    /// <summary>
-    /// Имя игрока в GameScore.
-    /// Отображается в лидерборде.
-    /// </summary>
-    //public static string Name
-    //{
-    //    get
-    //    {
-    //        return GS_Player.GetName();
-    //    }
-    //    set
-    //    {
-    //        GS_Player.SetName(value);
-    //    }
-    //}
-
-    /// <summary>
-    /// Очки опыта игрока в GameScore.
-    /// Отображаются в лидерборде.
-    /// Критерий для сортировки.
-    /// </summary>
-    //public static int Score
-    //{
-    //    get
-    //    {
-    //        return (int)GS_Player.GetScore();
-    //    }
-    //    set
-    //    {
-    //        GS_Player.SetScore(value);
-    //    }
-    //}
-
 
     /// <summary>
     /// Вызывать сразу после важных событий,
@@ -264,18 +229,12 @@ public class GSConnect : MonoBehaviour {
         switch (purchaseTag)
         {
             case GrenadeLauncher:
-                var boughtGL = Progress.LoadWeaponsBought();
-                boughtGL.WeaponsAttachmentsBought["Grenade Launcher 01"].IsBoughtWeapon = true;
-                Progress.SaveWeaponsBought(boughtGL);
-
+                Progress.SaveBuyWeapon(WeaponBehaviour.Name.GL01);
                 OnPurchaseWeapon?.Invoke();
                 break;
 
             case RocketLauncher:
-                var boughtRL = Progress.LoadWeaponsBought();
-                boughtRL.WeaponsAttachmentsBought["Rocket Launcher 01"].IsBoughtWeapon = true;
-                Progress.SaveWeaponsBought(boughtRL);
-
+                Progress.SaveBuyWeapon(WeaponBehaviour.Name.RL01);
                 OnPurchaseWeapon?.Invoke();
                 break;
 
@@ -308,12 +267,10 @@ public class GSConnect : MonoBehaviour {
         switch (purchaseTag) 
         {
             case GrenadeLauncher:
-                var boughtGL = Progress.LoadWeaponsBought();
-                return boughtGL.WeaponsAttachmentsBought["Grenade Launcher 01"].IsBoughtWeapon;
+                return Progress.IsBoughtWeapon(WeaponBehaviour.Name.GL01);
                     
             case RocketLauncher:
-                var boughtRL = Progress.LoadWeaponsBought();
-                return boughtRL.WeaponsAttachmentsBought["Rocket Launcher 01"].IsBoughtWeapon;
+                return Progress.IsBoughtWeapon(WeaponBehaviour.Name.RL01);
 
             case Battlepass:
                 return Progress.LoadBattlePass();
