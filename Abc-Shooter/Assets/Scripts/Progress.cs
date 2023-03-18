@@ -15,6 +15,7 @@ public static class Progress
     readonly static string sensitivity = nameof(sensitivity);
     readonly static string soundVolume = nameof(soundVolume);
     readonly static string musicVolume = nameof(musicVolume);
+    readonly static string setDefaultWeapons = nameof(setDefaultWeapons);
 
     public static bool IsBoughtWeapon(WeaponBehaviour.Name name)
     {
@@ -51,6 +52,14 @@ public static class Progress
         var weaponsBought = LoadWeaponsBought();
         for (int i = 0; i < weaponsBought[name].GripIndex.Count; i++)
             if (weaponsBought[name].GripIndex[i] == gripIndex) return true;
+        return false;
+    }
+
+    public static bool IsBoughtSkin(WeaponBehaviour.Name name, int skinIndex)
+    {
+        var weaponsBought = LoadWeaponsBought();
+        for (int i = 0; i < weaponsBought[name].GripIndex.Count; i++)
+            if (weaponsBought[name].SkinIndex[i] == skinIndex) return true;
         return false;
     }
 
@@ -178,6 +187,17 @@ public static class Progress
         SaveWeaponsSelected(weaponsSelected);
     }
 
+    public static void SaveSetDefaultWeapons()
+    {
+        GSPrefs.SetInt(setDefaultWeapons, 1);
+        GSPrefs.Save();
+    }
+
+    public static bool IsSetDefaultWeapons()
+    {
+        return GSPrefs.GetInt(setDefaultWeapons, 0) == 1;
+    }
+
     public static void SaveMoney(int value)
     {
         GSPrefs.SetInt(money, value);
@@ -200,13 +220,13 @@ public static class Progress
         return GSPrefs.GetInt(level, 1);
     }
 
-    public static void SaveBattlePass()
+    public static void SaveBoughtBattlePass()
     {
         GSPrefs.SetInt(battlePass, 1);
         GSPrefs.Save();
     }
 
-    public static bool LoadBattlePass()
+    public static bool IsBoughtBattlePass()
     {
         return GSPrefs.GetInt(battlePass, 0) == 1;
     }
@@ -296,7 +316,7 @@ public static class Progress
             dict.Add(name, new WeaponAttachmentSelected());
         }
 
-        return (JsonUtility.ToJson(dict)).ToString();
+        return JsonUtility.ToJson(dict).ToString();
     } 
     
     private static string GetDefaultWeaponAttachmentsBought()
@@ -311,10 +331,11 @@ public static class Progress
                 MuzzleIndex = new List<int>(),
                 LaserIndex = new List<int>(),
                 GripIndex = new List<int>(),
+                SkinIndex = new List<int>(),
             });
         }
 
-        return (JsonUtility.ToJson(dict)).ToString();
+        return JsonUtility.ToJson(dict).ToString();
     }
 
     [Serializable]
@@ -324,6 +345,7 @@ public static class Progress
         public int MuzzleIndex;
         public int LaserIndex;
         public int GripIndex;
+        public int SkinIndex;
     }
 
     [Serializable]
@@ -334,6 +356,7 @@ public static class Progress
         public List<int> MuzzleIndex;
         public List<int> LaserIndex;
         public List<int> GripIndex;
+        public List<int> SkinIndex;
         public int AmmunitionSum;
     }
 }

@@ -79,5 +79,7 @@ public class ShopAttachment : MonoBehaviour
 
         foreach (var weapon in defaultWeapons)
             Progress.SaveBuyWeapon(weapon);
+
+        Progress.SaveSetDefaultWeapons();
     }
 }

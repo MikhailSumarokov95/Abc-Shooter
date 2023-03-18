@@ -273,7 +273,7 @@ public class GSConnect : MonoBehaviour {
                 return Progress.IsBoughtWeapon(WeaponBehaviour.Name.RL01);
 
             case Battlepass:
-                return Progress.LoadBattlePass();
+                return Progress.IsBoughtBattlePass();
 
                 default: return false;
         }

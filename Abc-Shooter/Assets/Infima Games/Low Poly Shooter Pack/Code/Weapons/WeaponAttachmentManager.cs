@@ -93,6 +93,17 @@ namespace InfimaGames.LowPolyShooterPack
         [SerializeField]
         private Magazine[] magazineArray;
 
+        [Title(label: "Skin")]
+
+        [SerializeField]
+        private int skinIndex;
+
+        [SerializeField]
+        private Material[] skinsArray;
+
+        [SerializeField]
+        private SkinsRenderer[] skinsRenderer;
+
         #endregion
 
         #region FIELDS
@@ -242,6 +253,25 @@ namespace InfimaGames.LowPolyShooterPack
             gripArray.SelectAndSetActive(gripIndex);
         }
 
+        public void SetEquippedSkin(int value)
+        {
+            skinIndex = value;
+            for (var i = 0; i < skinsRenderer.Length; i++)
+            {
+                foreach (var number in skinsRenderer[i].replacementMaterialNumbers)
+                {
+                    skinsRenderer[i].Renderer.materials[number] = skinsArray[value];
+                }
+            }
+        }
+
         #endregion
+
+        [SerializeField]
+        private class SkinsRenderer
+        {
+            public Renderer Renderer;
+            public int[] replacementMaterialNumbers;
+        }
     }
 }

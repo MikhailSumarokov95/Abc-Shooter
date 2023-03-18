@@ -17,7 +17,7 @@ public class BattlePassRewarder : MonoBehaviour
     [ContextMenu("BoughtBattlePass")]
     public void BoughtBattlePass()
     {
-        Progress.SaveBattlePass();
+        Progress.SaveBoughtBattlePass();
         for (var i = 1; i < FindObjectOfType<Level>().CurrentLevel + 1; i++)
             Reward(_rewardBattlePassPerLevel[i].IsHaveBattlePassReward);
 
@@ -30,7 +30,7 @@ public class BattlePassRewarder : MonoBehaviour
 
         Reward(_rewardBattlePassPerLevel[currentLevel].IsNotHaveBattlePassReward);
 
-        if (Progress.LoadBattlePass())
+        if (Progress.IsBoughtBattlePass())
             Reward(_rewardBattlePassPerLevel[currentLevel].IsHaveBattlePassReward);
     }
 

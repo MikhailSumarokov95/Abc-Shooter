@@ -2470,6 +2470,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 733922567}
   m_PrefabAsset: {fileID: 0}
+--- !u!23 &758215752 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1510730811757264347, guid: d3965a910a98c244c865219b2829c213,
+    type: 3}
+  m_PrefabInstance: {fileID: 7040051763110310352}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &805560032
 GameObject:
   m_ObjectHideFlags: 0
@@ -4552,8 +4558,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1727943831211023850, guid: 401b1166e68f0634f9f0a21901847cf1,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1499.9999
+      objectReference: {fileID: 0}
+    - target: {fileID: 1727943831211023850, guid: 401b1166e68f0634f9f0a21901847cf1,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1500
+      objectReference: {fileID: 0}
+    - target: {fileID: 1727943831211023850, guid: 401b1166e68f0634f9f0a21901847cf1,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1500
+      objectReference: {fileID: 0}
+    - target: {fileID: 1727943831211023850, guid: 401b1166e68f0634f9f0a21901847cf1,
+        type: 3}
       propertyPath: m_LocalPosition.x
-      value: 200.00002
+      value: 199.99905
       objectReference: {fileID: 0}
     - target: {fileID: 1727943831211023850, guid: 401b1166e68f0634f9f0a21901847cf1,
         type: 3}
@@ -4563,7 +4584,7 @@ PrefabInstance:
     - target: {fileID: 1727943831211023850, guid: 401b1166e68f0634f9f0a21901847cf1,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 100
+      value: 99.9995
       objectReference: {fileID: 0}
     - target: {fileID: 1727943831211023850, guid: 401b1166e68f0634f9f0a21901847cf1,
         type: 3}
@@ -4573,7 +4594,7 @@ PrefabInstance:
     - target: {fileID: 1727943831211023850, guid: 401b1166e68f0634f9f0a21901847cf1,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0.000000022351742
       objectReference: {fileID: 0}
     - target: {fileID: 1727943831211023850, guid: 401b1166e68f0634f9f0a21901847cf1,
         type: 3}
@@ -4583,7 +4604,7 @@ PrefabInstance:
     - target: {fileID: 1727943831211023850, guid: 401b1166e68f0634f9f0a21901847cf1,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: -0.000000026077032
       objectReference: {fileID: 0}
     - target: {fileID: 1727943831211023850, guid: 401b1166e68f0634f9f0a21901847cf1,
         type: 3}
@@ -4682,6 +4703,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94643e6d4fc11bf4db8c675c7bfc576e, type: 3}
+--- !u!137 &1473260424 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 216911913865284771, guid: d3965a910a98c244c865219b2829c213,
+    type: 3}
+  m_PrefabInstance: {fileID: 7040051763110310352}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1489422160
 GameObject:
   m_ObjectHideFlags: 0
@@ -5353,7 +5380,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1664895705
 RectTransform:
   m_ObjectHideFlags: 0
@@ -24063,6 +24090,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: P_LPSP_WEP_AR_01
       objectReference: {fileID: 0}
+    - target: {fileID: 953422066631455901, guid: d3965a910a98c244c865219b2829c213,
+        type: 3}
+      propertyPath: skinsMesh.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 953422066631455901, guid: d3965a910a98c244c865219b2829c213,
+        type: 3}
+      propertyPath: skinsMesh.Array.data[0]
+      value: 
+      objectReference: {fileID: 1473260424}
+    - target: {fileID: 953422066631455901, guid: d3965a910a98c244c865219b2829c213,
+        type: 3}
+      propertyPath: skinsMesh.Array.data[1]
+      value: 
+      objectReference: {fileID: 758215752}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d3965a910a98c244c865219b2829c213, type: 3}
 --- !u!4 &7040051763110310353 stripped
