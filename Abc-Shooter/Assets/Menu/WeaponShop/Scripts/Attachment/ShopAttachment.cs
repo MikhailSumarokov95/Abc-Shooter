@@ -33,7 +33,7 @@ public class ShopAttachment : MonoBehaviour
         _currentWeaponName = name;
 
         InitDamageText();
-        SetActiveAttachment(true);
+        SetActiveAttachment(Progress.IsBoughtWeapon(name));
     }
     private void InitDamageText()
     {
@@ -66,15 +66,17 @@ public class ShopAttachment : MonoBehaviour
         {
             var weaponAttachmentManager = weapon.GetComponent<WeaponAttachmentManager>();
 
-            Progress.SaveSelectScope(weapon.GetName(), weaponAttachmentManager.ScopeIndex);
-            Progress.SaveSelectMuzzle(weapon.GetName(), weaponAttachmentManager.MuzzleIndex);
-            Progress.SaveSelectLaser(weapon.GetName(), weaponAttachmentManager.LaserIndex);
-            Progress.SaveSelectGrip(weapon.GetName(), weaponAttachmentManager.GripIndex);
+            Progress.SaveSelectScope(weapon.GetName(), weaponAttachmentManager.GetScopeIndex());
+            Progress.SaveSelectMuzzle(weapon.GetName(), weaponAttachmentManager.GetMuzzleIndex());
+            Progress.SaveSelectLaser(weapon.GetName(), weaponAttachmentManager.GetLaserIndex());
+            Progress.SaveSelectGrip(weapon.GetName(), weaponAttachmentManager.GetGripIndex());
+            Progress.SaveSelectSkin(weapon.GetName(), weaponAttachmentManager.GetSkinIndex());
 
-            Progress.SaveBuyScope(weapon.GetName(), weaponAttachmentManager.ScopeIndex);
-            Progress.SaveBuyMuzzle(weapon.GetName(), weaponAttachmentManager.MuzzleIndex);
-            Progress.SaveBuyLaser(weapon.GetName(), weaponAttachmentManager.LaserIndex);
-            Progress.SaveBuyGrip(weapon.GetName(), weaponAttachmentManager.GripIndex);
+            Progress.SaveBuyScope(weapon.GetName(), weaponAttachmentManager.GetScopeIndex());
+            Progress.SaveBuyMuzzle(weapon.GetName(), weaponAttachmentManager.GetMuzzleIndex());
+            Progress.SaveBuyLaser(weapon.GetName(), weaponAttachmentManager.GetLaserIndex());
+            Progress.SaveBuyGrip(weapon.GetName(), weaponAttachmentManager.GetGripIndex());
+            Progress.SaveBuySkin(weapon.GetName(), weaponAttachmentManager.GetSkinIndex());
         }
 
         foreach (var weapon in defaultWeapons)

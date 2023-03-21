@@ -2,7 +2,7 @@ public class SelectorScope : SelectorAttachment
 {
     public override void InitAttachment()
     {
-        _countAttachment = _weaponAttachmentManager.ScopeBehaviourCount;
+        _countAttachment = _weaponAttachmentManager.GetGripBehaviourCount();
     }
 
     public override void SetActiveAttachment(int index)

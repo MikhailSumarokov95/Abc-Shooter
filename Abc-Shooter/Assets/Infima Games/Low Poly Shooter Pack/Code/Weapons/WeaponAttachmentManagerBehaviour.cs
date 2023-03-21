@@ -60,8 +60,29 @@ namespace InfimaGames.LowPolyShooterPack
         /// <summary>
         /// Returns the equipped grip.
         /// </summary>
+
         public abstract GripBehaviour GetEquippedGrip();
-        
+
+        public abstract int GetScopeBehaviourCount();
+
+        public abstract int GetMuzzleBehaviourCount();
+
+        public abstract int GetLaserBehaviourCount();
+
+        public abstract int GetGripBehaviourCount();
+
+        public abstract int GetSkinCount();
+
+        public abstract int GetScopeIndex();
+
+        public abstract int GetMuzzleIndex();
+
+        public abstract int GetLaserIndex();
+
+        public abstract int GetGripIndex();
+
+        public abstract int GetSkinIndex();
+
         #endregion
     }
 }

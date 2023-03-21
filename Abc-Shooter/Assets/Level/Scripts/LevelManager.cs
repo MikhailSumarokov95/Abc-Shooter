@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using GameScore;
 using TMPro;
 
 public class LevelManager : MonoBehaviour
@@ -20,17 +19,10 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject shopBanner;
     [SerializeField] private TMP_Text currentWaveText;
     private SpawnBots _spawnManager;
+    private PlatformManager _platformManager;
 
     [SerializeField] private State _stateGame = State.Game;
     public State StateGame { get { return _stateGame; } set { _stateGame = value; } }
-
-    [SerializeField] private bool isMobile;
-    public bool IsMobile { get { return isMobile; } private set { isMobile = value; } }
-
-    private void Awake()
-    {
-        if (!Application.isEditor) IsMobile = GS_Device.IsMobile();
-    }
 
     private void OnEnable()
     {
@@ -50,6 +42,7 @@ public class LevelManager : MonoBehaviour
         OnPause(false);
         StateGame = State.Game;
         currentWaveText.text = 1.ToString();
+        _platformManager = FindObjectOfType<PlatformManager>();
     }
 
     private void Update()
@@ -143,6 +136,6 @@ public class LevelManager : MonoBehaviour
     {
         Time.timeScale = value ? 0 : 1;
         
-        if (!IsMobile) Cursor.lockState = value ? CursorLockMode.None : CursorLockMode.Locked;
+        if (!_platformManager.IsMobile) Cursor.lockState = value ? CursorLockMode.None : CursorLockMode.Locked;
     }
 }

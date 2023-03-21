@@ -2,7 +2,7 @@ public class SelectorLaser : SelectorAttachment
 {
     public override void InitAttachment()
     {
-        _countAttachment = _weaponAttachmentManager.LaserBehaviourCount;
+        _countAttachment = _weaponAttachmentManager.GetGripBehaviourCount();
     }
 
     public override void SetActiveAttachment(int index)

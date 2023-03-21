@@ -3,7 +3,7 @@ public class SelectorMuzzle : SelectorAttachment
     public override void InitAttachment()
     {
         _attachmenAbsenteeNumber = 0;
-        _countAttachment = _weaponAttachmentManager.MuzzleBehaviourCount;
+        _countAttachment = _weaponAttachmentManager.GetGripBehaviourCount();
     }
 
     public override void SetActiveAttachment(int index)

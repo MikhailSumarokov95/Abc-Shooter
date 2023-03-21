@@ -1,6 +1,8 @@
 ﻿//Copyright 2022, Infima Games. All Rights Reserved.
 
+using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace InfimaGames.LowPolyShooterPack
 {
@@ -131,27 +133,6 @@ namespace InfimaGames.LowPolyShooterPack
 
         #endregion
 
-        #region Properties
-
-        public int ScopeBehaviourCount { get { return scopeArray.Length; } }
-
-        public int MuzzleBehaviourCount { get { return muzzleArray.Length; } }
-
-        public int LaserBehaviourCount { get { return laserArray.Length; } }
-
-        public int GripBehaviourCount { get { return gripArray.Length; } } 
-
-        
-        public int ScopeIndex { get { return scopeIndex; } }
-
-        public int MuzzleIndex { get { return muzzleIndex; } }
-
-        public int LaserIndex { get { return laserIndex; } }
-
-        public int GripIndex { get { return gripIndex; } }
-
-        #endregion
-
         #region UNITY FUNCTIONS
 
         /// <summary>
@@ -203,13 +184,36 @@ namespace InfimaGames.LowPolyShooterPack
         #region GETTERS
 
         public override ScopeBehaviour GetEquippedScope() => scopeBehaviour;
+
         public override ScopeBehaviour GetEquippedScopeDefault() => scopeDefaultBehaviour;
 
         public override MagazineBehaviour GetEquippedMagazine() => magazineBehaviour;
+
         public override MuzzleBehaviour GetEquippedMuzzle() => muzzleBehaviour;
 
         public override LaserBehaviour GetEquippedLaser() => laserBehaviour;
+
         public override GripBehaviour GetEquippedGrip() => gripBehaviour;
+
+        public override int GetScopeBehaviourCount() => scopeArray.Length;
+
+        public override int GetMuzzleBehaviourCount() => muzzleArray.Length;
+
+        public override int GetLaserBehaviourCount() => laserArray.Length;
+
+        public override int GetGripBehaviourCount() => gripArray.Length;
+
+        public override int GetSkinCount() => skinsArray.Length;
+
+        public override int GetScopeIndex() => scopeIndex;
+
+        public override int GetMuzzleIndex() => muzzleIndex;
+
+        public override int GetLaserIndex() => laserIndex;
+
+        public override int GetGripIndex() => gripIndex;
+
+        public override int GetSkinIndex() => skinIndex;
 
         #endregion
 
@@ -221,6 +225,7 @@ namespace InfimaGames.LowPolyShooterPack
             SetEquippedMuzzle(Progress.SelectedMuzzle(nameWeapon));
             SetEquippedLaser(Progress.SelectedLaser(nameWeapon));
             SetEquippedGrip(Progress.SelectedGrip(nameWeapon));
+            SetEquippedSkin(Progress.SelectedSkin(nameWeapon));
         }
 
         public void SetEquippedScope(int value)
@@ -258,16 +263,16 @@ namespace InfimaGames.LowPolyShooterPack
             skinIndex = value;
             for (var i = 0; i < skinsRenderer.Length; i++)
             {
+                var materials = skinsRenderer[i].Renderer.materials;
                 foreach (var number in skinsRenderer[i].replacementMaterialNumbers)
-                {
-                    skinsRenderer[i].Renderer.materials[number] = skinsArray[value];
-                }
+                    materials[number] = skinsArray[value];
+                skinsRenderer[i].Renderer.materials = materials;
             }
         }
 
         #endregion
 
-        [SerializeField]
+        [Serializable]
         private class SkinsRenderer
         {
             public Renderer Renderer;

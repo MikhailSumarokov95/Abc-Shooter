@@ -58,7 +58,7 @@ public static class Progress
     public static bool IsBoughtSkin(WeaponBehaviour.Name name, int skinIndex)
     {
         var weaponsBought = LoadWeaponsBought();
-        for (int i = 0; i < weaponsBought[name].GripIndex.Count; i++)
+        for (int i = 0; i < weaponsBought[name].SkinIndex.Count; i++)
             if (weaponsBought[name].SkinIndex[i] == skinIndex) return true;
         return false;
     }
@@ -104,6 +104,13 @@ public static class Progress
         SaveWeaponsBought(weaponsBought);
     }
 
+    public static void SaveBuySkin(WeaponBehaviour.Name name, int skinIndex)
+    {
+        var weaponsBought = LoadWeaponsBought();
+        weaponsBought[name].SkinIndex.Add(skinIndex);
+        SaveWeaponsBought(weaponsBought);
+    }
+
     public static void SaveAmmunitionCount(WeaponBehaviour.Name name, int ammunitionCount)
     {
         var weaponsBought = LoadWeaponsBought();
@@ -135,6 +142,12 @@ public static class Progress
         return weaponsSelected[name].GripIndex == gripIndex;
     }
 
+    public static bool IsSelectedSkin(WeaponBehaviour.Name name, int skinIndex)
+    {
+        var weaponsSelected = LoadWeaponsSelected();
+        return weaponsSelected[name].SkinIndex == skinIndex;
+    }
+
     public static int SelectedScope(WeaponBehaviour.Name name)
     {
         var weaponsSelected = LoadWeaponsSelected();
@@ -157,6 +170,12 @@ public static class Progress
     {
         var weaponsSelected = LoadWeaponsSelected();
         return weaponsSelected[name].GripIndex;
+    }
+
+    public static int SelectedSkin(WeaponBehaviour.Name name)
+    {
+        var weaponsSelected = LoadWeaponsSelected();
+        return weaponsSelected[name].SkinIndex;
     }
 
     public static void SaveSelectScope(WeaponBehaviour.Name name, int scopeIndex)
@@ -184,6 +203,13 @@ public static class Progress
     {
         var weaponsSelected = LoadWeaponsSelected();
         weaponsSelected[name].GripIndex = gripIndex;
+        SaveWeaponsSelected(weaponsSelected);
+    }
+
+    public static void SaveSelectSkin(WeaponBehaviour.Name name, int skinIndex)
+    {
+        var weaponsSelected = LoadWeaponsSelected();
+        weaponsSelected[name].SkinIndex = skinIndex;
         SaveWeaponsSelected(weaponsSelected);
     }
 

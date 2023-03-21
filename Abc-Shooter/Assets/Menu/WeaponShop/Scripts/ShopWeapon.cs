@@ -1,11 +1,9 @@
 using InfimaGames.LowPolyShooterPack;
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ShopWeapon : MonoBehaviour
 {
-    [SerializeField] private Price price;
     [SerializeField] private WeaponBehaviour.Name nameWeapon;
     [SerializeField] private Image buyWeaponImage;
     [SerializeField] private Image boughtWeaponImage;
@@ -13,29 +11,26 @@ public class ShopWeapon : MonoBehaviour
     private void OnEnable()
     {
         InitShop();
-        if (price.CurrencyPrice == Price.Currency.YAN) GSConnect.OnPurchaseWeapon += InitShop;
+        GSConnect.OnPurchaseWeapon += InitShop;
     }
 
     private void OnDisable()
     {
-        if (price.CurrencyPrice == Price.Currency.YAN) GSConnect.OnPurchaseWeapon -= InitShop;
+        GSConnect.OnPurchaseWeapon -= InitShop;
     }
 
-    public void BuyWeapon()
+    public void BuyWeaponForMoney(int price)
     {
-        if (price.CurrencyPrice == Price.Currency.YAN)
+        if (FindObjectOfType<Money>().SpendMoney(price))
         {
-            GSConnect.Purchase(nameWeapon.ToString());
+            Progress.SaveBuyWeapon(nameWeapon);
+            InitShop();
         }
+    }
 
-        else if (price.CurrencyPrice == Price.Currency.Money)
-        {
-            if (FindObjectOfType<Money>().SpendMoney(price.Count))
-            {
-                Progress.SaveBuyWeapon(nameWeapon);
-                InitShop();
-            }
-        }
+    public void BuyWeaponForYAN()
+    {
+        GSConnect.Purchase(nameWeapon.ToString());
     }
 
     public void StartAttachmentShop()
@@ -57,18 +52,5 @@ public class ShopWeapon : MonoBehaviour
             boughtWeaponImage.gameObject.SetActive(false);
             buyWeaponImage.gameObject.SetActive(true);
         }
-    }
-
-    [Serializable]
-    private class Price
-    {
-        public enum Currency
-        {
-            YAN,
-            Money
-        }
-
-        public Currency CurrencyPrice;
-        public int Count; 
     }
 }

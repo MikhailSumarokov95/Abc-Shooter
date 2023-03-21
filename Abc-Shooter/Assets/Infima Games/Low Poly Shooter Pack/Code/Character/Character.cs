@@ -293,6 +293,8 @@ namespace InfimaGames.LowPolyShooterPack
 
 		private LevelManager _levelManager;
 
+		private PlatformManager _platformManager;
+
 		private Joystick _joystick;
 
         private BattlePassRewarder _battlePass;
@@ -347,8 +349,9 @@ namespace InfimaGames.LowPolyShooterPack
 
 			_levelManager = FindObjectOfType<LevelManager>();
 
-			if (_levelManager.IsMobile)
-				_joystick = FindObjectOfType<Joystick>(true);
+			_platformManager = FindObjectOfType<PlatformManager>();
+			if (_platformManager != null)
+				_joystick = FindObjectOfType<Joystick>(_platformManager.IsMobile);
 		}
 
 		private void OnEnable()
@@ -456,7 +459,7 @@ namespace InfimaGames.LowPolyShooterPack
 			//Save Aiming Value.
 			wasAiming = aiming;
 
-			if (_levelManager.IsMobile)
+			if (_platformManager.IsMobile)
 			{
 				LookMobile();
 				MoveMobile();
@@ -1138,7 +1141,7 @@ namespace InfimaGames.LowPolyShooterPack
 		/// </summary>
 		public void OnTryFire(InputAction.CallbackContext context)
 		{
-			if (_levelManager.IsMobile) return;
+			if (_platformManager.IsMobile) return;
 
 			//Switch.
 			switch (context)
@@ -1160,7 +1163,7 @@ namespace InfimaGames.LowPolyShooterPack
 
 		private void TryFire(PhaseFire phase)
 		{
-			if (_levelManager.StateGame != LevelManager.State.Game) return;
+			if (_levelManager != null && _levelManager.StateGame != LevelManager.State.Game) return;
 
 			//Block while the cursor is unlocked.
 			if (!cursorLocked)
@@ -1224,10 +1227,10 @@ namespace InfimaGames.LowPolyShooterPack
 		/// <summary>
 		/// Reload.
 		/// </summary>
-		/// 
+		
 		public void OnTryPlayReload(InputAction.CallbackContext context)
 		{
-            if (_levelManager.IsMobile) return;
+            if (_platformManager.IsMobile) return;
 
             //Switch.
             switch (context)
@@ -1242,7 +1245,7 @@ namespace InfimaGames.LowPolyShooterPack
 
 		private void TryReload()
         {
-			if (_levelManager.StateGame != LevelManager.State.Game) return;
+			if (_levelManager != null && _levelManager.StateGame != LevelManager.State.Game) return;
 
 			//Block while the cursor is unlocked.
 			if (!cursorLocked)
@@ -1260,7 +1263,7 @@ namespace InfimaGames.LowPolyShooterPack
 		/// </summary>
 		public void OnTryInspect(InputAction.CallbackContext context)
 		{
-            if (_levelManager.StateGame != LevelManager.State.Game) return;
+            if (_levelManager != null && _levelManager.StateGame != LevelManager.State.Game) return;
             //Block while the cursor is unlocked.
             if (!cursorLocked)
 				return;
@@ -1319,7 +1322,7 @@ namespace InfimaGames.LowPolyShooterPack
 
 		private void TryAiming(PhaseAiming phase)
 		{
-            if (_levelManager.StateGame != LevelManager.State.Game) return;
+            if (_levelManager != null && _levelManager.StateGame != LevelManager.State.Game) return;
 
             //Block while the cursor is unlocked.
             if (!cursorLocked)
@@ -1354,7 +1357,7 @@ namespace InfimaGames.LowPolyShooterPack
 		/// </summary>
 		public void OnTryHolster(InputAction.CallbackContext context)
 		{
-            if (_levelManager.StateGame != LevelManager.State.Game) return;
+            if (_levelManager != null && _levelManager.StateGame != LevelManager.State.Game) return;
 
             //Block while the cursor is unlocked.
             if (!cursorLocked)
@@ -1398,10 +1401,10 @@ namespace InfimaGames.LowPolyShooterPack
 		/// </summary>
 		public void OnTryThrowGrenade(InputAction.CallbackContext context)
 		{
-			if (_levelManager.IsMobile) return;
+			if (_platformManager.IsMobile) return;
 				
 			switch (context.phase)
-			{
+			{	
 				//Performed.
 				case InputActionPhase.Performed:
 						TryThrowGrenate();
@@ -1411,7 +1414,7 @@ namespace InfimaGames.LowPolyShooterPack
 
 		private void TryThrowGrenate()
 		{
-			if (_levelManager.StateGame != LevelManager.State.Game) return;
+			if (_levelManager != null && _levelManager.StateGame != LevelManager.State.Game) return;
 
 			//Block while the cursor is unlocked.
 			if (!cursorLocked)
@@ -1433,7 +1436,7 @@ namespace InfimaGames.LowPolyShooterPack
         /// </summary>
         public void OnTryThrowSuperGrenade(InputAction.CallbackContext context)
         {
-            if (_levelManager.IsMobile) return;
+            if (_platformManager.IsMobile) return;
 
             switch (context.phase)
             {
@@ -1446,7 +1449,7 @@ namespace InfimaGames.LowPolyShooterPack
 
         private void TryThrowSuperGrenate()
         {
-            if (_levelManager.StateGame != LevelManager.State.Game) return;
+            if (_levelManager != null && _levelManager.StateGame != LevelManager.State.Game) return;
 
             //Block while the cursor is unlocked.
             if (!cursorLocked)
@@ -1465,7 +1468,7 @@ namespace InfimaGames.LowPolyShooterPack
         /// </summary>
         public void OnTryMelee(InputAction.CallbackContext context)
 		{
-            if (_levelManager.StateGame != LevelManager.State.Game) return;
+            if (_levelManager != null && _levelManager.StateGame != LevelManager.State.Game) return;
 
             //Block while the cursor is unlocked.
             if (!cursorLocked)
@@ -1487,7 +1490,7 @@ namespace InfimaGames.LowPolyShooterPack
 		/// </summary>
 		public void OnTryRun(InputAction.CallbackContext context)
 		{
-            if (_levelManager.StateGame != LevelManager.State.Game) return;
+            if (_levelManager != null && _levelManager.StateGame != LevelManager.State.Game) return;
 
             //Block while the cursor is unlocked.
             if (!cursorLocked)
@@ -1522,7 +1525,7 @@ namespace InfimaGames.LowPolyShooterPack
 		/// </summary>
 		public void OnTryJump(InputAction.CallbackContext context)
 		{
-            if (_levelManager.StateGame != LevelManager.State.Game) return;
+            if (_levelManager != null && _levelManager.StateGame != LevelManager.State.Game) return;
 
             //Block while the cursor is unlocked.
             if (!cursorLocked)
@@ -1572,7 +1575,7 @@ namespace InfimaGames.LowPolyShooterPack
 
 		private void TryInventoryNext(float scrollValue)
         {
-            if (_levelManager.StateGame != LevelManager.State.Game) return;
+            if (_levelManager != null && _levelManager.StateGame != LevelManager.State.Game) return;
 
             //Get the next index to switch to.
             int indexNext = scrollValue > 0 ? inventory.GetNextIndex() : inventory.GetLastIndex();
@@ -1601,7 +1604,7 @@ namespace InfimaGames.LowPolyShooterPack
 
 		private void MoveMobile()
         {
-			if (_levelManager.StateGame != LevelManager.State.Game)
+			if (_levelManager != null && _levelManager.StateGame != LevelManager.State.Game)
 			{
 				axisMovement = Vector2.zero;
 				return;
@@ -1615,13 +1618,13 @@ namespace InfimaGames.LowPolyShooterPack
 		/// </summary>
 		public void OnMove(InputAction.CallbackContext context)
 		{
-			if (_levelManager.StateGame != LevelManager.State.Game)
+			if (_levelManager != null && _levelManager.StateGame != LevelManager.State.Game)
 			{
 				axisMovement = Vector2.zero;
 				return;
 			}
 
-			if (_levelManager.IsMobile) return;
+			if (_platformManager.IsMobile) return;
 
 			//Read.
 			axisMovement = cursorLocked ? context.ReadValue<Vector2>() : default;
@@ -1629,7 +1632,7 @@ namespace InfimaGames.LowPolyShooterPack
 
 		private void LookMobile()
 		{
-			if (_levelManager.StateGame != LevelManager.State.Game)
+			if (_levelManager != null && _levelManager.StateGame != LevelManager.State.Game)
 			{
 				axisLook = Vector2.zero;
 				return;
@@ -1646,9 +1649,9 @@ namespace InfimaGames.LowPolyShooterPack
 		public void OnLook(InputAction.CallbackContext context)
 		{
 
-			if (_levelManager.IsMobile) return;
+			if (_platformManager.IsMobile) return;
 
-			if (_levelManager.StateGame != LevelManager.State.Game)
+			if (_levelManager != null && _levelManager.StateGame != LevelManager.State.Game)
 			{
 				axisLook = Vector2.zero;
 				return;
