@@ -15,13 +15,13 @@ public class SelectorMuzzle : SelectorAttachment
     {
         if (!_money.SpendMoney(cast)) return;
 
-        Progress.SaveBuyMuzzle(_shop.CurrentWeaponName, _currentAttachment);
+        Progress.SetBuyMuzzle(_shop.CurrentWeaponName, _currentAttachment);
         ScrollThrough(0);
     }
 
     public override void SelectAttachment()
     {
-        Progress.SaveSelectMuzzle(_shop.CurrentWeaponName, _currentAttachment);
+        Progress.SetSelectMuzzle(_shop.CurrentWeaponName, _currentAttachment);
         ScrollThrough(0);
     }
 

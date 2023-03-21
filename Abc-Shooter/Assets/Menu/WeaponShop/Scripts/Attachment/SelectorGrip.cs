@@ -14,13 +14,13 @@ public class SelectorGrip : SelectorAttachment
     {
         if (!_money.SpendMoney(cast)) return;
 
-        Progress.SaveBuyGrip(_shop.CurrentWeaponName, _currentAttachment);
+        Progress.SetBuyGrip(_shop.CurrentWeaponName, _currentAttachment);
         ScrollThrough(0);
     }
 
     public override void SelectAttachment()
     {
-        Progress.SaveSelectGrip(_shop.CurrentWeaponName, _currentAttachment);
+        Progress.SetSelectGrip(_shop.CurrentWeaponName, _currentAttachment);
         ScrollThrough(0);
     }
 

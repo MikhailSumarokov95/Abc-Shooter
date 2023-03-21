@@ -85,7 +85,7 @@ namespace InfimaGames.LowPolyShooterPack
             //Cache the camera's initial rotation.
             rotationCamera = transform.localRotation;
 
-            sensitivity = Progress.LoadSensitivity() * Vector2.one;
+            sensitivity = Progress.GetSensitivity() * Vector2.one;
         }
 
         /// <summary>
@@ -164,7 +164,7 @@ namespace InfimaGames.LowPolyShooterPack
 
         private void RefreshSensitivity()
         {
-            sensitivity = Progress.LoadSensitivity() * Vector2.one;
+            sensitivity = Progress.GetSensitivity() * Vector2.one;
         }
 
         #endregion

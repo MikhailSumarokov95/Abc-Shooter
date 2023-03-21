@@ -24,7 +24,7 @@ public class AmmunitionShop : MonoBehaviour
     public void ReplenishAmmunition()
     {
         for (var i = 0; i < _maxAmmunitionWeapon.Length; i++)
-            Progress.SaveAmmunitionCount(_maxAmmunitionWeapon[i].NameWeapon, _maxAmmunitionWeapon[i].Count);
+            Progress.SetAmmunitionCount(_maxAmmunitionWeapon[i].NameWeapon, _maxAmmunitionWeapon[i].Count);
 
         OnReplenished?.Invoke();
     }

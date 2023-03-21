@@ -221,11 +221,11 @@ namespace InfimaGames.LowPolyShooterPack
 
         public void SetAttachment(WeaponBehaviour.Name nameWeapon)
         {
-            SetEquippedScope(Progress.SelectedScope(nameWeapon));
-            SetEquippedMuzzle(Progress.SelectedMuzzle(nameWeapon));
-            SetEquippedLaser(Progress.SelectedLaser(nameWeapon));
-            SetEquippedGrip(Progress.SelectedGrip(nameWeapon));
-            SetEquippedSkin(Progress.SelectedSkin(nameWeapon));
+            SetEquippedScope(Progress.GetSelectedScope(nameWeapon));
+            SetEquippedMuzzle(Progress.GetSelectedMuzzle(nameWeapon));
+            SetEquippedLaser(Progress.GetSelectedLaser(nameWeapon));
+            SetEquippedGrip(Progress.GetSelectedGrip(nameWeapon));
+            SetEquippedSkin(Progress.GetSelectedSkin(nameWeapon));
         }
 
         public void SetEquippedScope(int value)

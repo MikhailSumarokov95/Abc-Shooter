@@ -1163,7 +1163,7 @@ namespace InfimaGames.LowPolyShooterPack
 
 		private void TryFire(PhaseFire phase)
 		{
-			if (_levelManager != null && _levelManager.StateGame != LevelManager.State.Game) return;
+			if (StateGameManager.StateGame != StateGameManager.State.Game) return;
 
 			//Block while the cursor is unlocked.
 			if (!cursorLocked)
@@ -1245,7 +1245,7 @@ namespace InfimaGames.LowPolyShooterPack
 
 		private void TryReload()
         {
-			if (_levelManager != null && _levelManager.StateGame != LevelManager.State.Game) return;
+			if (StateGameManager.StateGame != StateGameManager.State.Game) return;
 
 			//Block while the cursor is unlocked.
 			if (!cursorLocked)
@@ -1263,7 +1263,7 @@ namespace InfimaGames.LowPolyShooterPack
 		/// </summary>
 		public void OnTryInspect(InputAction.CallbackContext context)
 		{
-            if (_levelManager != null && _levelManager.StateGame != LevelManager.State.Game) return;
+            if (StateGameManager.StateGame != StateGameManager.State.Game) return;
             //Block while the cursor is unlocked.
             if (!cursorLocked)
 				return;
@@ -1322,7 +1322,7 @@ namespace InfimaGames.LowPolyShooterPack
 
 		private void TryAiming(PhaseAiming phase)
 		{
-            if (_levelManager != null && _levelManager.StateGame != LevelManager.State.Game) return;
+            if (StateGameManager.StateGame != StateGameManager.State.Game) return;
 
             //Block while the cursor is unlocked.
             if (!cursorLocked)
@@ -1357,7 +1357,7 @@ namespace InfimaGames.LowPolyShooterPack
 		/// </summary>
 		public void OnTryHolster(InputAction.CallbackContext context)
 		{
-            if (_levelManager != null && _levelManager.StateGame != LevelManager.State.Game) return;
+            if (StateGameManager.StateGame != StateGameManager.State.Game) return;
 
             //Block while the cursor is unlocked.
             if (!cursorLocked)
@@ -1414,7 +1414,7 @@ namespace InfimaGames.LowPolyShooterPack
 
 		private void TryThrowGrenate()
 		{
-			if (_levelManager != null && _levelManager.StateGame != LevelManager.State.Game) return;
+			if (StateGameManager.StateGame != StateGameManager.State.Game) return;
 
 			//Block while the cursor is unlocked.
 			if (!cursorLocked)
@@ -1449,7 +1449,7 @@ namespace InfimaGames.LowPolyShooterPack
 
         private void TryThrowSuperGrenate()
         {
-            if (_levelManager != null && _levelManager.StateGame != LevelManager.State.Game) return;
+            if (StateGameManager.StateGame != StateGameManager.State.Game) return;
 
             //Block while the cursor is unlocked.
             if (!cursorLocked)
@@ -1468,7 +1468,7 @@ namespace InfimaGames.LowPolyShooterPack
         /// </summary>
         public void OnTryMelee(InputAction.CallbackContext context)
 		{
-            if (_levelManager != null && _levelManager.StateGame != LevelManager.State.Game) return;
+            if (StateGameManager.StateGame != StateGameManager.State.Game) return;
 
             //Block while the cursor is unlocked.
             if (!cursorLocked)
@@ -1490,7 +1490,7 @@ namespace InfimaGames.LowPolyShooterPack
 		/// </summary>
 		public void OnTryRun(InputAction.CallbackContext context)
 		{
-            if (_levelManager != null && _levelManager.StateGame != LevelManager.State.Game) return;
+            if (StateGameManager.StateGame != StateGameManager.State.Game) return;
 
             //Block while the cursor is unlocked.
             if (!cursorLocked)
@@ -1525,7 +1525,7 @@ namespace InfimaGames.LowPolyShooterPack
 		/// </summary>
 		public void OnTryJump(InputAction.CallbackContext context)
 		{
-            if (_levelManager != null && _levelManager.StateGame != LevelManager.State.Game) return;
+            if (StateGameManager.StateGame != StateGameManager.State.Game) return;
 
             //Block while the cursor is unlocked.
             if (!cursorLocked)
@@ -1575,7 +1575,7 @@ namespace InfimaGames.LowPolyShooterPack
 
 		private void TryInventoryNext(float scrollValue)
         {
-            if (_levelManager != null && _levelManager.StateGame != LevelManager.State.Game) return;
+            if (StateGameManager.StateGame != StateGameManager.State.Game) return;
 
             //Get the next index to switch to.
             int indexNext = scrollValue > 0 ? inventory.GetNextIndex() : inventory.GetLastIndex();
@@ -1604,7 +1604,7 @@ namespace InfimaGames.LowPolyShooterPack
 
 		private void MoveMobile()
         {
-			if (_levelManager != null && _levelManager.StateGame != LevelManager.State.Game)
+			if (StateGameManager.StateGame != StateGameManager.State.Game)
 			{
 				axisMovement = Vector2.zero;
 				return;
@@ -1618,7 +1618,7 @@ namespace InfimaGames.LowPolyShooterPack
 		/// </summary>
 		public void OnMove(InputAction.CallbackContext context)
 		{
-			if (_levelManager != null && _levelManager.StateGame != LevelManager.State.Game)
+			if (StateGameManager.StateGame != StateGameManager.State.Game)
 			{
 				axisMovement = Vector2.zero;
 				return;
@@ -1632,7 +1632,7 @@ namespace InfimaGames.LowPolyShooterPack
 
 		private void LookMobile()
 		{
-			if (_levelManager != null && _levelManager.StateGame != LevelManager.State.Game)
+			if (StateGameManager.StateGame != StateGameManager.State.Game)
 			{
 				axisLook = Vector2.zero;
 				return;
@@ -1651,7 +1651,7 @@ namespace InfimaGames.LowPolyShooterPack
 
 			if (_platformManager.IsMobile) return;
 
-			if (_levelManager != null && _levelManager.StateGame != LevelManager.State.Game)
+			if (StateGameManager.StateGame != StateGameManager.State.Game)
 			{
 				axisLook = Vector2.zero;
 				return;
@@ -1732,7 +1732,7 @@ namespace InfimaGames.LowPolyShooterPack
             if (!grenadesUnlimited)
                 grenadeCount--;
 
-            Progress.SaveGrenades(grenadeCount);
+            Progress.SetGrenades(grenadeCount);
 			
 			//Get Camera Transform.
 			Transform cTransform = cameraWorld.transform;
@@ -1755,7 +1755,7 @@ namespace InfimaGames.LowPolyShooterPack
 			
 			superGrenadeCount--;
 
-			Progress.SaveSuperGrenades(superGrenadeCount);
+			Progress.SetSuperGrenades(superGrenadeCount);
 			
 			isSuperGrenadeThrow = false;
 
@@ -1849,12 +1849,12 @@ namespace InfimaGames.LowPolyShooterPack
 
 		private void LoadSaveGrenade()
         {
-			grenadeCount = Progress.LoadGrenades();
+			grenadeCount = Progress.GetGrenades();
 		}
 		
 		private void LoadSaveSuperGrenade()
         {
-			superGrenadeCount = Progress.LoadSuperGrenades();
+			superGrenadeCount = Progress.GetSuperGrenades();
 		}
 
         #endregion

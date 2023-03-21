@@ -8,19 +8,19 @@ public class Money : MonoBehaviour
     {
         get
         {
-            return Progress.LoadMoney();
+            return Progress.GetMoney();
         }
 
         set
         { 
-            Progress.SaveMoney(value);
+            Progress.SetMoney(value);
             Display—hangeMoney(value);
         }
     }
 
     private void Start()
     {
-        AmountOfMoney = Progress.LoadMoney();
+        AmountOfMoney = Progress.GetMoney();
     }
 
     public bool SpendMoney(int value)

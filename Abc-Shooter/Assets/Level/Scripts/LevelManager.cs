@@ -4,14 +4,6 @@ using TMPro;
 
 public class LevelManager : MonoBehaviour
 {
-    public enum State
-    {
-        Game,
-        Pause,
-        WaveEnd,
-        GameOver
-    }
-
     [SerializeField] private GameObject winGamePanel;
     [SerializeField] private GameObject pausePanel;
     [SerializeField] private GameObject waveEndPanel;
@@ -20,9 +12,6 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private TMP_Text currentWaveText;
     private SpawnBots _spawnManager;
     private PlatformManager _platformManager;
-
-    [SerializeField] private State _stateGame = State.Game;
-    public State StateGame { get { return _stateGame; } set { _stateGame = value; } }
 
     private void OnEnable()
     {
@@ -39,15 +28,15 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
-        OnPause(false);
-        StateGame = State.Game;
-        currentWaveText.text = 1.ToString();
         _platformManager = FindObjectOfType<PlatformManager>();
+        OnPause(false);
+        StateGameManager.StateGame = StateGameManager.State.Game;
+        currentWaveText.text = 1.ToString();
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && StateGame == State.Game)
+        if (Input.GetKeyDown(KeyCode.Escape) && StateGameManager.StateGame == StateGameManager.State.Game)
             SetActivePausePanel(true);
     }
 
@@ -71,7 +60,7 @@ public class LevelManager : MonoBehaviour
     public void Did()
     {
         OnPause(true);
-        StateGame = State.Pause;
+        StateGameManager.StateGame = StateGameManager.State.Pause;
         lossPanel.SetActive(true);
         shopBanner.SetActive(true);
     }
@@ -79,15 +68,15 @@ public class LevelManager : MonoBehaviour
     public void Respawn()
     {
         OnPause(false);
-        StateGame = State.Game;
+        StateGameManager.StateGame = StateGameManager.State.Game;
         lossPanel.SetActive(false);
         GameObject.FindGameObjectWithTag("Player").GetComponent<Life>().Respawn();
     }
 
     public void SetActiveWinPanel(bool value)
     {
-        if (value) StateGame = State.GameOver;
-        else StateGame = State.Game;
+        if (value) StateGameManager.StateGame = StateGameManager.State.GameOver;
+        else StateGameManager.StateGame = StateGameManager.State.Game;
         winGamePanel.SetActive(value);
         shopBanner.SetActive(true);
         OnPause(value);
@@ -95,16 +84,16 @@ public class LevelManager : MonoBehaviour
 
     public void SetActivePausePanel(bool value)
     {
-        if (value) StateGame = State.Pause;
-        else StateGame = State.Game;
+        if (value) StateGameManager.StateGame = StateGameManager.State.Pause;
+        else StateGameManager.StateGame = StateGameManager.State.Game;
         pausePanel.SetActive(value);
         OnPause(value);
     }
 
     public void SetActiveWaveEndPanel(bool value)
     {
-        if (value) StateGame = State.WaveEnd;
-        else StateGame = State.Game;
+        if (value) StateGameManager.StateGame = StateGameManager.State.WaveEnd;
+        else StateGameManager.StateGame = StateGameManager.State.Game;
         waveEndPanel.SetActive(value);
         if (!value) currentWaveText.text = (int.Parse(currentWaveText.text) + 1).ToString();
         OnPause(value);

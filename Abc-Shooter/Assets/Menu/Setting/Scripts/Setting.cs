@@ -66,7 +66,7 @@ public class Setting : MonoBehaviour
             if (value < 0) musicVolume = 0;
             else if (value > 1) musicVolume = 1;
             else musicVolume = value;
-            Progress.SaveMusicVolume(musicVolume);
+            Progress.SetMusicVolume(musicVolume);
             OnChangeMusicVolume?.Invoke();
         }
     }
@@ -83,16 +83,16 @@ public class Setting : MonoBehaviour
 
     public void SaveSettings()
     {
-        Progress.SaveVolume(SoundVolume);
-        Progress.SaveSensitivity(Sensitivity);
+        Progress.SetVolume(SoundVolume);
+        Progress.SetSensitivity(Sensitivity);
         OnSaveSetting?.Invoke();
     }
 
     public void LoadSettings()
     {
-        SoundVolume = Progress.LoadVolume();
-        MusicVolume = Progress.LoadMusicVolume();
-        Sensitivity = Progress.LoadSensitivity();
+        SoundVolume = Progress.GetVolume();
+        MusicVolume = Progress.GetMusicVolume();
+        Sensitivity = Progress.GetSensitivity();
 
         soundVolumeSlider.value = SoundVolume;
         musicVolumeSlider.value = MusicVolume;

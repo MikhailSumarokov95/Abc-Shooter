@@ -1,18 +1,29 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BuilderSpaceShip : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private GameObject[] shipParts;
+
+    private void Start()
     {
-        
+        foreach (var part in shipParts) 
+            part.SetActive(false);
+
+        var shipAssemblyStage = Progress.GetShipAssemblyStage();
+        for (var i = 0; i < shipAssemblyStage; i++)
+        {
+            shipParts[i].gameObject.SetActive(true);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void AddShipAssemblyStage()
     {
-        
+        var shipAssemblyStage = Progress.GetShipAssemblyStage();
+        if (shipAssemblyStage < Progress.GetNumberPartsFoundShip())
+        {
+            shipAssemblyStage++;
+            Progress.SetShipAssemblyStage(shipAssemblyStage);
+            shipParts[shipAssemblyStage - 1].SetActive(true);
+        }
     }
 }

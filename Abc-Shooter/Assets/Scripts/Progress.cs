@@ -16,6 +16,8 @@ public static class Progress
     readonly static string soundVolume = nameof(soundVolume);
     readonly static string musicVolume = nameof(musicVolume);
     readonly static string setDefaultWeapons = nameof(setDefaultWeapons);
+    readonly static string shipAssemblyStage = nameof(shipAssemblyStage);
+    readonly static string numberPartsFoundShip = nameof(numberPartsFoundShip);
 
     public static bool IsBoughtWeapon(WeaponBehaviour.Name name)
     {
@@ -63,55 +65,55 @@ public static class Progress
         return false;
     }
 
-    public static int AmmunitionCount(WeaponBehaviour.Name name) 
+    public static int GetAmmunitionCount(WeaponBehaviour.Name name) 
     {
         var weaponsBought = LoadWeaponsBought();
         return weaponsBought[name].AmmunitionSum;
     }
 
-    public static void SaveBuyWeapon(WeaponBehaviour.Name name)
+    public static void SetBuyWeapon(WeaponBehaviour.Name name)
     {
         var weaponsBought = LoadWeaponsBought();
         weaponsBought[name].IsBoughtWeapon = true;
         SaveWeaponsBought(weaponsBought);
     }
 
-    public static void SaveBuyScope(WeaponBehaviour.Name name, int scopeIndex)
+    public static void SetBuyScope(WeaponBehaviour.Name name, int scopeIndex)
     {
         var weaponsBought = LoadWeaponsBought();
         weaponsBought[name].ScopeIndex.Add(scopeIndex);
         SaveWeaponsBought(weaponsBought);
     }
       
-    public static void SaveBuyMuzzle(WeaponBehaviour.Name name, int muzzleIndex)
+    public static void SetBuyMuzzle(WeaponBehaviour.Name name, int muzzleIndex)
     {
         var weaponsBought = LoadWeaponsBought();
         weaponsBought[name].MuzzleIndex.Add(muzzleIndex);
         SaveWeaponsBought(weaponsBought);
     }
        
-    public static void SaveBuyLaser(WeaponBehaviour.Name name, int laserIndex)
+    public static void SetBuyLaser(WeaponBehaviour.Name name, int laserIndex)
     {
         var weaponsBought = LoadWeaponsBought();
         weaponsBought[name].LaserIndex.Add(laserIndex);
         SaveWeaponsBought(weaponsBought);
     }
       
-    public static void SaveBuyGrip(WeaponBehaviour.Name name, int gripIndex)
+    public static void SetBuyGrip(WeaponBehaviour.Name name, int gripIndex)
     {
         var weaponsBought = LoadWeaponsBought();
         weaponsBought[name].GripIndex.Add(gripIndex);
         SaveWeaponsBought(weaponsBought);
     }
 
-    public static void SaveBuySkin(WeaponBehaviour.Name name, int skinIndex)
+    public static void SetBuySkin(WeaponBehaviour.Name name, int skinIndex)
     {
         var weaponsBought = LoadWeaponsBought();
         weaponsBought[name].SkinIndex.Add(skinIndex);
         SaveWeaponsBought(weaponsBought);
     }
 
-    public static void SaveAmmunitionCount(WeaponBehaviour.Name name, int ammunitionCount)
+    public static void SetAmmunitionCount(WeaponBehaviour.Name name, int ammunitionCount)
     {
         var weaponsBought = LoadWeaponsBought();
         weaponsBought[name].AmmunitionSum = ammunitionCount;
@@ -148,65 +150,65 @@ public static class Progress
         return weaponsSelected[name].SkinIndex == skinIndex;
     }
 
-    public static int SelectedScope(WeaponBehaviour.Name name)
+    public static int GetSelectedScope(WeaponBehaviour.Name name)
     {
         var weaponsSelected = LoadWeaponsSelected();
         return weaponsSelected[name].ScopeIndex;
     }
     
-    public static int SelectedMuzzle(WeaponBehaviour.Name name)
+    public static int GetSelectedMuzzle(WeaponBehaviour.Name name)
     {
         var weaponsSelected = LoadWeaponsSelected();
         return weaponsSelected[name].MuzzleIndex;
     }  
     
-    public static int SelectedLaser(WeaponBehaviour.Name name)
+    public static int GetSelectedLaser(WeaponBehaviour.Name name)
     {
         var weaponsSelected = LoadWeaponsSelected();
         return weaponsSelected[name].LaserIndex;
     }
 
-    public static int SelectedGrip(WeaponBehaviour.Name name)
+    public static int GetSelectedGrip(WeaponBehaviour.Name name)
     {
         var weaponsSelected = LoadWeaponsSelected();
         return weaponsSelected[name].GripIndex;
     }
 
-    public static int SelectedSkin(WeaponBehaviour.Name name)
+    public static int GetSelectedSkin(WeaponBehaviour.Name name)
     {
         var weaponsSelected = LoadWeaponsSelected();
         return weaponsSelected[name].SkinIndex;
     }
 
-    public static void SaveSelectScope(WeaponBehaviour.Name name, int scopeIndex)
+    public static void SetSelectScope(WeaponBehaviour.Name name, int scopeIndex)
     {
         var weaponsSelected = LoadWeaponsSelected();
         weaponsSelected[name].ScopeIndex = scopeIndex;
         SaveWeaponsSelected(weaponsSelected);
     }
 
-    public static void SaveSelectMuzzle(WeaponBehaviour.Name name, int muzzleIndex)
+    public static void SetSelectMuzzle(WeaponBehaviour.Name name, int muzzleIndex)
     {
         var weaponsSelected = LoadWeaponsSelected();
         weaponsSelected[name].MuzzleIndex = muzzleIndex;
         SaveWeaponsSelected(weaponsSelected);
     }
       
-    public static void SaveSelectLaser(WeaponBehaviour.Name name, int laserIndex)
+    public static void SetSelectLaser(WeaponBehaviour.Name name, int laserIndex)
     {
         var weaponsSelected = LoadWeaponsSelected();
         weaponsSelected[name].LaserIndex = laserIndex;
         SaveWeaponsSelected(weaponsSelected);
     }
      
-    public static void SaveSelectGrip(WeaponBehaviour.Name name, int gripIndex)
+    public static void SetSelectGrip(WeaponBehaviour.Name name, int gripIndex)
     {
         var weaponsSelected = LoadWeaponsSelected();
         weaponsSelected[name].GripIndex = gripIndex;
         SaveWeaponsSelected(weaponsSelected);
     }
 
-    public static void SaveSelectSkin(WeaponBehaviour.Name name, int skinIndex)
+    public static void SetSelectSkin(WeaponBehaviour.Name name, int skinIndex)
     {
         var weaponsSelected = LoadWeaponsSelected();
         weaponsSelected[name].SkinIndex = skinIndex;
@@ -224,29 +226,29 @@ public static class Progress
         return GSPrefs.GetInt(setDefaultWeapons, 0) == 1;
     }
 
-    public static void SaveMoney(int value)
+    public static void SetMoney(int value)
     {
         GSPrefs.SetInt(money, value);
         GSPrefs.Save();
     }
 
-    public static int LoadMoney()
+    public static int GetMoney()
     {
         return GSPrefs.GetInt(money, 0);
     }
 
-    public static void SaveLevel(int value)
+    public static void SetLevel(int value)
     {
         GSPrefs.SetInt(level, value);
         GSPrefs.Save();
     }
 
-    public static int LoadLevel()
+    public static int GetLevel()
     {
         return GSPrefs.GetInt(level, 1);
     }
 
-    public static void SaveBoughtBattlePass()
+    public static void SetBoughtBattlePass()
     {
         GSPrefs.SetInt(battlePass, 1);
         GSPrefs.Save();
@@ -257,56 +259,78 @@ public static class Progress
         return GSPrefs.GetInt(battlePass, 0) == 1;
     }
 
-    public static void SaveGrenades(int value)
+    public static void SetGrenades(int value)
     {
         GSPrefs.SetInt(grenades, value);
         GSPrefs.Save();
     }
 
-    public static int LoadGrenades()
+    public static int GetGrenades()
     {
         return GSPrefs.GetInt(grenades, 0);
     }
     
-    public static void SaveSuperGrenades(int value)
+    public static void SetSuperGrenades(int value)
     {
         GSPrefs.SetInt(superGrenades, value);
         GSPrefs.Save();
     }
 
-    public static int LoadSuperGrenades()
+    public static int GetSuperGrenades()
     {
         return GSPrefs.GetInt(superGrenades, 1);
     }
 
-    public static void SaveSensitivity(float value)
+    public static void SetSensitivity(float value)
     {
         PlayerPrefs.SetFloat(sensitivity, value);
     }
 
-    public static float LoadSensitivity()
+    public static float GetSensitivity()
     {
         return PlayerPrefs.GetFloat(sensitivity, 1);
     }
 
-    public static void SaveVolume(float value)
+    public static void SetVolume(float value)
     {
         PlayerPrefs.SetFloat(soundVolume, value);
     }
 
-    public static float LoadVolume()
+    public static float GetVolume()
     {
         return PlayerPrefs.GetFloat(soundVolume, 1);
     }
 
-    public static void SaveMusicVolume(float value)
+    public static void SetMusicVolume(float value)
     {
         PlayerPrefs.SetFloat(musicVolume, value);
     }
 
-    public static float LoadMusicVolume()
+    public static float GetMusicVolume()
     {
         return PlayerPrefs.GetFloat(musicVolume, 1);
+    }
+
+    public static void SetNumberPartsFoundShip(int value)
+    {
+        GSPrefs.SetInt(numberPartsFoundShip, value);
+        GSPrefs.Save();
+    }
+
+    public static int GetNumberPartsFoundShip()
+    {
+        return GSPrefs.GetInt(numberPartsFoundShip, 0);
+    }
+    
+    public static void SetShipAssemblyStage(int value)
+    {
+        GSPrefs.SetInt(shipAssemblyStage, value);
+        GSPrefs.Save();
+    }
+
+    public static int GetShipAssemblyStage()
+    {
+        return GSPrefs.GetInt(shipAssemblyStage, 0);
     }
 
     private static void SaveWeaponsSelected(TFG.Generic.Dictionary<WeaponBehaviour.Name, WeaponAttachmentSelected> weapons)

@@ -15,13 +15,13 @@ public class SelectorSkin : SelectorAttachment
     {
         if (!_money.SpendMoney(cast)) return;
 
-        Progress.SaveBuySkin(_shop.CurrentWeaponName, _currentAttachment);
+        Progress.SetBuySkin(_shop.CurrentWeaponName, _currentAttachment);
         ScrollThrough(0);
     }
 
     public override void SelectAttachment()
     {
-        Progress.SaveSelectSkin(_shop.CurrentWeaponName, _currentAttachment);
+        Progress.SetSelectSkin(_shop.CurrentWeaponName, _currentAttachment);
         ScrollThrough(0);
     }
 

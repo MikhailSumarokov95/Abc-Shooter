@@ -229,12 +229,12 @@ public class GSConnect : MonoBehaviour {
         switch (purchaseTag)
         {
             case GrenadeLauncher:
-                Progress.SaveBuyWeapon(WeaponBehaviour.Name.GL01);
+                Progress.SetBuyWeapon(WeaponBehaviour.Name.GL01);
                 OnPurchaseWeapon?.Invoke();
                 break;
 
             case RocketLauncher:
-                Progress.SaveBuyWeapon(WeaponBehaviour.Name.RL01);
+                Progress.SetBuyWeapon(WeaponBehaviour.Name.RL01);
                 OnPurchaseWeapon?.Invoke();
                 break;
 

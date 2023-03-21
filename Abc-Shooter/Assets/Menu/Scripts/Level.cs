@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class Level : MonoBehaviour
 {
     [SerializeField] private TMP_Text currentLevelText;
-    public int CurrentLevel { get { return Progress.LoadLevel(); } set { Progress.SaveLevel(value); } }
+    public int CurrentLevel { get { return Progress.GetLevel(); } set { Progress.SetLevel(value); } }
 
     private void Start()
     {

@@ -21,14 +21,14 @@ public class SuperGrenadeShop : MonoBehaviour
             _currentCount = value;
             if (currentCountText != null)
                 currentCountText.text = _currentCount.ToString();
-            Progress.SaveSuperGrenades(_currentCount);
+            Progress.SetSuperGrenades(_currentCount);
             OnBought?.Invoke();
         }
     }
 
     private void OnEnable()
     {
-        CurrentCount = Progress.LoadSuperGrenades();
+        CurrentCount = Progress.GetSuperGrenades();
     }
 
     public void TryRewardFive()

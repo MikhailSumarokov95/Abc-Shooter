@@ -23,7 +23,7 @@ public class ShopWeapon : MonoBehaviour
     {
         if (FindObjectOfType<Money>().SpendMoney(price))
         {
-            Progress.SaveBuyWeapon(nameWeapon);
+            Progress.SetBuyWeapon(nameWeapon);
             InitShop();
         }
     }

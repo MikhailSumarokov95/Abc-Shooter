@@ -14,13 +14,13 @@ public class SelectorLaser : SelectorAttachment
     {
         if (!_money.SpendMoney(cast)) return;
 
-        Progress.SaveBuyLaser(_shop.CurrentWeaponName, _currentAttachment);
+        Progress.SetBuyLaser(_shop.CurrentWeaponName, _currentAttachment);
         ScrollThrough(0);
     }
 
     public override void SelectAttachment()
     {
-        Progress.SaveSelectLaser(_shop.CurrentWeaponName, _currentAttachment);
+        Progress.SetSelectLaser(_shop.CurrentWeaponName, _currentAttachment);
         ScrollThrough(0);
     }
 

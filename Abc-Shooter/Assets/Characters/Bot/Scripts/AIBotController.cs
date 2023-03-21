@@ -13,7 +13,7 @@ public class AIBotController : MonoBehaviour
     private CapsuleCollider _targetCol;
     private BotMove _botMove;
     private Weapon _weapon;
-    private LevelManager _levelManager;
+    private StateGameManager _stateGameManager;
     private float _timerForDo;
 
     private void Start()
@@ -22,14 +22,14 @@ public class AIBotController : MonoBehaviour
         _targetCol = _target.GetComponent<CapsuleCollider>();
         _botMove = GetComponent<BotMove>();
         _weapon = transform.GetComponentInChildren<Weapon>();
-        _levelManager = FindObjectOfType<LevelManager>();
+
         RandomizerSpeed();
         _timerForDo = Random.Range(0, timeDo);
     }
 
     private void Update()
     {
-        if (_levelManager.StateGame != LevelManager.State.Game) return;
+        if (StateGameManager.StateGame != StateGameManager.State.Game) return;
 
         if (_weapon.IsAttacking) return;
 

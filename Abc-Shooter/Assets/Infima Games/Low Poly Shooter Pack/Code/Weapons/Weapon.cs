@@ -537,13 +537,13 @@ namespace InfimaGames.LowPolyShooterPack
 
         private void SaveAmmunitionSum()
         {
-            Progress.SaveAmmunitionCount(nameWeapon, magazineBehaviour.AmmunitionSum);
+            Progress.SetAmmunitionCount(nameWeapon, magazineBehaviour.AmmunitionSum);
         }
 
         private void RefreshAmminitionSum()
         {
             if (magazineBehaviour != null)
-                magazineBehaviour.AmmunitionSum = Progress.AmmunitionCount(nameWeapon);
+                magazineBehaviour.AmmunitionSum = Progress.GetAmmunitionCount(nameWeapon);
         }
 
         #endregion

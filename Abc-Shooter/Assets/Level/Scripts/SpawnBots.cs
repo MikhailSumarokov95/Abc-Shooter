@@ -45,7 +45,7 @@ public class SpawnBots : MonoBehaviour
     {
         for (var i = 0; i < countWave; i++)
         {
-            yield return new WaitUntil(() => _levelManager.StateGame == LevelManager.State.Game);
+            yield return new WaitUntil(() => StateGameManager.StateGame == StateGameManager.State.Game);
             NumberWave ++;
             _isAllEnemiesKilled = false;
             _currentEnemyLife = SpawnEnemies(spawnBots);

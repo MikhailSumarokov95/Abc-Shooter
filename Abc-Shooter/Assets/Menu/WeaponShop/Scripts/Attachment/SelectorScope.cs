@@ -14,13 +14,13 @@ public class SelectorScope : SelectorAttachment
     {
         if (!_money.SpendMoney(cast)) return;
 
-        Progress.SaveBuyScope(_shop.CurrentWeaponName, _currentAttachment);
+        Progress.SetBuyScope(_shop.CurrentWeaponName, _currentAttachment);
         ScrollThrough(0);
     }
 
     public override void SelectAttachment()
     {
-        Progress.SaveSelectScope(_shop.CurrentWeaponName, _currentAttachment);
+        Progress.SetSelectScope(_shop.CurrentWeaponName, _currentAttachment);
         ScrollThrough(0);
     }
 

@@ -12,9 +12,9 @@ public class MusicController : MonoBehaviour
     private void Start()
     {
         _backGroundAudioS = Instantiate(backGroundPref).GetComponent<AudioSource>();
-        _backGroundAudioS.volume = Progress.LoadMusicVolume() * volumeBackGround;
+        _backGroundAudioS.volume = Progress.GetMusicVolume() * volumeBackGround;
 
-        AudioListener.volume = Progress.LoadVolume();
+        AudioListener.volume = Progress.GetVolume();
     }
 
     private void OnEnable()
@@ -30,6 +30,6 @@ public class MusicController : MonoBehaviour
 
     private void ChangeVolumeBackGround()
     {
-        _backGroundAudioS.volume = Progress.LoadMusicVolume() * volumeBackGround;
+        _backGroundAudioS.volume = Progress.GetMusicVolume() * volumeBackGround;
     }
 }

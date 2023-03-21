@@ -24,14 +24,14 @@ public class GrenadeShop : MonoBehaviour
             _currentCount = value;
             if (currentCountText != null)
                 currentCountText.text = _currentCount.ToString();
-            Progress.SaveGrenades(_currentCount);
+            Progress.SetGrenades(_currentCount);
             OnBought?.Invoke();
         }
     }
 
     private void OnEnable()
     {
-        CurrentCount = Progress.LoadGrenades();
+        CurrentCount = Progress.GetGrenades();
     }
 
     public void BuyOne()
