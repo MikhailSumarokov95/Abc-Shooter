@@ -93,8 +93,10 @@ namespace InfimaGames.LowPolyShooterPack
         /// </summary>
         private void LateUpdate()
         {
+            if (StateGameManager.StateGame != StateGameManager.State.Game) return;
+
             //Frame Input. The Input to add this frame!
-            var frameInput = playerCharacter.IsCursorLocked() ? playerCharacter.GetInputLook() : default;
+            var frameInput = playerCharacter.GetInputLook();
 
             //Sensitivity.
             frameInput *= sensitivity;
@@ -103,12 +105,12 @@ namespace InfimaGames.LowPolyShooterPack
             Quaternion rotationYaw = Quaternion.Euler(0.0f, frameInput.x, 0.0f);
             //Pitch.
             Quaternion rotationPitch = Quaternion.Euler(-frameInput.y, 0.0f, 0.0f);
-            
+
             //Save rotation. We use this for smooth rotation.
             rotationCamera *= rotationPitch;
             rotationCamera = Clamp(rotationCamera);
             rotationCharacter *= rotationYaw;
-            
+
             //Local Rotation.
             Quaternion localRotation = transform.localRotation;
 
@@ -132,7 +134,7 @@ namespace InfimaGames.LowPolyShooterPack
                 //Rotate character.
                 playerCharacter.transform.rotation *= rotationYaw;
             }
-            
+
             //Set.
             transform.localRotation = localRotation;
         }

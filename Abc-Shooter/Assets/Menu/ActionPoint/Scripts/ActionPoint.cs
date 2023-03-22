@@ -1,3 +1,4 @@
+using InfimaGames.LowPolyShooterPack;
 using UnityEngine;
 
 public class ActionPoint : MonoBehaviour
@@ -10,6 +11,7 @@ public class ActionPoint : MonoBehaviour
         {
             UIElement.SetActive(true);
             FindObjectOfType<MenuManager>().OnPause(true);
+            collision.GetComponent<Character>().SetPositionAndRotation(transform);
         }
     }
 }

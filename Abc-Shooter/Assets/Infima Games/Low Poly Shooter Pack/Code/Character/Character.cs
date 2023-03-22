@@ -6,7 +6,8 @@ using System.Collections;
 using UnityEngine.InputSystem;
 using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
-using System.Runtime.InteropServices.WindowsRuntime;
+using Unity.Mathematics;
+using UnityEngine.Scripting;
 
 namespace InfimaGames.LowPolyShooterPack
 {
@@ -298,6 +299,8 @@ namespace InfimaGames.LowPolyShooterPack
 		private Joystick _joystick;
 
         private BattlePassRewarder _battlePass;
+
+        private bool isStartCoroutineSetPositionAndRotationSlerp;
 
         #endregion
 
@@ -592,10 +595,30 @@ namespace InfimaGames.LowPolyShooterPack
 
 		#region METHODS
 
-		/// <summary>
-		/// Updates all the animator properties for this frame.
-		/// </summary>
-		private void UpdateAnimator()
+		public void SetPositionAndRotation(Transform targetTr)
+		{
+            if (isStartCoroutineSetPositionAndRotationSlerp) return;
+            StartCoroutine(SetPositionAndRotationSlerp(targetTr));
+		}
+
+		private IEnumerator SetPositionAndRotationSlerp(Transform targetTr)
+		{
+			isStartCoroutineSetPositionAndRotationSlerp = true;
+			Quaternion targetDirectionLook = targetTr.rotation;
+			
+			while (Quaternion.Angle(transform.rotation, targetDirectionLook) > 0.1f)
+			{
+                Quaternion.Slerp(transform.rotation, targetDirectionLook, 0.1f);
+				yield return null;
+			}
+			isStartCoroutineSetPositionAndRotationSlerp = false;
+		}
+
+
+        /// <summary>
+        /// Updates all the animator properties for this frame.
+        /// </summary>
+        private void UpdateAnimator()
 		{
 			#region Reload Stop
 
@@ -786,16 +809,6 @@ namespace InfimaGames.LowPolyShooterPack
 			//Play.
 			characterAnimator.CrossFade("Fire Empty", 0.05f, layerOverlay, 0);
 		}
-		/// <summary>
-		/// Updates the cursor state based on the value of the cursorLocked variable.
-		/// </summary>
-		//private void UpdateCursorState()
-		//{
-		//	//Update cursor visibility.
-		//	Cursor.visible = !cursorLocked;
-		//	//Update cursor lock state.
-		//	Cursor.lockState = cursorLocked ? CursorLockMode.Locked : CursorLockMode.None;
-		//}
 
 		/// <summary>
 		/// Plays The Grenade Throwing Animation.

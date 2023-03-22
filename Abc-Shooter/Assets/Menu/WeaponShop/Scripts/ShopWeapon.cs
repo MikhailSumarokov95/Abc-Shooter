@@ -38,6 +38,7 @@ public class ShopWeapon : MonoBehaviour
         var shopAttachment = FindObjectOfType<ShopAttachment>(true);
         shopAttachment.gameObject.SetActive(true);
         shopAttachment.StartInitWeapons(nameWeapon);
+        transform.parent.gameObject.SetActive(false);
     }
 
     private void InitShop()
