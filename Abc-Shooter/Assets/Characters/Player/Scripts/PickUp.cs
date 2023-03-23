@@ -11,5 +11,10 @@ public class PickUp : MonoBehaviour
 
             Destroy(other.gameObject);
         }
+        
+        if (other.CompareTag("PartSpaceShip"))
+        {
+            Destroy(other.gameObject);
+        }
     }
 }

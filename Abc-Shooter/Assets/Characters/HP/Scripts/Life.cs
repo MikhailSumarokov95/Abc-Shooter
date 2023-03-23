@@ -1,8 +1,11 @@
 using UnityEngine;
 using UnityEngine.AI;
+using System;
 
 public class Life : MonoBehaviour
 {
+    public Action OnDid;
+
     public bool IsDid { private set; get;} 
 
     public void Did()
@@ -10,6 +13,7 @@ public class Life : MonoBehaviour
         if (IsDid) return;
 
         IsDid = true;
+        OnDid?.Invoke();
 
         if (CompareTag("Player"))
         {

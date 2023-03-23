@@ -5,6 +5,7 @@ public class RotateMedicineChest : MonoBehaviour
     [SerializeField] private float speedRotate = 1f;
     [SerializeField] private float speedTranslate = 1f;
     [SerializeField] private float rangeTranslate = 1f;
+    [SerializeField] private Vector3 axisRotate = Vector3.forward;
     private Transform _medicineTr;
     private float _startYTr;
 
@@ -16,7 +17,7 @@ public class RotateMedicineChest : MonoBehaviour
 
     private void Update()
     {
-        _medicineTr.Rotate(Vector3.forward, speedRotate);
+        _medicineTr.Rotate(axisRotate, speedRotate);
 
         var yTr = Mathf.PingPong(Time.time * speedTranslate, rangeTranslate) + _startYTr;
 

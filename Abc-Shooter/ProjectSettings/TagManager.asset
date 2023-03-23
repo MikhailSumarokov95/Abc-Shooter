@@ -18,6 +18,8 @@ TagManager:
   - Wood
   - Enemy
   - Medicine Chest
+  - FxTemporaire
+  - PartSpaceShip
   layers:
   - Default
   - TransparentFX

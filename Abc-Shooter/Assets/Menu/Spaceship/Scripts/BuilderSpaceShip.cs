@@ -3,6 +3,7 @@ using UnityEngine;
 public class BuilderSpaceShip : MonoBehaviour
 {
     [SerializeField] private GameObject[] shipParts;
+    [SerializeField] private GameObject effect;
 
     private void Start()
     {
@@ -12,18 +13,26 @@ public class BuilderSpaceShip : MonoBehaviour
         var shipAssemblyStage = Progress.GetShipAssemblyStage();
         for (var i = 0; i < shipAssemblyStage; i++)
         {
-            shipParts[i].gameObject.SetActive(true);
+            shipParts[i].SetActive(true);
         }
     }
 
     public void AddShipAssemblyStage()
     {
         var shipAssemblyStage = Progress.GetShipAssemblyStage();
-        if (shipAssemblyStage < Progress.GetNumberPartsFoundShip())
+        if (shipAssemblyStage < Progress.GetNumberPartsFoundShip() && shipAssemblyStage < shipParts.Length)
         {
             shipAssemblyStage++;
             Progress.SetShipAssemblyStage(shipAssemblyStage);
-            shipParts[shipAssemblyStage - 1].SetActive(true);
+            var part = shipParts[shipAssemblyStage - 1];
+            part.SetActive(true);
+            Instantiate(effect, part.transform);
         }
+    }
+
+    [ContextMenu("AddParts")]
+    public void AddParts()
+    {
+        Progress.SetNumberPartsFoundShip(Progress.GetNumberPartsFoundShip() + 1);
     }
 }

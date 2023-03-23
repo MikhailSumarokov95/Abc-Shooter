@@ -144,6 +144,7 @@ GameObject:
   - component: {fileID: 1117942117304870555}
   - component: {fileID: 7005827159358882276}
   - component: {fileID: 9129762249284367098}
+  - component: {fileID: -993153233722495703}
   m_Layer: 0
   m_Name: Letter J
   m_TagString: Enemy
@@ -320,6 +321,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _distanceAttack: 2
   damage: 20
+--- !u!114 &-993153233722495703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1244202251147755901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33a328cb9cadc6e468e5af9511579898, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chance: 100
+  partSpaceShip:
+  - {fileID: 7772894865558777032, guid: 825c9b508e2b75a409e34a7731251604, type: 3}
+  - {fileID: 7772894865558777032, guid: 825c9b508e2b75a409e34a7731251604, type: 3}
+  - {fileID: 8357519613455027148, guid: 98e8a9bf3698af340b3d622b8588ef63, type: 3}
+  - {fileID: 6097387245730569134, guid: 324d2fdd7d2bc364b957916b5e265499, type: 3}
+  - {fileID: 2802588527782435711, guid: b92e5c43d33768d42b567bb3a254b941, type: 3}
+  - {fileID: 2802588527782435711, guid: b92e5c43d33768d42b567bb3a254b941, type: 3}
+  - {fileID: 2127759589967950348, guid: 48a2108f9a9c3264e8d10b7178dec7aa, type: 3}
+  - {fileID: 2127759589967950348, guid: 48a2108f9a9c3264e8d10b7178dec7aa, type: 3}
+  - {fileID: 7376272253991863165, guid: 3eb7b55f63a4ae147946721f0a4917a7, type: 3}
+  - {fileID: 7376272253991863165, guid: 3eb7b55f63a4ae147946721f0a4917a7, type: 3}
+  - {fileID: 7376272253991863165, guid: 3eb7b55f63a4ae147946721f0a4917a7, type: 3}
+  - {fileID: 7376272253991863165, guid: 3eb7b55f63a4ae147946721f0a4917a7, type: 3}
+  - {fileID: 5654438136443590421, guid: 0379c786184fdfe4baa8abe5c3ecaefc, type: 3}
+  - {fileID: 5654438136443590421, guid: 0379c786184fdfe4baa8abe5c3ecaefc, type: 3}
 --- !u!1 &1674400305652436379
 GameObject:
   m_ObjectHideFlags: 0

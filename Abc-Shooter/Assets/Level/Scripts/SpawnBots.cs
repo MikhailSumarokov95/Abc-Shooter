@@ -22,7 +22,6 @@ public class SpawnBots : MonoBehaviour
 
     private Life[] _currentEnemyLife;
     private bool _isAllEnemiesKilled;
-    private LevelManager _levelManager;
     private Level _level;
 
     private int _numberWave = 0;
@@ -30,7 +29,6 @@ public class SpawnBots : MonoBehaviour
 
     private void Start()
     {
-        _levelManager = FindObjectOfType<LevelManager>();
         _level = FindObjectOfType<Level>();
         StartCoroutine(StartWaves());
     }
@@ -67,7 +65,6 @@ public class SpawnBots : MonoBehaviour
             var numberSpawnPoint = 0;
 
             var countEnemy = (int)(spawnEnemy[i].Count + _level.CurrentLevel * plusEnemyWithLevel);
-
             for (var j = 0; j < countEnemy; j++)
             {
                 var spawnPoint = spawnEnemy[i].SpawnPoints[numberSpawnPoint];
@@ -79,18 +76,14 @@ public class SpawnBots : MonoBehaviour
                 numberSpawnPoint = MathPlus.SawChart(numberSpawnPoint, 0, spawnEnemy[i].SpawnPoints.Length - 1);
             }
         }
-
-
         if (NumberWave == countWave)
             enemy.Add(SpawnBoss());
-
         return enemy.ToArray();
     }
 
     private Life SpawnBoss()
     { 
         var spawnPoint = spawnBoss.SpawnPoints[0];
-
         return Instantiate(spawnBoss.BotPrefs, spawnPoint.position, spawnPoint.rotation)
                     .GetComponent<Life>();
     }
@@ -99,7 +92,6 @@ public class SpawnBots : MonoBehaviour
     {
         foreach (var enemy in _currentEnemyLife)
             if (!enemy.IsDid) return false;
-
         return true;
     }
 
