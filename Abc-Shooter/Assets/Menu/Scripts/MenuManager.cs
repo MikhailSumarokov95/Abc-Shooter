@@ -4,6 +4,7 @@ using GameScore;
 public class MenuManager : MonoBehaviour
 {
     private PlatformManager _platformManager;
+
     private void Awake()
     {
         if (!Progress.IsSetDefaultWeapons())
