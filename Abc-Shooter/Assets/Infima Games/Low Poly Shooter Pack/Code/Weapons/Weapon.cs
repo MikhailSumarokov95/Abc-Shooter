@@ -230,17 +230,13 @@ namespace InfimaGames.LowPolyShooterPack
 
         protected void OnEnable()
         {
-            _ammunitionShop = FindObjectsOfType<AmmunitionShop>(true);
-            foreach (var shop in _ammunitionShop)
-                shop.OnReplenished += RefreshAmminitionSum;
-
+            Progress.OnNewSaveWeapons += RefreshAmminitionSum;
             RefreshAmminitionSum();
         }
 
         protected void OnDisable()
         {
-            foreach (var shop in _ammunitionShop)
-                shop.OnReplenished -= RefreshAmminitionSum;
+            Progress.OnNewSaveWeapons -= RefreshAmminitionSum;
         }
 
         protected override void Start()

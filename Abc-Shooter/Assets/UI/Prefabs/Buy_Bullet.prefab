@@ -303,41 +303,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   price: 100
   _maxAmmunitionWeapon:
-  - NameWeapon: Assault Rifle 02
+  - NameWeapon: 1
     Count: 192
-  - NameWeapon: Assault Rifle 03
+  - NameWeapon: 2
     Count: 150
-  - NameWeapon: Grenade Launcher 01
+  - NameWeapon: 3
     Count: 6
-  - NameWeapon: Handgun 02
+  - NameWeapon: 5
     Count: 60
-  - NameWeapon: Handgun 03
+  - NameWeapon: 6
     Count: 60
-  - NameWeapon: Handgun 04
+  - NameWeapon: 7
     Count: 60
-  - NameWeapon: Rocket Launcher 01
+  - NameWeapon: 8
     Count: 6
-  - NameWeapon: Shotgun 01
+  - NameWeapon: 9
     Count: 48
-  - NameWeapon: SMG 01
+  - NameWeapon: 10
     Count: 222
-  - NameWeapon: SMG 02
+  - NameWeapon: 11
     Count: 180
-  - NameWeapon: SMG 03
+  - NameWeapon: 12
     Count: 230
-  - NameWeapon: SMG 04
+  - NameWeapon: 13
     Count: 324
-  - NameWeapon: SMG 05
+  - NameWeapon: 14
     Count: 192
-  - NameWeapon: Sniper 01
+  - NameWeapon: 15
     Count: 42
-  - NameWeapon: Sniper 02
+  - NameWeapon: 16
     Count: 54
-  - NameWeapon: Sniper 03
+  - NameWeapon: 17
     Count: 48
-  - NameWeapon: Handgun 01
+  - NameWeapon: 4
     Count: 24
-  - NameWeapon: Assault Rifle 01
+  - NameWeapon: 0
     Count: 60
 --- !u!1 &8366093587725588657
 GameObject:

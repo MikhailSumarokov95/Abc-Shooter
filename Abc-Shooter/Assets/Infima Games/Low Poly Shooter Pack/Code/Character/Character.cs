@@ -357,45 +357,17 @@ namespace InfimaGames.LowPolyShooterPack
 
 		private void OnEnable()
 		{
-            grenadeShops = FindObjectsOfType<GrenadeShop>(true);
-			foreach (var grenadeShop in grenadeShops)
-            {
-				if (grenadeShop != null)
-					grenadeShop.OnBought += LoadSaveGrenade;
-			}
-			
-			superGrenadeShops = FindObjectsOfType<SuperGrenadeShop>(true);
-			foreach (var superGrenadeShop in superGrenadeShops)
-            {
-				if (superGrenadeShop != null)
-                    superGrenadeShop.OnBought += LoadSaveSuperGrenade;
-			}
-
-            GSConnect.OnPurchaseWeapon += RefreshInventory;
-
-            _battlePass = FindObjectOfType<BattlePassRewarder>(true);
-            _battlePass.OnBoughtBattlePass += RefreshInventory;
+			Progress.OnNewSaveGrenade += LoadSaveGrenade;
+            Progress.OnNewSaveSuperGrenade += LoadSaveSuperGrenade;
+            Progress.OnNewSaveWeapons += RefreshInventory;
         }
 
 		private void OnDisable()
 		{
-			foreach (var grenadeShop in grenadeShops)
-			{
-				if (grenadeShop != null)
-					grenadeShop.OnBought -= LoadSaveGrenade;
-			}
-			
-			foreach (var superGrenadeShop in superGrenadeShops)
-			{
-				if (superGrenadeShop != null)
-                    superGrenadeShop.OnBought -= LoadSaveSuperGrenade;
-			}
-
-            GSConnect.OnPurchaseWeapon -= RefreshInventory;
-
-            _battlePass.OnBoughtBattlePass -= RefreshInventory;
+            Progress.OnNewSaveGrenade -= LoadSaveGrenade;
+            Progress.OnNewSaveSuperGrenade -= LoadSaveSuperGrenade;
+            Progress.OnNewSaveWeapons -= RefreshInventory;
         }
-
 
 		/// <summary>
 		/// Update.

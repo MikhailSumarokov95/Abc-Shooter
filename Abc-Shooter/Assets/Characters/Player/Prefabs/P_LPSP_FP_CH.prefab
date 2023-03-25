@@ -4049,10 +4049,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2630283983871610928}
     m_Modifications:
-    - target: {fileID: 7795163959819838, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
-      propertyPath: scopeDefaultShow
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 60135812283842780, guid: 9482e0a2ae6a92742bbe72e00f29f763,
         type: 3}
       propertyPath: nameWeapon
@@ -4063,40 +4059,10 @@ PrefabInstance:
       propertyPath: nameWeapon
       value: 12
       objectReference: {fileID: 0}
-    - target: {fileID: 214048951178163014, guid: 9482e0a2ae6a92742bbe72e00f29f763,
-        type: 3}
-      propertyPath: scopeDefaultShow
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 318819215665963965, guid: 9482e0a2ae6a92742bbe72e00f29f763,
-        type: 3}
-      propertyPath: scopeDefaultShow
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 342526275505790809, guid: 9482e0a2ae6a92742bbe72e00f29f763,
-        type: 3}
-      propertyPath: scopeDefaultShow
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 379223143994315854, guid: 9482e0a2ae6a92742bbe72e00f29f763,
-        type: 3}
-      propertyPath: scopeDefaultShow
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 498304367306660513, guid: 9482e0a2ae6a92742bbe72e00f29f763,
-        type: 3}
-      propertyPath: scopeDefaultShow
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1336205423775232939, guid: 9482e0a2ae6a92742bbe72e00f29f763,
         type: 3}
       propertyPath: nameWeapon
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1924472260361746235, guid: 9482e0a2ae6a92742bbe72e00f29f763,
-        type: 3}
-      propertyPath: scopeDefaultShow
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2113768312870607030, guid: 9482e0a2ae6a92742bbe72e00f29f763,
         type: 3}
@@ -4163,35 +4129,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: P_LPSP_Inventory
       objectReference: {fileID: 0}
-    - target: {fileID: 2544345319944641965, guid: 9482e0a2ae6a92742bbe72e00f29f763,
-        type: 3}
-      propertyPath: scopeDefaultShow
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2940767764272533086, guid: 9482e0a2ae6a92742bbe72e00f29f763,
         type: 3}
       propertyPath: nameWeapon
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 4177526639086970163, guid: 9482e0a2ae6a92742bbe72e00f29f763,
-        type: 3}
-      propertyPath: scopeDefaultShow
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4319761041232184229, guid: 9482e0a2ae6a92742bbe72e00f29f763,
-        type: 3}
-      propertyPath: scopeDefaultShow
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5069160595750692273, guid: 9482e0a2ae6a92742bbe72e00f29f763,
         type: 3}
       propertyPath: nameWeapon
       value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 5313719367971589152, guid: 9482e0a2ae6a92742bbe72e00f29f763,
-        type: 3}
-      propertyPath: scopeDefaultShow
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5373528034721390598, guid: 9482e0a2ae6a92742bbe72e00f29f763,
         type: 3}
@@ -4218,11 +4164,6 @@ PrefabInstance:
       propertyPath: nameWeapon
       value: 6
       objectReference: {fileID: 0}
-    - target: {fileID: 6524657844730715918, guid: 9482e0a2ae6a92742bbe72e00f29f763,
-        type: 3}
-      propertyPath: scopeDefaultShow
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6614136138418799626, guid: 9482e0a2ae6a92742bbe72e00f29f763,
         type: 3}
       propertyPath: scopeDefaultShow
@@ -4242,16 +4183,6 @@ PrefabInstance:
         type: 3}
       propertyPath: nameWeapon
       value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: 7388739548209321365, guid: 9482e0a2ae6a92742bbe72e00f29f763,
-        type: 3}
-      propertyPath: scopeDefaultShow
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7680938214175204005, guid: 9482e0a2ae6a92742bbe72e00f29f763,
-        type: 3}
-      propertyPath: scopeDefaultShow
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7760006461492980381, guid: 9482e0a2ae6a92742bbe72e00f29f763,
         type: 3}
@@ -4303,11 +4234,6 @@ PrefabInstance:
       propertyPath: nameWeapon
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 8477924424165311924, guid: 9482e0a2ae6a92742bbe72e00f29f763,
-        type: 3}
-      propertyPath: scopeDefaultShow
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8524413377780846853, guid: 9482e0a2ae6a92742bbe72e00f29f763,
         type: 3}
       propertyPath: nameWeapon
@@ -4324,11 +4250,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4834526503407549940, guid: 2735bebe54c1f5a4096f5134a96f7e77,
         type: 3}
-    - target: {fileID: 9171766069727722671, guid: 9482e0a2ae6a92742bbe72e00f29f763,
-        type: 3}
-      propertyPath: scopeDefaultShow
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 9184367823543550046, guid: 9482e0a2ae6a92742bbe72e00f29f763,
         type: 3}
       propertyPath: scopeDefaultShow

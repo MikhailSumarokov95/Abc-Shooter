@@ -11742,6 +11742,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1932827083081934431, guid: 4bf796e21e13d4245ace3f401b6d6d91,
+        type: 3}
+      propertyPath: scopeDefaultShow
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2503987790672080097, guid: 4bf796e21e13d4245ace3f401b6d6d91,
         type: 3}
       propertyPath: isInfinityAmmunitional
@@ -11775,6 +11780,11 @@ PrefabInstance:
     - target: {fileID: 4197624555232385421, guid: 4bf796e21e13d4245ace3f401b6d6d91,
         type: 3}
       propertyPath: isInfinityAmmunitional
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4498405415944184331, guid: 4bf796e21e13d4245ace3f401b6d6d91,
+        type: 3}
+      propertyPath: scopeDefaultShow
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5232392971163012825, guid: 4bf796e21e13d4245ace3f401b6d6d91,

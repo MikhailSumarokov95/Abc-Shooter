@@ -17,7 +17,6 @@ public class AmmunitionShop : MonoBehaviour
     public void BuyAmmunition()
     {
         if (!_money.SpendMoney(price)) return;
-
         ReplenishAmmunition();
     }
 
@@ -25,7 +24,6 @@ public class AmmunitionShop : MonoBehaviour
     {
         for (var i = 0; i < _maxAmmunitionWeapon.Length; i++)
             Progress.SetAmmunitionCount(_maxAmmunitionWeapon[i].NameWeapon, _maxAmmunitionWeapon[i].Count);
-
         OnReplenished?.Invoke();
     }
 

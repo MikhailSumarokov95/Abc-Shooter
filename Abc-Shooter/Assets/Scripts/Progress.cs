@@ -19,6 +19,10 @@ public static class Progress
     readonly static string shipAssemblyStage = nameof(shipAssemblyStage);
     readonly static string numberPartsFoundShip = nameof(numberPartsFoundShip);
 
+    public static Action OnNewSaveWeapons;
+    public static Action OnNewSaveGrenade;
+    public static Action OnNewSaveSuperGrenade;
+
     public static bool IsBoughtWeapon(WeaponBehaviour.Name name)
     {
         var weaponsBought = LoadWeaponsBought();
@@ -263,6 +267,7 @@ public static class Progress
     {
         GSPrefs.SetInt(grenades, value);
         GSPrefs.Save();
+        OnNewSaveGrenade?.Invoke();
     }
 
     public static int GetGrenades()
@@ -274,6 +279,7 @@ public static class Progress
     {
         GSPrefs.SetInt(superGrenades, value);
         GSPrefs.Save();
+        OnNewSaveSuperGrenade?.Invoke();
     }
 
     public static int GetSuperGrenades()
@@ -337,6 +343,7 @@ public static class Progress
     {
         GSPrefs.SetString(weaponsSelected, JsonUtility.ToJson(weapons).ToString());
         GSPrefs.Save();
+        OnNewSaveWeapons?.Invoke();
     }
 
     private static TFG.Generic.Dictionary<WeaponBehaviour.Name, WeaponAttachmentSelected> LoadWeaponsSelected()
@@ -349,6 +356,7 @@ public static class Progress
     {
         GSPrefs.SetString(weaponsBought, JsonUtility.ToJson(weapons).ToString());
         GSPrefs.Save();
+        OnNewSaveWeapons?.Invoke();
     }
 
     private static TFG.Generic.Dictionary<WeaponBehaviour.Name, WeaponAttachmentsBought> LoadWeaponsBought()
