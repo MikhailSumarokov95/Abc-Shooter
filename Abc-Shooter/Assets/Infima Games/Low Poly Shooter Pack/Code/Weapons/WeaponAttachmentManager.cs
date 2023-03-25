@@ -1,6 +1,7 @@
 ﻿//Copyright 2022, Infima Games. All Rights Reserved.
 
 using System;
+using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -271,6 +272,22 @@ namespace InfimaGames.LowPolyShooterPack
         }
 
         #endregion
+
+        [ContextMenu("SetupDefaulfSkinsRenderer")]
+        private void SetupDefaulfSkinsRenderer()
+        {
+            var skinsRendererList = skinsRenderer.ToList();
+            var rendererInChildren = transform.GetComponentsInChildren<Renderer>(true);
+            foreach (var renderer in rendererInChildren)
+            {
+                skinsRendererList.Add(new SkinsRenderer() 
+                { 
+                    Renderer = renderer,
+                    replacementMaterialNumbers = new int[] { 0 } 
+                });
+            }
+            skinsRenderer = skinsRendererList.ToArray();
+        }
 
         [Serializable]
         private class SkinsRenderer
