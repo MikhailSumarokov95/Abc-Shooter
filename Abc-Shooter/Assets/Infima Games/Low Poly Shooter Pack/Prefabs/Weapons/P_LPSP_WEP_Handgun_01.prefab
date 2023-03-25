@@ -672,7 +672,7 @@ MonoBehaviour:
   magazineIndexRandom: 0
   magazineArray:
   - {fileID: 7022436135145414792}
-  skinIndex: 0
+  skinIndex: 95
   skinsArray:
   - {fileID: 2100000, guid: 9f831be5af2cb944c9f797b36635fb63, type: 2}
   - {fileID: 2100000, guid: 8d7919ec775837140bc081cdb79cab04, type: 2}

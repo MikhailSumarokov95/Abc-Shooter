@@ -61,6 +61,12 @@ public abstract class SelectorAttachment : MonoBehaviour
         }
     }
 
+    public void SetNumberAttachment(int number)
+    {
+        _currentAttachment = number;
+        ScrollThrough(0);
+    }
+
     public abstract void SetActiveAttachment(int index);
     public abstract void InitAttachment();
     public abstract void BuyAttachment();

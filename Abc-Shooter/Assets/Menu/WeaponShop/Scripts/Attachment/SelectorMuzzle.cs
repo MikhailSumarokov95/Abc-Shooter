@@ -4,6 +4,7 @@ public class SelectorMuzzle : SelectorAttachment
     {
         _attachmenAbsenteeNumber = 0;
         _countAttachment = _weaponAttachmentManager.GetGripBehaviourCount();
+        SetNumberAttachment(Progress.GetSelectedMuzzle(_shop.CurrentWeaponName));
     }
 
     public override void SetActiveAttachment(int index)

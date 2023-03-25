@@ -2,7 +2,9 @@
 
 using System;
 using System.Linq;
+using UnityEditor;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 using Random = UnityEngine.Random;
 
 namespace InfimaGames.LowPolyShooterPack
@@ -287,6 +289,12 @@ namespace InfimaGames.LowPolyShooterPack
                 });
             }
             skinsRenderer = skinsRendererList.ToArray();
+        }
+
+        [ContextMenu("SetupDefaultSkins")]
+        private void SetupDefaultSkins()
+        {
+            SetEquippedSkin(skinIndex);
         }
 
         [Serializable]

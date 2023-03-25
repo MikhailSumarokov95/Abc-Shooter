@@ -4,6 +4,7 @@ public class SelectorSkin : SelectorAttachment
     {
         _countAttachment = _weaponAttachmentManager.GetSkinCount();
         _attachmenAbsenteeNumber = 0;
+        SetNumberAttachment(Progress.GetSelectedSkin(_shop.CurrentWeaponName));
     }
 
     public override void SetActiveAttachment(int index)

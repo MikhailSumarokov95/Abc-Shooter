@@ -3,6 +3,7 @@ public class SelectorScope : SelectorAttachment
     public override void InitAttachment()
     {
         _countAttachment = _weaponAttachmentManager.GetGripBehaviourCount();
+        SetNumberAttachment(Progress.GetSelectedScope(_shop.CurrentWeaponName));
     }
 
     public override void SetActiveAttachment(int index)

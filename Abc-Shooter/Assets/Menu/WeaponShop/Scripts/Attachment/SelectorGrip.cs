@@ -3,6 +3,7 @@ public class SelectorGrip : SelectorAttachment
     public override void InitAttachment()
     {
         _countAttachment = _weaponAttachmentManager.GetGripBehaviourCount();
+        SetNumberAttachment(Progress.GetSelectedGrip(_shop.CurrentWeaponName));
     }
 
     public override void SetActiveAttachment(int index)
