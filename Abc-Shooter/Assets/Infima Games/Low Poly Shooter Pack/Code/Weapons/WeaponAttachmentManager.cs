@@ -274,7 +274,7 @@ namespace InfimaGames.LowPolyShooterPack
         #endregion
 
         [ContextMenu("SetupDefaulfSkinsRenderer")]
-        private void SetupDefaulfSkinsRenderer()
+        private void SetupDefaultSkinsRenderer()
         {
             var skinsRendererList = skinsRenderer.ToList();
             var rendererInChildren = transform.GetComponentsInChildren<Renderer>(true);

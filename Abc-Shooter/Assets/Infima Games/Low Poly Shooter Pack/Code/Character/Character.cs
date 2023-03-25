@@ -6,8 +6,6 @@ using System.Collections;
 using UnityEngine.InputSystem;
 using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
-using Unity.Mathematics;
-using UnityEngine.Scripting;
 
 namespace InfimaGames.LowPolyShooterPack
 {
@@ -323,19 +321,19 @@ namespace InfimaGames.LowPolyShooterPack
 			//Cache the movement behaviour.
 			movementBehaviour = GetComponent<MovementBehaviour>();
 
-			//Initialize Inventory.
-			inventory.Init(weaponIndexEquippedAtStart);
+            //Initialize Inventory.
+            inventory.Init(weaponIndexEquippedAtStart);
 
-			//Refresh!
-			RefreshWeaponSetup();
+            //Refresh!
+            RefreshWeaponSetup();
 		}
 		/// <summary>
 		/// Start.
 		/// </summary>
 		protected override void Start()
 		{
-			//Max out the grenades.
-			LoadSaveGrenade();
+            //Max out the grenades.
+            LoadSaveGrenade();
 
 			LoadSaveSuperGrenade();
 
@@ -359,7 +357,7 @@ namespace InfimaGames.LowPolyShooterPack
 
 		private void OnEnable()
 		{
-			grenadeShops = FindObjectsOfType<GrenadeShop>(true);
+            grenadeShops = FindObjectsOfType<GrenadeShop>(true);
 			foreach (var grenadeShop in grenadeShops)
             {
 				if (grenadeShop != null)

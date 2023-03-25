@@ -1,8 +1,10 @@
 using UnityEngine;
 using GameScore;
+using InfimaGames.LowPolyShooterPack;
 
 public class MenuManager : MonoBehaviour
 {
+    [SerializeField] private Character player;
     private PlatformManager _platformManager;
 
     private void Awake()
@@ -12,6 +14,8 @@ public class MenuManager : MonoBehaviour
             FindObjectOfType<ShopAttachment>(true).SetDefaultSetting();
             FindObjectOfType<AmmunitionShop>(true).ReplenishAmmunition();
         }
+
+        player.gameObject.SetActive(true);
 
         if (!Application.isEditor) PlayerPrefs.SetString("selectedLanguage", GS_Language.Current());
     }

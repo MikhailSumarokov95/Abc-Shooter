@@ -215,7 +215,7 @@ public static class Progress
         SaveWeaponsSelected(weaponsSelected);
     }
 
-    public static void SaveSetDefaultWeapons()
+    public static void SaveSettedDefaultWeapons()
     {
         GSPrefs.SetInt(setDefaultWeapons, 1);
         GSPrefs.Save();
