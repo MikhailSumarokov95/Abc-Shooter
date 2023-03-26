@@ -119,7 +119,7 @@ namespace InfimaGames.LowPolyShooterPack
         public void Lower(InputAction.CallbackContext context)
         {
             //Block while the cursor is unlocked.
-            if (!characterBehaviour.IsCursorLocked())
+            if (StateGameManager.StateGame != StateGameManager.State.Game)
                 return;
 
             //No changing the lowered state while doing these, since you can't see it.

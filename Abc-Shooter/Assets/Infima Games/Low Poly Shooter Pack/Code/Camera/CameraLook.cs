@@ -1,5 +1,6 @@
 ﻿//Copyright 2022, Infima Games. All Rights Reserved.
 
+using System.Collections;
 using UnityEngine;
 
 namespace InfimaGames.LowPolyShooterPack
@@ -31,6 +32,9 @@ namespace InfimaGames.LowPolyShooterPack
         [SerializeField]
         private float interpolationSpeed = 25.0f;
         
+        [SerializeField]
+        private float speedSetRotation = 25.0f;
+        
         #endregion
         
         #region FIELDS
@@ -53,7 +57,7 @@ namespace InfimaGames.LowPolyShooterPack
         /// </summary>
         private Quaternion rotationCamera;
 
-        private Setting _setting;
+        private bool isStartCoroutineSetRotationSlerp;
 
         #endregion
 
@@ -61,15 +65,12 @@ namespace InfimaGames.LowPolyShooterPack
 
         private void OnEnable()
         {
-            _setting = FindObjectOfType<Setting>();
-            if (_setting != null) 
-                _setting.OnSaveSetting += RefreshSensitivity;
+            Progress.OnNewSaveSensitivity += RefreshSensitivity;
         } 
         
         private void OnDisable()
         {
-            if (_setting != null) 
-                _setting.OnSaveSetting -= RefreshSensitivity;
+            Progress.OnNewSaveSensitivity -= RefreshSensitivity;
         }
 
         /// <summary>
@@ -143,6 +144,12 @@ namespace InfimaGames.LowPolyShooterPack
 
         #region FUNCTIONS
 
+        public void SetRotation(Transform targetTr)
+        {
+            if (isStartCoroutineSetRotationSlerp) return;
+            StartCoroutine(SetRotationSlerp(targetTr));
+        }
+
         /// <summary>
         /// Clamps the pitch of a quaternion according to our clamps.
         /// </summary>
@@ -167,6 +174,18 @@ namespace InfimaGames.LowPolyShooterPack
         private void RefreshSensitivity()
         {
             sensitivity = Progress.GetSensitivity() * Vector2.one;
+        }
+
+        private IEnumerator SetRotationSlerp(Transform targetTr)
+        {
+            isStartCoroutineSetRotationSlerp = true;
+            Quaternion targetDirectionLook = targetTr.rotation;
+            while (Quaternion.Angle(transform.rotation, targetDirectionLook) > 1f)
+            {
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetDirectionLook, speedSetRotation * Time.deltaTime);
+                yield return null;
+            }
+            isStartCoroutineSetRotationSlerp = false;
         }
 
         #endregion

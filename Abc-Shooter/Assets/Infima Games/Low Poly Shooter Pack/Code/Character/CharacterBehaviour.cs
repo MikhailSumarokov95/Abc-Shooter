@@ -103,10 +103,6 @@ namespace InfimaGames.LowPolyShooterPack
         /// Returns true if the character is aiming.
         /// </summary>
         public abstract bool IsAiming();
-        /// <summary>
-        /// Returns true if the game cursor is locked.
-        /// </summary>
-        public abstract bool IsCursorLocked();
 
         /// <summary>
         /// Returns true if the tutorial text should be visible on the screen.

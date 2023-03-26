@@ -72,9 +72,10 @@ namespace InfimaGames.LowPolyShooterPack
                 //Return.
                 return;
             }
+
             
             //Block while the cursor is unlocked.
-            if (!characterBehaviour.IsCursorLocked())
+            if (StateGameManager.StateGame != StateGameManager.State.Game)
                 return;
 
             //Switch.

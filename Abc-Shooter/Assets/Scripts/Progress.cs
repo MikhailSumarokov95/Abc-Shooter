@@ -22,6 +22,7 @@ public static class Progress
     public static Action OnNewSaveWeapons;
     public static Action OnNewSaveGrenade;
     public static Action OnNewSaveSuperGrenade;
+    public static Action OnNewSaveSensitivity;
 
     public static bool IsBoughtWeapon(WeaponBehaviour.Name name)
     {
@@ -290,6 +291,7 @@ public static class Progress
     public static void SetSensitivity(float value)
     {
         PlayerPrefs.SetFloat(sensitivity, value);
+        OnNewSaveSensitivity?.Invoke();
     }
 
     public static float GetSensitivity()

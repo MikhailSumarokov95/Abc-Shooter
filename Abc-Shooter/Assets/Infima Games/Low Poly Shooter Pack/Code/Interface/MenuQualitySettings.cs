@@ -55,7 +55,7 @@ namespace InfimaGames.LowPolyShooterPack.Interface
         protected override void Tick()
         {
             //Switch. Fades in or out the menu based on the cursor's state.
-            bool cursorLocked = characterBehaviour.IsCursorLocked();
+            bool cursorLocked = StateGameManager.StateGame == StateGameManager.State.Game;
             switch (cursorLocked)
             {
                 //Hide.

@@ -59,7 +59,7 @@ namespace InfimaGames.LowPolyShooterPack
         public void Lean(InputAction.CallbackContext context)
         {
             //Block while the cursor is unlocked.
-            if (!characterBehaviour.IsCursorLocked())
+            if (StateGameManager.StateGame != StateGameManager.State.Game)
             {
                 //Zero out the leaning.
                 leaningInput = 0.0f;

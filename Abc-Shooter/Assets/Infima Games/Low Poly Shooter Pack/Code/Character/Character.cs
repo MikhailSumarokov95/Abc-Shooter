@@ -135,14 +135,20 @@ namespace InfimaGames.LowPolyShooterPack
 		[SerializeField]
 		private bool holdToAim = true;
 
-		#endregion
+        [SerializeField]
+        private float speedSetRotation = 25.0f;
 
-		#region FIELDS
+        [SerializeField]
+        private float speedSetPosition = 25.0f;
 
-		/// <summary>
-		/// True if the character is aiming.
-		/// </summary>
-		private bool aiming;
+        #endregion
+
+        #region FIELDS
+
+        /// <summary>
+        /// True if the character is aiming.
+        /// </summary>
+        private bool aiming;
 		/// <summary>
 		/// Last Frame's Aiming Value.
 		/// </summary>
@@ -276,10 +282,6 @@ namespace InfimaGames.LowPolyShooterPack
 		private bool tutorialTextVisible;
 
 		/// <summary>
-		/// True if the game cursor is locked! Used when pressing "Escape" to allow developers to more easily access the editor.
-		/// </summary>
-		private bool cursorLocked;
-		/// <summary>
 		/// Amount of shots fired in succession. We use this value to increase the spread, and also to apply recoil
 		/// </summary>
 		private int shotsFired;
@@ -290,15 +292,17 @@ namespace InfimaGames.LowPolyShooterPack
 
 		private SuperGrenadeShop[] superGrenadeShops;
 
-		private LevelManager _levelManager;
+		private LevelManager levelManager;
 
-		private PlatformManager _platformManager;
+		private PlatformManager platformManager;
 
-		private Joystick _joystick;
+		private Joystick joystick;
 
-        private BattlePassRewarder _battlePass;
+        private BattlePassRewarder battlePass;
 
-        private bool isStartCoroutineSetPositionAndRotationSlerp;
+        private bool isStartCoroutineSetRotationSlerp;
+
+        private bool isStartCoroutineSetPositionSlerp;
 
         #endregion
 
@@ -309,15 +313,6 @@ namespace InfimaGames.LowPolyShooterPack
         /// </summary>
         protected override void Awake()
 		{
-			#region Lock Cursor
-
-			//Always make sure that our cursor is locked when the game starts!
-			cursorLocked = true;
-			//Update the cursor's state.
-			//UpdateCursorState();
-
-			#endregion
-
 			//Cache the movement behaviour.
 			movementBehaviour = GetComponent<MovementBehaviour>();
 
@@ -348,11 +343,11 @@ namespace InfimaGames.LowPolyShooterPack
 			//Cache a reference to the overlay layer's index.
 			layerOverlay = characterAnimator.GetLayerIndex("Layer Overlay");
 
-			_levelManager = FindObjectOfType<LevelManager>();
+			levelManager = FindObjectOfType<LevelManager>();
 
-			_platformManager = FindObjectOfType<PlatformManager>();
-			if (_platformManager != null)
-				_joystick = FindObjectOfType<Joystick>(_platformManager.IsMobile);
+			platformManager = FindObjectOfType<PlatformManager>();
+			if (platformManager != null)
+				joystick = FindObjectOfType<Joystick>(platformManager.IsMobile);
 		}
 
 		private void OnEnable()
@@ -432,7 +427,7 @@ namespace InfimaGames.LowPolyShooterPack
 			//Save Aiming Value.
 			wasAiming = aiming;
 
-			if (_platformManager.IsMobile)
+			if (platformManager.IsMobile)
 			{
 				LookMobile();
 				MoveMobile();
@@ -524,10 +519,6 @@ namespace InfimaGames.LowPolyShooterPack
 		/// IsAiming.
 		/// </summary>
 		public override bool IsAiming() => aiming;
-		/// <summary>
-		/// IsCursorLocked.
-		/// </summary>
-		public override bool IsCursorLocked() => cursorLocked;
 
 		/// <summary>
 		/// IsTutorialTextVisible.
@@ -567,23 +558,36 @@ namespace InfimaGames.LowPolyShooterPack
 
 		public void SetPositionAndRotation(Transform targetTr)
 		{
-            if (isStartCoroutineSetPositionAndRotationSlerp) return;
-            StartCoroutine(SetPositionAndRotationSlerp(targetTr));
+            if (!isStartCoroutineSetRotationSlerp)
+                StartCoroutine(SetRotationSlerp(targetTr));
+			if (!isStartCoroutineSetPositionSlerp) 
+				StartCoroutine(SetPositionSlerp(targetTr));
+			transform.GetComponentInChildren<CameraLook>().SetRotation(targetTr);
 		}
 
-		private IEnumerator SetPositionAndRotationSlerp(Transform targetTr)
+		private IEnumerator SetRotationSlerp(Transform targetTr)
 		{
-			isStartCoroutineSetPositionAndRotationSlerp = true;
+			isStartCoroutineSetRotationSlerp = true;
 			Quaternion targetDirectionLook = targetTr.rotation;
-			
 			while (Quaternion.Angle(transform.rotation, targetDirectionLook) > 0.1f)
 			{
-                Quaternion.Slerp(transform.rotation, targetDirectionLook, 0.1f);
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetDirectionLook, speedSetRotation * Time.deltaTime);
 				yield return null;
 			}
-			isStartCoroutineSetPositionAndRotationSlerp = false;
+            isStartCoroutineSetRotationSlerp = false;
 		}
 
+		private IEnumerator SetPositionSlerp(Transform targetTr)
+		{
+			isStartCoroutineSetPositionSlerp = true;
+			Vector3 targetPosition = targetTr.position;
+			while (Vector3.Distance(transform.position, targetPosition) > 0.1f)
+			{
+                transform.position = Vector3.Slerp(transform.position, targetPosition, speedSetPosition * Time.deltaTime);
+				yield return null;
+			}
+			isStartCoroutineSetPositionSlerp = false;
+		}
 
         /// <summary>
         /// Updates all the animator properties for this frame.
@@ -1124,7 +1128,7 @@ namespace InfimaGames.LowPolyShooterPack
 		/// </summary>
 		public void OnTryFire(InputAction.CallbackContext context)
 		{
-			if (_platformManager.IsMobile) return;
+			if (platformManager.IsMobile) return;
 
 			//Switch.
 			switch (context)
@@ -1147,10 +1151,6 @@ namespace InfimaGames.LowPolyShooterPack
 		private void TryFire(PhaseFire phase)
 		{
 			if (StateGameManager.StateGame != StateGameManager.State.Game) return;
-
-			//Block while the cursor is unlocked.
-			if (!cursorLocked)
-				return;
 
 			//Switch.
 			switch (phase)
@@ -1213,7 +1213,7 @@ namespace InfimaGames.LowPolyShooterPack
 		
 		public void OnTryPlayReload(InputAction.CallbackContext context)
 		{
-            if (_platformManager.IsMobile) return;
+            if (platformManager.IsMobile) return;
 
             //Switch.
             switch (context)
@@ -1230,10 +1230,6 @@ namespace InfimaGames.LowPolyShooterPack
         {
 			if (StateGameManager.StateGame != StateGameManager.State.Game) return;
 
-			//Block while the cursor is unlocked.
-			if (!cursorLocked)
-				return;
-
 			//Block.
 			if (!CanPlayAnimationReload())
 				return;
@@ -1247,9 +1243,6 @@ namespace InfimaGames.LowPolyShooterPack
 		public void OnTryInspect(InputAction.CallbackContext context)
 		{
             if (StateGameManager.StateGame != StateGameManager.State.Game) return;
-            //Block while the cursor is unlocked.
-            if (!cursorLocked)
-				return;
 			
 			//Block.
 			if (!CanPlayAnimationInspect())
@@ -1284,10 +1277,6 @@ namespace InfimaGames.LowPolyShooterPack
 		/// </summary>
 		public void OnTryAiming(InputAction.CallbackContext context)
 		{
-			//Block while the cursor is unlocked.
-			if (!cursorLocked)
-				return;
-
 			//Switch.
 			switch (context.phase)
 			{
@@ -1306,10 +1295,6 @@ namespace InfimaGames.LowPolyShooterPack
 		private void TryAiming(PhaseAiming phase)
 		{
             if (StateGameManager.StateGame != StateGameManager.State.Game) return;
-
-            //Block while the cursor is unlocked.
-            if (!cursorLocked)
-				return;
 
 			//Switch.
 			switch (phase)
@@ -1341,10 +1326,6 @@ namespace InfimaGames.LowPolyShooterPack
 		public void OnTryHolster(InputAction.CallbackContext context)
 		{
             if (StateGameManager.StateGame != StateGameManager.State.Game) return;
-
-            //Block while the cursor is unlocked.
-            if (!cursorLocked)
-				return;
 
 			//Go back if we cannot even play the holster animation.
 			if (!CanPlayAnimationHolster())
@@ -1384,7 +1365,7 @@ namespace InfimaGames.LowPolyShooterPack
 		/// </summary>
 		public void OnTryThrowGrenade(InputAction.CallbackContext context)
 		{
-			if (_platformManager.IsMobile) return;
+			if (platformManager.IsMobile) return;
 				
 			switch (context.phase)
 			{	
@@ -1398,10 +1379,6 @@ namespace InfimaGames.LowPolyShooterPack
 		private void TryThrowGrenate()
 		{
 			if (StateGameManager.StateGame != StateGameManager.State.Game) return;
-
-			//Block while the cursor is unlocked.
-			if (!cursorLocked)
-				return;
 
 			//Try Play.
 			if (CanPlayAnimationGrenadeThrow())
@@ -1419,7 +1396,7 @@ namespace InfimaGames.LowPolyShooterPack
         /// </summary>
         public void OnTryThrowSuperGrenade(InputAction.CallbackContext context)
         {
-            if (_platformManager.IsMobile) return;
+            if (platformManager.IsMobile) return;
 
             switch (context.phase)
             {
@@ -1433,10 +1410,6 @@ namespace InfimaGames.LowPolyShooterPack
         private void TryThrowSuperGrenate()
         {
             if (StateGameManager.StateGame != StateGameManager.State.Game) return;
-
-            //Block while the cursor is unlocked.
-            if (!cursorLocked)
-                return;
 
             //Try Play.
             if (CanPlayAnimationSuperGrenadeThrow())
@@ -1452,10 +1425,6 @@ namespace InfimaGames.LowPolyShooterPack
         public void OnTryMelee(InputAction.CallbackContext context)
 		{
             if (StateGameManager.StateGame != StateGameManager.State.Game) return;
-
-            //Block while the cursor is unlocked.
-            if (!cursorLocked)
-				return;
 			
 			//Switch.
 			switch (context.phase)
@@ -1474,10 +1443,6 @@ namespace InfimaGames.LowPolyShooterPack
 		public void OnTryRun(InputAction.CallbackContext context)
 		{
             if (StateGameManager.StateGame != StateGameManager.State.Game) return;
-
-            //Block while the cursor is unlocked.
-            if (!cursorLocked)
-				return;
 			
 			//Switch.
 			switch (context.phase)
@@ -1510,10 +1475,6 @@ namespace InfimaGames.LowPolyShooterPack
 		{
             if (StateGameManager.StateGame != StateGameManager.State.Game) return;
 
-            //Block while the cursor is unlocked.
-            if (!cursorLocked)
-				return;
-
 			//Switch.
 			switch (context.phase)
 			{
@@ -1534,11 +1495,7 @@ namespace InfimaGames.LowPolyShooterPack
 		/// Next Inventory Weapon.
 		/// </summary>
 		public void OnTryInventoryNext(InputAction.CallbackContext context)
-		{
-			//Block while the cursor is unlocked.
-			if (!cursorLocked)
-				return;
-			
+		{		
 			//Null Check.
 			if (inventory == null)
 				return;
@@ -1569,31 +1526,10 @@ namespace InfimaGames.LowPolyShooterPack
 			if (CanChangeWeapon() && (indexCurrent != indexNext))
 				StartCoroutine(nameof(Equip), indexNext);
 		}
-		
-		public void OnLockCursor(InputAction.CallbackContext context)
-		{
-			//Switch.
-			switch (context)
-			{
-				//Performed.
-				case {phase: InputActionPhase.Performed}:
-					//Toggle the cursor locked value.
-					cursorLocked = !cursorLocked;
-					//Update the cursor's state.
-					//UpdateCursorState();
-					break;
-			}
-		}
 
 		private void MoveMobile()
         {
-			if (StateGameManager.StateGame != StateGameManager.State.Game)
-			{
-				axisMovement = Vector2.zero;
-				return;
-			}
-
-			axisMovement = _joystick.Direction;
+			axisMovement = joystick.Direction;
 		}
 
 		/// <summary>
@@ -1601,28 +1537,15 @@ namespace InfimaGames.LowPolyShooterPack
 		/// </summary>
 		public void OnMove(InputAction.CallbackContext context)
 		{
-			if (StateGameManager.StateGame != StateGameManager.State.Game)
-			{
-				axisMovement = Vector2.zero;
-				return;
-			}
-
-			if (_platformManager.IsMobile) return;
+			if (platformManager.IsMobile) return;
 
 			//Read.
-			axisMovement = cursorLocked ? context.ReadValue<Vector2>() : default;
+			axisMovement = StateGameManager.StateGame != StateGameManager.State.Game ?  default : context.ReadValue<Vector2>();
 		}
 
 		private void LookMobile()
 		{
-			if (StateGameManager.StateGame != StateGameManager.State.Game)
-			{
-				axisLook = Vector2.zero;
-				return;
-			}
-
-			axisLook = TouchSystem.Move;
-
+            axisLook = StateGameManager.StateGame != StateGameManager.State.Game ? default : TouchSystem.Move;
 			Look();
 		}
 
@@ -1631,17 +1554,10 @@ namespace InfimaGames.LowPolyShooterPack
 		/// </summary>
 		public void OnLook(InputAction.CallbackContext context)
 		{
+			if (platformManager.IsMobile) return;
 
-			if (_platformManager.IsMobile) return;
-
-			if (StateGameManager.StateGame != StateGameManager.State.Game)
-			{
-				axisLook = Vector2.zero;
-				return;
-			}
 			//Read.
-			axisLook = cursorLocked ? context.ReadValue<Vector2>() : default;
-
+			axisLook = StateGameManager.StateGame != StateGameManager.State.Game ? default : context.ReadValue<Vector2>();
 			Look();
 		}
 
@@ -1657,7 +1573,6 @@ namespace InfimaGames.LowPolyShooterPack
 
 			//If we're aiming, multiply by the mouse sensitivity multiplier of the equipped weapon's scope!
 			axisLook *= aiming ? equippedWeaponScope.GetMultiplierMouseSensitivity() : 1.0f;
-
 		}
 
 		/// <summary>
