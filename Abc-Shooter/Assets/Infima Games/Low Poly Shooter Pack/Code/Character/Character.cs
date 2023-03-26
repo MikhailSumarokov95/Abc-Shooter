@@ -571,7 +571,7 @@ namespace InfimaGames.LowPolyShooterPack
 			Quaternion targetDirectionLook = targetTr.rotation;
 			while (Quaternion.Angle(transform.rotation, targetDirectionLook) > 0.1f)
 			{
-                transform.rotation = Quaternion.Slerp(transform.rotation, targetDirectionLook, speedSetRotation * Time.deltaTime);
+                transform.rotation = Quaternion.Lerp(transform.rotation, targetDirectionLook, speedSetRotation * Time.deltaTime);
 				yield return null;
 			}
             isStartCoroutineSetRotationSlerp = false;
@@ -583,7 +583,7 @@ namespace InfimaGames.LowPolyShooterPack
 			Vector3 targetPosition = targetTr.position;
 			while (Vector3.Distance(transform.position, targetPosition) > 0.1f)
 			{
-                transform.position = Vector3.Slerp(transform.position, targetPosition, speedSetPosition * Time.deltaTime);
+                transform.position = Vector3.Lerp(transform.position, targetPosition, speedSetPosition * Time.deltaTime);
 				yield return null;
 			}
 			isStartCoroutineSetPositionSlerp = false;

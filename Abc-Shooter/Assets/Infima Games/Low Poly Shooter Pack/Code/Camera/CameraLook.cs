@@ -182,7 +182,7 @@ namespace InfimaGames.LowPolyShooterPack
             Quaternion targetDirectionLook = targetTr.rotation;
             while (Quaternion.Angle(transform.rotation, targetDirectionLook) > 1f)
             {
-                transform.rotation = Quaternion.Slerp(transform.rotation, targetDirectionLook, speedSetRotation * Time.deltaTime);
+                transform.rotation = Quaternion.Lerp(transform.rotation, targetDirectionLook, speedSetRotation * Time.deltaTime);
                 yield return null;
             }
             isStartCoroutineSetRotationSlerp = false;
