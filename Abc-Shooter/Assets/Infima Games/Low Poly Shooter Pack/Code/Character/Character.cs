@@ -135,6 +135,8 @@ namespace InfimaGames.LowPolyShooterPack
 		[SerializeField]
 		private bool holdToAim = true;
 
+        [Title(label: "Forced displacement Options")]
+
         [SerializeField]
         private float speedSetRotation = 25.0f;
 

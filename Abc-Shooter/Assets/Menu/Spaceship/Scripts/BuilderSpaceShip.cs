@@ -1,9 +1,13 @@
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
 public class BuilderSpaceShip : MonoBehaviour
 {
     [SerializeField] private GameObject[] shipParts;
     [SerializeField] private GameObject effect;
+    [SerializeField] private TMP_Text freePartsText;
+    [SerializeField] private Button getOffThePlanetButton;
 
     private void Start()
     {
@@ -15,6 +19,8 @@ public class BuilderSpaceShip : MonoBehaviour
         {
             shipParts[i].SetActive(true);
         }
+        RefreshTextFreeParts();
+        RefreshStateGetOffThePlanetButton();
     }
 
     public void AddShipAssemblyStage()
@@ -28,11 +34,35 @@ public class BuilderSpaceShip : MonoBehaviour
             part.SetActive(true);
             Instantiate(effect, part.transform);
         }
+        RefreshTextFreeParts();
+        RefreshStateGetOffThePlanetButton();
+    }
+
+    public void TryBuyShipStage()
+    {
+        GSConnect.Purchase(GSConnect.PartSpaceShip);
+    }
+
+    public void RewarShipStage()
+    {
+        AddParts();
+        AddShipAssemblyStage();
     }
 
     [ContextMenu("AddParts")]
     public void AddParts()
     {
         Progress.SetNumberPartsFoundShip(Progress.GetNumberPartsFoundShip() + 1);
+    }
+
+    private void RefreshTextFreeParts()
+    {
+        freePartsText.text = (Progress.GetNumberPartsFoundShip() - Progress.GetShipAssemblyStage()).ToString();
+    }
+
+    private void RefreshStateGetOffThePlanetButton()
+    {
+        getOffThePlanetButton.gameObject
+            .SetActive(Progress.GetShipAssemblyStage() >= shipParts.Length);
     }
 }

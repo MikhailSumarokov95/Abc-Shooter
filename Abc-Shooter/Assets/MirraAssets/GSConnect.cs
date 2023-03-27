@@ -35,7 +35,8 @@ public class GSConnect : MonoBehaviour {
         GrenadeLauncher = nameof(WeaponBehaviour.Name.GL01),
         RocketLauncher = nameof(WeaponBehaviour.Name.RL01),
         Battlepass = nameof(Battlepass),
-        SuperGrenade = nameof(SuperGrenade);
+        SuperGrenade = nameof(SuperGrenade),
+        PartSpaceShip = nameof(PartSpaceShip);
 
     /// <summary>
     /// Вызывать сразу после важных событий,
@@ -244,6 +245,10 @@ public class GSConnect : MonoBehaviour {
 
             case SuperGrenade:
                 FindObjectOfType<SuperGrenadeShop>().RewardCount(5);
+                break;
+
+            case PartSpaceShip:
+                FindObjectOfType<BuilderSpaceShip>().RewarShipStage();
                 break;
         }
 
