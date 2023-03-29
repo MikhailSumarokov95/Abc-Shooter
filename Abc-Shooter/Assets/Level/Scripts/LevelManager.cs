@@ -42,6 +42,7 @@ public class LevelManager : MonoBehaviour
 
     public void ReturnToMenu()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(1);
     }
 

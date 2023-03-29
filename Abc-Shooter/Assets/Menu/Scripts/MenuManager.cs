@@ -6,7 +6,7 @@ public class MenuManager : MonoBehaviour
 {
     [SerializeField] private Character player;
     private PlatformManager _platformManager;
-
+    
     private void Awake()
     {
         if (!Progress.IsSetDefaultWeapons())
@@ -14,9 +14,7 @@ public class MenuManager : MonoBehaviour
             FindObjectOfType<ShopAttachment>(true).SetDefaultSetting();
             FindObjectOfType<AmmunitionShop>(true).ReplenishAmmunition();
         }
-
         player.gameObject.SetActive(true);
-
         if (!Application.isEditor) PlayerPrefs.SetString("selectedLanguage", GS_Language.Current());
     }
 
@@ -24,13 +22,12 @@ public class MenuManager : MonoBehaviour
     private void Start()
     {
         _platformManager = FindObjectOfType<PlatformManager>();
-        StateGameManager.StateGame = StateGameManager.State.Game;
         OnPause(false);
     }
 
     public void OnPause(bool value)
     { 
         if (!_platformManager.IsMobile) Cursor.lockState = value ? CursorLockMode.None : CursorLockMode.Locked;
-        StateGameManager.StateGame = value ? StateGameManager.State.Pause: StateGameManager.State.Game;
+        StateGameManager.StateGame = value ? StateGameManager.State.Pause : StateGameManager.State.Game;
     }
 }
