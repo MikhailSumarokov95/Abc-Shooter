@@ -490,7 +490,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6881236217283485295}
         m_TargetAssemblyTypeName: ShopWeapon, Assembly-CSharp
-        m_MethodName: BuyWeaponForYAN
+        m_MethodName: TryPurchase
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

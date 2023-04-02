@@ -2,7 +2,7 @@ using InfimaGames.LowPolyShooterPack;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ShopWeapon : MonoBehaviour
+public class ShopWeapon : MonoBehaviour, IShopPurchase
 {
     [SerializeField] private WeaponBehaviour.Name nameWeapon;
     [SerializeField] private Image buyWeaponImage;
@@ -11,12 +11,6 @@ public class ShopWeapon : MonoBehaviour
     private void OnEnable()
     {
         InitShop();
-        GSConnect.OnPurchaseWeapon += InitShop;
-    }
-
-    private void OnDisable()
-    {
-        GSConnect.OnPurchaseWeapon -= InitShop;
     }
 
     public void BuyWeaponForMoney(int price)
@@ -28,9 +22,23 @@ public class ShopWeapon : MonoBehaviour
         }
     }
 
-    public void BuyWeaponForYAN()
+    public void TryPurchase()
     {
-        GSConnect.Purchase(nameWeapon.ToString());
+        switch (nameWeapon)
+        {
+            case WeaponBehaviour.Name.GL01:
+                GSConnect.Purchase(GSConnect.PurchaseTag.GrenadeLauncher, this);
+                break;
+            case WeaponBehaviour.Name.RL01:
+                GSConnect.Purchase(GSConnect.PurchaseTag.RocketLauncher, this);
+                break;
+        }
+    }
+
+    public void RewardPerPurchase()
+    {
+        Progress.SetBuyWeapon(nameWeapon);
+        InitShop();
     }
 
     public void StartAttachmentShop()

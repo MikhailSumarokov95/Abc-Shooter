@@ -2,7 +2,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-public class BuilderSpaceShip : MonoBehaviour
+public class BuilderSpaceShip : MonoBehaviour, IShopPurchase
 {
     [SerializeField] private GameObject[] shipParts;
     [SerializeField] private GameObject effect;
@@ -38,12 +38,12 @@ public class BuilderSpaceShip : MonoBehaviour
         RefreshStateGetOffThePlanetButton();
     }
 
-    public void TryBuyShipStage()
+    public void TryPurchase()
     {
-        GSConnect.Purchase(GSConnect.PartSpaceShip);
+        GSConnect.Purchase(GSConnect.PurchaseTag.PartSpaceShip, this);
     }
 
-    public void RewarShipStage()
+    public void RewardPerPurchase()
     {
         AddParts();
         AddShipAssemblyStage();

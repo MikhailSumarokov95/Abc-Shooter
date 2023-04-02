@@ -1,16 +1,16 @@
 using GameScore;
 using UnityEngine;
 
-public class GSButton : MonoBehaviour {
-
+public class GSButton : MonoBehaviour
+{
     public void ShowMidgameAd() =>
         GSConnect.ShowMidgameAd();
 
     public void ShowRewardedAd(string reward) =>
         GSConnect.ShowRewardedAd(reward);
 
-    public void Purchase(string tag) =>
-        GSConnect.Purchase(tag);
+    //public void Purchase(PurchaseTag tag) =>
+    //    GSConnect.Purchase(tag);
 
     public void OpenLeaderboard() =>
         GS_Leaderboard.Open(withMe: WithMe.first);

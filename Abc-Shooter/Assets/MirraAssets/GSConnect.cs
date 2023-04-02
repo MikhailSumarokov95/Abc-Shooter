@@ -2,13 +2,24 @@ using GameScore;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-using InfimaGames.LowPolyShooterPack;
 
 public class GSConnect : MonoBehaviour {
 
+    public enum PurchaseTag
+    {
+        GrenadeLauncher,
+        RocketLauncher,
+        Battlepass,
+        SuperGrenade,
+        PartSpaceShip,
+        KitAll,
+        KitRL,
+        KitGL
+    }
+
     static GSConnect instance;
 
-    public static Action OnPurchaseWeapon;
+    public static Action OnPurchase;
 
     /// <summary>
     /// Состояние инициализации SDK.
@@ -17,7 +28,7 @@ public class GSConnect : MonoBehaviour {
     static bool ready = false;
 
     /// <summary>
-    /// Полностью отключает звук и игру.
+    /// Полностью отключает звук
     /// </summary>
     public static bool Pause { set { AudioListener.pause = value; } }
 
@@ -31,12 +42,15 @@ public class GSConnect : MonoBehaviour {
 
     // Ключи для внутриигровых покупок:
 
-    public const string
-        GrenadeLauncher = nameof(WeaponBehaviour.Name.GL01),
-        RocketLauncher = nameof(WeaponBehaviour.Name.RL01),
-        Battlepass = nameof(Battlepass),
-        SuperGrenade = nameof(SuperGrenade),
-        PartSpaceShip = nameof(PartSpaceShip);
+    //public const string
+    //    GrenadeLauncher = nameof(WeaponBehaviour.Name.GL01),
+    //    RocketLauncher = nameof(WeaponBehaviour.Name.RL01),
+    //    Battlepass = nameof(Battlepass),
+    //    SuperGrenade = nameof(SuperGrenade),
+    //    PartSpaceShip = nameof(PartSpaceShip),
+    //    KitGL = nameof(KitGL),
+    //    KitSG = nameof(KitSG),
+    //    KitAll = nameof(KitAll);
 
     /// <summary>
     /// Вызывать сразу после важных событий,
@@ -150,7 +164,8 @@ public class GSConnect : MonoBehaviour {
     /// дать игроку его награду.
     /// </summary>
     void OnRewardedSuccess(string reward) {
-        switch (reward) {
+        switch (reward)
+        {
             case ContinueReward:
                 {
                     FindObjectOfType<LevelManager>().Respawn();
@@ -212,13 +227,16 @@ public class GSConnect : MonoBehaviour {
     /// <summary>
     /// Начать процесс покупки товара.
     /// </summary>
-    public static void Purchase(string purchaseTag) {
+    private static IShopPurchase _shopPurchase;
+    public static void Purchase(PurchaseTag purchaseTag, IShopPurchase shopPurchase) 
+    {
+        _shopPurchase = shopPurchase;
         if (Application.isEditor) {
             Debug.Log($"GamePush: Purchase {purchaseTag}.");
-            instance.OnPurchaseSuccess(purchaseTag);
+            instance.OnPurchaseSuccess(nameof(purchaseTag));
             return;
         }
-        GS_Payments.Purchase(purchaseTag);
+        GS_Payments.Purchase(nameof(purchaseTag));
     }
 
     /// <summary>
@@ -227,34 +245,8 @@ public class GSConnect : MonoBehaviour {
     /// </summary>
     void OnPurchaseSuccess(string purchaseTag)
     {
-        switch (purchaseTag)
-        {
-            case GrenadeLauncher:
-                Progress.SetBuyWeapon(WeaponBehaviour.Name.GL01);
-                OnPurchaseWeapon?.Invoke();
-                break;
-
-            case RocketLauncher:
-                Progress.SetBuyWeapon(WeaponBehaviour.Name.RL01);
-                OnPurchaseWeapon?.Invoke();
-                break;
-
-            case Battlepass:
-                FindObjectOfType<BattlePassRewarder>(true).BoughtBattlePass();
-                break;
-
-            case SuperGrenade:
-                FindObjectOfType<SuperGrenadeShop>().RewardCount(5);
-                break;
-
-            case PartSpaceShip:
-                FindObjectOfType<BuilderSpaceShip>().RewarShipStage();
-                break;
-        }
-
-        var purchaseButtons = FindObjectsOfType<PurchaseButton>();
-        foreach (var button in purchaseButtons)
-            button.RefreshBoughtText();
+        _shopPurchase.RewardPerPurchase();
+        OnPurchase?.Invoke();
     }
 
     // Социальные сети:
@@ -265,22 +257,5 @@ public class GSConnect : MonoBehaviour {
     /// </summary>
     public static void CreatePost(string text) {
         GS_Socials.Post(text);
-    }
-
-    public static bool IsBought(string purchaseTag)
-    {
-        switch (purchaseTag) 
-        {
-            case GrenadeLauncher:
-                return Progress.IsBoughtWeapon(WeaponBehaviour.Name.GL01);
-                    
-            case RocketLauncher:
-                return Progress.IsBoughtWeapon(WeaponBehaviour.Name.RL01);
-
-            case Battlepass:
-                return Progress.IsBoughtBattlePass();
-
-                default: return false;
-        }
     }
 }

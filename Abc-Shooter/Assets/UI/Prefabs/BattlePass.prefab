@@ -5512,7 +5512,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5154821697352265025
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5589,7 +5589,88 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c082f39660fe6f45ae6f8f4642f3aff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rewardBattlePassPerLevel: []
+  _rewardBattlePassPerLevel:
+  - NameWeapon: 
+    AmountMoney: 0
+    NumberSkinWeapons: 0
+  - NameWeapon: 
+    AmountMoney: 0
+    NumberSkinWeapons: 0
+  - NameWeapon: 01000000
+    AmountMoney: 0
+    NumberSkinWeapons: 0
+  - NameWeapon: 
+    AmountMoney: 0
+    NumberSkinWeapons: 19
+  - NameWeapon: 02000000
+    AmountMoney: 0
+    NumberSkinWeapons: 0
+  - NameWeapon: 
+    AmountMoney: 700
+    NumberSkinWeapons: 0
+  - NameWeapon: 05000000
+    AmountMoney: 0
+    NumberSkinWeapons: 0
+  - NameWeapon: 0b000000
+    AmountMoney: 0
+    NumberSkinWeapons: 0
+  - NameWeapon: 
+    AmountMoney: 1700
+    NumberSkinWeapons: 0
+  - NameWeapon: 
+    AmountMoney: 2000
+    NumberSkinWeapons: 0
+  - NameWeapon: 0d000000
+    AmountMoney: 0
+    NumberSkinWeapons: 0
+  - NameWeapon: 
+    AmountMoney: 2500
+    NumberSkinWeapons: 0
+  - NameWeapon: 
+    AmountMoney: 0
+    NumberSkinWeapons: 21
+  - NameWeapon: 
+    AmountMoney: 3500
+    NumberSkinWeapons: 0
+  - NameWeapon: 0f000000
+    AmountMoney: 0
+    NumberSkinWeapons: 0
+  - NameWeapon: 
+    AmountMoney: 4000
+    NumberSkinWeapons: 0
+  - NameWeapon: 
+    AmountMoney: 0
+    NumberSkinWeapons: 23
+  - NameWeapon: 
+    AmountMoney: 5000
+    NumberSkinWeapons: 0
+  - NameWeapon: 
+    AmountMoney: 0
+    NumberSkinWeapons: 29
+  - NameWeapon: 
+    AmountMoney: 6000
+    NumberSkinWeapons: 0
+  - NameWeapon: 0e000000
+    AmountMoney: 0
+    NumberSkinWeapons: 0
+  - NameWeapon: 
+    AmountMoney: 0
+    NumberSkinWeapons: 40
+  - NameWeapon: 
+    AmountMoney: 0
+    NumberSkinWeapons: 41
+  - NameWeapon: 
+    AmountMoney: 0
+    NumberSkinWeapons: 62
+  - NameWeapon: 
+    AmountMoney: 0
+    NumberSkinWeapons: 99
+  - NameWeapon: 
+    AmountMoney: 0
+    NumberSkinWeapons: 113
+  - NameWeapon: 11000000
+    AmountMoney: 0
+    NumberSkinWeapons: 0
   levelAchievementMark:
   - CloseImage: {fileID: 0}
     OpenedImage: {fileID: 0}
@@ -13626,6 +13707,26 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -92.5
       objectReference: {fileID: 0}
+    - target: {fileID: 8031448075730440303, guid: 33900a84e71521646b27712fcdb49d19,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8031448075730440303, guid: 33900a84e71521646b27712fcdb49d19,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2191813810847341432}
+    - target: {fileID: 8031448075730440303, guid: 33900a84e71521646b27712fcdb49d19,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: TryPurchase
+      objectReference: {fileID: 0}
+    - target: {fileID: 8031448075730440303, guid: 33900a84e71521646b27712fcdb49d19,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: BattlePassRewarder, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 33900a84e71521646b27712fcdb49d19, type: 3}
 --- !u!224 &5636223274901150689 stripped
@@ -14270,7 +14371,9 @@ PrefabInstance:
     - target: {fileID: 7684792515028922274, guid: 66d5c4e850285d849a7c65e622197d65,
         type: 3}
       propertyPath: m_text
-      value: 1700
+      value: '2000
+
+'
       objectReference: {fileID: 0}
     - target: {fileID: 7684792515028922274, guid: 66d5c4e850285d849a7c65e622197d65,
         type: 3}

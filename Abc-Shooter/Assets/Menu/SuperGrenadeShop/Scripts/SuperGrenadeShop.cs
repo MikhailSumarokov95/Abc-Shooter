@@ -2,11 +2,12 @@ using System;
 using UnityEngine;
 using TMPro;
 
-public class SuperGrenadeShop : MonoBehaviour
+public class SuperGrenadeShop : MonoBehaviour, IShopPurchase
 {
     public Action OnBought;
     [SerializeField] private TMP_Text currentCountText;
     [SerializeField] private GameObject addSuperGrenadeImage;
+    [SerializeField] private int countRewardPerPurchase;
 
     private int _currentCount;
     public int CurrentCount
@@ -15,7 +16,6 @@ public class SuperGrenadeShop : MonoBehaviour
         {
             return _currentCount;
         }
-
         set
         {
             _currentCount = value;
@@ -31,22 +31,20 @@ public class SuperGrenadeShop : MonoBehaviour
         CurrentCount = Progress.GetSuperGrenades();
     }
 
-    public void TryRewardFive()
+    public void TryPurchase()
     {
-        GSConnect.Purchase(GSConnect.SuperGrenade);
+        GSConnect.Purchase(GSConnect.PurchaseTag.SuperGrenade, this);
     }
 
-    public void RewardOne()
+    public void RewardPerPurchase()
     {
-        CurrentCount++;
-
+        RewardCount(countRewardPerPurchase);
         addSuperGrenadeImage.SetActive(true);
     }
 
     public void RewardCount(int value)
     {
         CurrentCount += value;
-
         addSuperGrenadeImage.SetActive(true);
     }
 }

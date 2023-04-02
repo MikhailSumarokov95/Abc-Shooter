@@ -3,7 +3,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BattlePassRewarder : MonoBehaviour
+public class BattlePassRewarder : MonoBehaviour, IShopPurchase
 {
     [SerializeField] private RewardBattlePass[] _rewardBattlePassPerLevel;
     [SerializeField] private LevelAchievementMark[] levelAchievementMark;
@@ -13,8 +13,13 @@ public class BattlePassRewarder : MonoBehaviour
         EnableLevelAchievementMark();
     }
 
+    public void TryPurchase()
+    {
+        GSConnect.Purchase(GSConnect.PurchaseTag.Battlepass, this);
+    }
+
     [ContextMenu("BoughtBattlePass")]
-    public void BoughtBattlePass()
+    public void RewardPerPurchase()
     {
         Progress.SetBoughtBattlePass();
         for (var i = 1; i < FindObjectOfType<Level>().CurrentLevel + 1; i++)
@@ -31,12 +36,13 @@ public class BattlePassRewarder : MonoBehaviour
     private void Reward(RewardBattlePass reward)
     {
         if (reward.NameWeapon != null)
-        {
             foreach (var weapon in reward.NameWeapon)
                 Progress.SetBuyWeapon(weapon);
-        }
         if (reward.AmountMoney != 0)
             FindObjectOfType<Money>().MakeMoney(reward.AmountMoney);
+        if (reward.NumberSkinWeapons != -1)
+            foreach(WeaponBehaviour.Name weapon in Enum.GetValues(typeof(WeaponBehaviour.Name)))
+                Progress.SetBuySkin(weapon, reward.NumberSkinWeapons);
     }
 
     private void EnableLevelAchievementMark()

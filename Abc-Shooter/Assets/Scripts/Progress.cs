@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using InfimaGames.LowPolyShooterPack;
+using Unity.VisualScripting.FullSerializer;
 
 public static class Progress
 {
@@ -18,6 +19,7 @@ public static class Progress
     readonly static string setDefaultWeapons = nameof(setDefaultWeapons);
     readonly static string shipAssemblyStage = nameof(shipAssemblyStage);
     readonly static string numberPartsFoundShip = nameof(numberPartsFoundShip);
+    readonly static string kit = nameof(kit);
 
     public static Action OnNewSaveWeapons;
     public static Action OnNewSaveGrenade;
@@ -115,6 +117,22 @@ public static class Progress
     {
         var weaponsBought = LoadWeaponsBought();
         weaponsBought[name].SkinIndex.Add(skinIndex);
+        SaveWeaponsBought(weaponsBought);
+    }
+
+    public static void SetBuySkinsForAllWeapons(int[] skins)
+    {
+        var weaponsBought = LoadWeaponsBought();
+        foreach (WeaponBehaviour.Name weapon in Enum.GetValues(typeof(WeaponBehaviour.Name)))
+        {
+            for (var i = 0; i < skins.Length; i++)
+            {
+                if (!(weaponsBought[weapon].SkinIndex.Contains(skins[i])))
+                {
+                    weaponsBought[weapon].SkinIndex.Add(skins[i]);
+                }
+            }
+        }
         SaveWeaponsBought(weaponsBought);
     }
 
@@ -262,6 +280,22 @@ public static class Progress
     public static bool IsBoughtBattlePass()
     {
         return GSPrefs.GetInt(battlePass, 0) == 1;
+    }
+
+    public static void SetBoughtKit(GSConnect.PurchaseTag purchaseTag)
+    {
+        GSPrefs.SetInt(KitScrambler(purchaseTag), 1);
+        GSPrefs.Save();
+    }
+    
+    public static bool IsBoughtKit(GSConnect.PurchaseTag purchaseTag)
+    {
+        return GSPrefs.GetInt(KitScrambler(purchaseTag), 0) == 1;
+    }
+
+    private static string KitScrambler(GSConnect.PurchaseTag purchaseTag)
+    {
+        return (kit + purchaseTag).ToString();
     }
 
     public static void SetGrenades(int value)
