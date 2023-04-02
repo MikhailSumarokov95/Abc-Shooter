@@ -775,6 +775,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4706c1f65e53624a894531483ab3e5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  effectDid: {fileID: 8791802859087666345, guid: ae07f2a45f14a82428409cfe410e6002,
+    type: 3}
 --- !u!114 &2165180090976260507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -788,7 +790,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _distanceAttack: 2
-  damage: 20
+  damage: 10
 --- !u!114 &4214069443085134569
 MonoBehaviour:
   m_ObjectHideFlags: 0

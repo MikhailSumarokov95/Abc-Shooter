@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.Analytics;
 
 public class SpawnBots : MonoBehaviour
 {
@@ -12,14 +13,16 @@ public class SpawnBots : MonoBehaviour
     [Title(label: "Spawn Setting")]
     [SerializeField] private SpawnBot[] spawnBots;
     [SerializeField] private SpawnBot spawnBoss;
+    [SerializeField] private float plusEnemyWithLevel = 1;
+    [SerializeField] private int howManyLevelsSpawnBoss = 5;
+
 
     [Title(label: "NO Wave Game Mode")]
-    [SerializeField] private int NOwaveGMValidUpToLevelNumber = 5;
+    [SerializeField] private int noWaveGMValidUpToLevelNumber = 5;
     [SerializeField] private int countWaveInNOWaveGM = 1;
 
     [Title(label: "Wave Game Mode")]
     [SerializeField] private int countWaveInWaveGameMode = 3; 
-    [SerializeField] private float plusEnemyWithLevel = 1;
 
     [Title(label: "Wave Setting")]
     [SerializeField] private int delayAfterEndWave = 6;
@@ -35,7 +38,7 @@ public class SpawnBots : MonoBehaviour
     private void Start()
     {
         _level = FindObjectOfType<Level>();
-        _countWave = _level.CurrentLevel > NOwaveGMValidUpToLevelNumber ? countWaveInWaveGameMode : countWaveInNOWaveGM;
+        _countWave = _level.CurrentLevel > noWaveGMValidUpToLevelNumber ? countWaveInWaveGameMode : countWaveInNOWaveGM;
         StartCoroutine(StartWaves());
     }
 
@@ -64,11 +67,9 @@ public class SpawnBots : MonoBehaviour
     private Life[] SpawnEnemies(SpawnBot[] spawnEnemy)
     {
         var enemy = new List<Life>();
-
         for (var i = 0; i < spawnEnemy.Length; i ++)
         {
             var numberSpawnPoint = 0;
-
             var countEnemy = (int)(spawnEnemy[i].Count + _level.CurrentLevel * plusEnemyWithLevel);
             for (var j = 0; j < countEnemy; j++)
             {
@@ -81,7 +82,7 @@ public class SpawnBots : MonoBehaviour
                 numberSpawnPoint = MathPlus.SawChart(numberSpawnPoint, 0, spawnEnemy[i].SpawnPoints.Length - 1);
             }
         }
-        if (NumberWave == _countWave)
+        if (_level.CurrentLevel % howManyLevelsSpawnBoss == 0)
             enemy.Add(SpawnBoss());
         return enemy.ToArray();
     }

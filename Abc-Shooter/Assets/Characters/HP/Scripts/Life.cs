@@ -5,13 +5,12 @@ using System;
 public class Life : MonoBehaviour
 {
     public Action OnDid;
-
+    [SerializeField] private GameObject effectDid;
     public bool IsDid { private set; get;} 
 
     public void Did()
     {
         if (IsDid) return;
-
         IsDid = true;
         OnDid?.Invoke();
 
@@ -19,17 +18,17 @@ public class Life : MonoBehaviour
         {
             FindObjectOfType<LevelManager>().Did();
         }
-
         else
         {
             foreach (var component in GetComponents<MonoBehaviour>())
             {
                 component.enabled = false;
             }
-
             GetComponent<NavMeshAgent>().enabled = false;
             GetComponent<Collider>().enabled = false;
             FindObjectOfType<KillCounter>().AddKilled();
+            var effect = Instantiate(effectDid, transform.position, transform.rotation);
+            Destroy(gameObject);
         }
     }
 
