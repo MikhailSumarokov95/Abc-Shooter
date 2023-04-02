@@ -1154,3 +1154,153 @@ AssetImportParameters requested are different than current active one (requested
   custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
   custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 1691.235317 seconds.
+  path: Assets/PolygonTown/Materials/Misc/Base_Glass.mat
+  artifactKey: Guid(a42d40093a06b634cb49e6bfda441946) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PolygonTown/Materials/Misc/Base_Glass.mat using Guid(a42d40093a06b634cb49e6bfda441946) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4c217dbbdf2b1d59180a8e17445bbe90') in 0.118312 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/PolygonTown/Materials/Misc/Mirror.mat
+  artifactKey: Guid(aa5e7a5e08c7e494dab9084185cc7fe8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PolygonTown/Materials/Misc/Mirror.mat using Guid(aa5e7a5e08c7e494dab9084185cc7fe8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8896922ba9e96d1cfa795f2ba26ddbeb') in 0.021723 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/PolygonTown/Materials/Misc/Window_Glass_Opaque.mat
+  artifactKey: Guid(e8939000b8bc72f4aa21b4c261d794db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PolygonTown/Materials/Misc/Window_Glass_Opaque.mat using Guid(e8939000b8bc72f4aa21b4c261d794db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '89eeb282d7dfb07677eed5e9472268ab') in 0.017448 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/PolygonTown/Materials/Misc/Fridge_Glass.mat
+  artifactKey: Guid(3c9bf231ff24fe942abc78dc8a71cd86) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PolygonTown/Materials/Misc/Fridge_Glass.mat using Guid(3c9bf231ff24fe942abc78dc8a71cd86) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '48777ba368f9b3b0701ab5dc3df2787c') in 0.016976 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000014 seconds.
+  path: Assets/PolygonTown/Materials/Misc/PolygonTown_Road.mat
+  artifactKey: Guid(3433cc3a39062ce4e9007a2c49514db4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PolygonTown/Materials/Misc/PolygonTown_Road.mat using Guid(3433cc3a39062ce4e9007a2c49514db4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cce8b21f3aca8b898c2c63720d7617e5') in 0.014734 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/PolygonTown/Materials/Misc/PolygonTown_01_A_TEMP.mat
+  artifactKey: Guid(90b40a9eb4f2e8a4ca68077789ba069b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PolygonTown/Materials/Misc/PolygonTown_01_A_TEMP.mat using Guid(90b40a9eb4f2e8a4ca68077789ba069b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0d38c40f826a75d13fdf7f19d55686b5') in 0.030746 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/PolygonTown/Materials/Misc/Window_Glass.mat
+  artifactKey: Guid(3c84a5e49d07c6f44afb39cfc297aac1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PolygonTown/Materials/Misc/Window_Glass.mat using Guid(3c84a5e49d07c6f44afb39cfc297aac1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4ca0bd080e6f9f2cb8ff8595888d0c26') in 0.010850 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000014 seconds.
+  path: Assets/PolygonTown/Materials/Misc/TelevisionScreen.mat
+  artifactKey: Guid(8eff857d740a5324da5dcd15b3197d3d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PolygonTown/Materials/Misc/TelevisionScreen.mat using Guid(8eff857d740a5324da5dcd15b3197d3d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7a61935a1f8b94b3f10f3f5ac47a08b8') in 0.015763 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/PolygonTown/Materials/Misc/Veh_Glass.mat
+  artifactKey: Guid(28d911d60eed0d64fb122f25adeed646) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PolygonTown/Materials/Misc/Veh_Glass.mat using Guid(28d911d60eed0d64fb122f25adeed646) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9f735a1220329f9e0f350f9fc5581c5d') in 0.010594 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000014 seconds.
+  path: Assets/PolygonTown/Materials/Misc/Water.mat
+  artifactKey: Guid(46ea0fb1c8d02e84e83859a62e32fe9c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PolygonTown/Materials/Misc/Water.mat using Guid(46ea0fb1c8d02e84e83859a62e32fe9c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5c92098c1b7437adccb911a47c06ca0b') in 0.012199 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/PolygonTown/Materials/Misc/Mirror_Glass.mat
+  artifactKey: Guid(98725846987b83d44987d59c480c6aa4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PolygonTown/Materials/Misc/Mirror_Glass.mat using Guid(98725846987b83d44987d59c480c6aa4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '03ac8352e56f88294906e3c99d987f48') in 0.016976 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/PolygonTown/Materials/Misc/Ground.mat
+  artifactKey: Guid(0abcedae82ad13b49b256de7b8541398) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PolygonTown/Materials/Misc/Ground.mat using Guid(0abcedae82ad13b49b256de7b8541398) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '443daff93746fea86ec5a1b5f2e0136c') in 0.016588 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/PolygonTown/Materials/Misc/PolygonTown_01_A_Emissive.mat
+  artifactKey: Guid(dfd1ba1b4a428cc4181ebb45dcaf2022) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PolygonTown/Materials/Misc/PolygonTown_01_A_Emissive.mat using Guid(dfd1ba1b4a428cc4181ebb45dcaf2022) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '69729fc1c5245174a520dcd108150adc') in 0.074968 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 15.556329 seconds.
+  path: Assets/PolygonTown/Textures/Misc/PolygonTown_Emissive_01.png
+  artifactKey: Guid(efa34d710ef93124aa8baa1a8e6708d0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PolygonTown/Textures/Misc/PolygonTown_Emissive_01.png using Guid(efa34d710ef93124aa8baa1a8e6708d0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1e2db885147c6eb36c4f2ab7ae70d05a') in 0.025192 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/PolygonTown/Textures/Misc/PolygonTown_Window_01.png
+  artifactKey: Guid(cff67aec3bf8c2e4982a3a67ba06d40f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PolygonTown/Textures/Misc/PolygonTown_Window_01.png using Guid(cff67aec3bf8c2e4982a3a67ba06d40f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ff18f8d628e63e7fa8838038ed87adb1') in 0.012073 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/PolygonTown/Textures/Misc/PolygonTown_Emissive_02.png
+  artifactKey: Guid(561f18e2d1bb50b4a878165002e5590f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PolygonTown/Textures/Misc/PolygonTown_Emissive_02.png using Guid(561f18e2d1bb50b4a878165002e5590f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd8e67aa6b9f018d2a14dcda81bfc612d') in 0.023189 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/PolygonTown/Textures/Misc/PolygonTown_Texture_Normal.png
+  artifactKey: Guid(b25ddb39e801a8941803c3b9d1d2fdbe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PolygonTown/Textures/Misc/PolygonTown_Texture_Normal.png using Guid(b25ddb39e801a8941803c3b9d1d2fdbe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6d6fb44b22a50a0f0e517261bdbc854b') in 0.019544 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/PolygonTown/Textures/Misc/PolygonTown_Window_Normal.png
+  artifactKey: Guid(abf5755910bc3cb44b22e16ed69f4e4f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PolygonTown/Textures/Misc/PolygonTown_Window_Normal.png using Guid(abf5755910bc3cb44b22e16ed69f4e4f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5f83d8f877f1fb55b74fc89defa18695') in 0.021629 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/PolygonTown/Textures/Misc/PolygonTown_Texture_Normal_A.png
+  artifactKey: Guid(f19d91fb55c31f3489e749e808679b35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PolygonTown/Textures/Misc/PolygonTown_Texture_Normal_A.png using Guid(f19d91fb55c31f3489e749e808679b35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '27f6944a8813ad9aa2c557439c2519f9') in 0.019411 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/PolygonTown/Textures/Misc/PolygonTown_Road_Normal.png
+  artifactKey: Guid(ed98b4bbb1ee648489b44b58eba8cc59) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PolygonTown/Textures/Misc/PolygonTown_Road_Normal.png using Guid(ed98b4bbb1ee648489b44b58eba8cc59) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '37257aa6bbc4c93ccddab81e0f983d1a') in 0.011598 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000014 seconds.
+  path: Assets/PolygonTown/Textures/Misc/PolygonTown_Texture_Metallic.tga
+  artifactKey: Guid(414d49db8a9dc1b4c884ddcd07bfa01f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PolygonTown/Textures/Misc/PolygonTown_Texture_Metallic.tga using Guid(414d49db8a9dc1b4c884ddcd07bfa01f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7317f3c6f1bb8c782d37ae8a82835ff5') in 0.047036 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/PolygonTown/Textures/Misc/PolygonTown_Road_01.png
+  artifactKey: Guid(487d4c9c787206a4aa99d7ff1ead7eae) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PolygonTown/Textures/Misc/PolygonTown_Road_01.png using Guid(487d4c9c787206a4aa99d7ff1ead7eae) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cc8acebff64892e27d3584423397daa7') in 0.043448 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/PolygonTown/Textures/Misc/PolygonTown_Texture_Normal_C.png
+  artifactKey: Guid(7102c8076bf67b046a76f60c692b0e3d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PolygonTown/Textures/Misc/PolygonTown_Texture_Normal_C.png using Guid(7102c8076bf67b046a76f60c692b0e3d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a6017ad29b130032ca0622136441680a') in 0.012429 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/PolygonTown/Textures/Misc/PolygonTown_Texture_Normal_B.png
+  artifactKey: Guid(086476661ce213044bfdd533b93e8dd5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PolygonTown/Textures/Misc/PolygonTown_Texture_Normal_B.png using Guid(086476661ce213044bfdd533b93e8dd5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '26cd0d336a5938dc7818faaf58b2919d') in 0.080891 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 104.950505 seconds.
+  path: Assets/PolygonTown/Textures/Alternates/PolygonTown_Texture_01_B.png
+  artifactKey: Guid(582eb86dbc0b58441b2501b967616665) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PolygonTown/Textures/Alternates/PolygonTown_Texture_01_B.png using Guid(582eb86dbc0b58441b2501b967616665) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '72982220b06a38b5a47148df5043d20d') in 0.018592 seconds 
