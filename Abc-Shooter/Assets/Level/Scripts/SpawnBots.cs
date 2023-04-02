@@ -10,19 +10,24 @@ public class SpawnBots : MonoBehaviour
     public Action OnWaveEnd;
 
     [Title(label: "Spawn Setting")]
-
     [SerializeField] private SpawnBot[] spawnBots;
     [SerializeField] private SpawnBot spawnBoss;
 
-    [Title(label: "Wave Setting")]
+    [Title(label: "NO Wave Game Mode")]
+    [SerializeField] private int NOwaveGMValidUpToLevelNumber = 5;
+    [SerializeField] private int countWaveInNOWaveGM = 1;
 
-    [SerializeField] private int delayAfterEndWave = 6;
-    [SerializeField] private int countWave = 3;
+    [Title(label: "Wave Game Mode")]
+    [SerializeField] private int countWaveInWaveGameMode = 3; 
     [SerializeField] private float plusEnemyWithLevel = 1;
+
+    [Title(label: "Wave Setting")]
+    [SerializeField] private int delayAfterEndWave = 6;
 
     private Life[] _currentEnemyLife;
     private bool _isAllEnemiesKilled;
     private Level _level;
+    private int _countWave;
 
     private int _numberWave = 0;
     public int NumberWave { get { return _numberWave; } private set { _numberWave = value; } }
@@ -30,6 +35,7 @@ public class SpawnBots : MonoBehaviour
     private void Start()
     {
         _level = FindObjectOfType<Level>();
+        _countWave = _level.CurrentLevel > NOwaveGMValidUpToLevelNumber ? countWaveInWaveGameMode : countWaveInNOWaveGM;
         StartCoroutine(StartWaves());
     }
 
@@ -41,13 +47,12 @@ public class SpawnBots : MonoBehaviour
 
     private IEnumerator StartWaves()
     {
-        for (var i = 0; i < countWave; i++)
+        for (var i = 0; i < _countWave; i++)
         {
             yield return new WaitUntil(() => StateGameManager.StateGame == StateGameManager.State.Game);
             NumberWave ++;
             _isAllEnemiesKilled = false;
             _currentEnemyLife = SpawnEnemies(spawnBots);
-
             OnWaveSpawned?.Invoke(_currentEnemyLife);
             yield return new WaitUntil(() => _isAllEnemiesKilled);
             yield return new WaitForSeconds(delayAfterEndWave);
@@ -76,7 +81,7 @@ public class SpawnBots : MonoBehaviour
                 numberSpawnPoint = MathPlus.SawChart(numberSpawnPoint, 0, spawnEnemy[i].SpawnPoints.Length - 1);
             }
         }
-        if (NumberWave == countWave)
+        if (NumberWave == _countWave)
             enemy.Add(SpawnBoss());
         return enemy.ToArray();
     }

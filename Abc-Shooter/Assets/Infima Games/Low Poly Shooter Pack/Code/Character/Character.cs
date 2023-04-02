@@ -1204,9 +1204,9 @@ namespace InfimaGames.LowPolyShooterPack
 			}
 		}
 
-		public void TryPlayReloadMobile()
+		public void OnTryPlayReloadMobile()
         {
-			TryReload();
+			TryPlayReload();
         }
 
 		/// <summary>
@@ -1223,12 +1223,12 @@ namespace InfimaGames.LowPolyShooterPack
 				//Performed.
 				case {phase: InputActionPhase.Performed}:
 					//Play Animation.
-					TryReload();
+					TryPlayReload();
 					break;
 			}
 		}
 
-		private void TryReload()
+		private void TryPlayReload()
         {
 			if (StateGameManager.StateGame != StateGameManager.State.Game) return;
 

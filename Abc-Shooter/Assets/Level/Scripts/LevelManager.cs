@@ -31,7 +31,7 @@ public class LevelManager : MonoBehaviour
         _platformManager = FindObjectOfType<PlatformManager>();
         OnPause(false);
         StateGameManager.StateGame = StateGameManager.State.Game;
-        currentWaveText.text = 1.ToString();
+        if (currentWaveText != null) currentWaveText.text = 1.ToString();
     }
 
     private void Update()
@@ -96,7 +96,8 @@ public class LevelManager : MonoBehaviour
         if (value) StateGameManager.StateGame = StateGameManager.State.WaveEnd;
         else StateGameManager.StateGame = StateGameManager.State.Game;
         waveEndPanel.SetActive(value);
-        if (!value) currentWaveText.text = (int.Parse(currentWaveText.text) + 1).ToString();
+        if (!value && currentWaveText != null) 
+            currentWaveText.text = (int.Parse(currentWaveText.text) + 1).ToString();
         OnPause(value);
     }
 
@@ -125,7 +126,6 @@ public class LevelManager : MonoBehaviour
     private void OnPause(bool value)
     {
         Time.timeScale = value ? 0 : 1;
-        
         if (!_platformManager.IsMobile) Cursor.lockState = value ? CursorLockMode.None : CursorLockMode.Locked;
     }
 }
