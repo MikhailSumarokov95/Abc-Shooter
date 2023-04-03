@@ -19,6 +19,11 @@ public class Loot : MonoBehaviour
         _life.OnDid -= CreatePartSpaceShip;
     }
 
+    public void GetOneHundredPercentChanceLoot()
+    {
+        chance = 100;
+    }
+
     private void CreatePartSpaceShip()
     {
         var numberPartsFoundShip = Progress.GetNumberPartsFoundShip();

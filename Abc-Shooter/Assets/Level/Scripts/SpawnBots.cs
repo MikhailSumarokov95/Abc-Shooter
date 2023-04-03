@@ -16,7 +16,6 @@ public class SpawnBots : MonoBehaviour
     [SerializeField] private float plusEnemyWithLevel = 1;
     [SerializeField] private int howManyLevelsSpawnBoss = 5;
 
-
     [Title(label: "NO Wave Game Mode")]
     [SerializeField] private int noWaveGMValidUpToLevelNumber = 5;
     [SerializeField] private int countWaveInNOWaveGM = 1;
@@ -52,6 +51,7 @@ public class SpawnBots : MonoBehaviour
     {
         for (var i = 0; i < _countWave; i++)
         {
+            if (i != 0) OnWaveEnd?.Invoke();
             yield return new WaitUntil(() => StateGameManager.StateGame == StateGameManager.State.Game);
             NumberWave ++;
             _isAllEnemiesKilled = false;
@@ -59,7 +59,6 @@ public class SpawnBots : MonoBehaviour
             OnWaveSpawned?.Invoke(_currentEnemyLife);
             yield return new WaitUntil(() => _isAllEnemiesKilled);
             yield return new WaitForSeconds(delayAfterEndWave);
-            OnWaveEnd?.Invoke();
         }
         OnWavesOver?.Invoke();
     }

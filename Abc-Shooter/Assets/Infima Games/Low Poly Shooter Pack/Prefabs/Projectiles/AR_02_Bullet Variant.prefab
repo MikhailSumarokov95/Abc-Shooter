@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1086664671600574, guid: 5953171a59c27394e9ad5cbb564affa8, type: 3}
       propertyPath: m_Name
-      value: AR_02_Bullet
+      value: AR_02_Bullet Variant
       objectReference: {fileID: 0}
     - target: {fileID: 4879702113200764, guid: 5953171a59c27394e9ad5cbb564affa8, type: 3}
       propertyPath: m_RootOrder
@@ -60,5 +60,11 @@ PrefabInstance:
       propertyPath: damage
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 114243545424532484, guid: 5953171a59c27394e9ad5cbb564affa8,
+        type: 3}
+      propertyPath: bloodImpactPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 4418440862474872, guid: 877925868a3472746b7be3e9bef08de3,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5953171a59c27394e9ad5cbb564affa8, type: 3}

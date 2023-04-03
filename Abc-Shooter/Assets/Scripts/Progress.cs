@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using InfimaGames.LowPolyShooterPack;
-using Unity.VisualScripting.FullSerializer;
 
 public static class Progress
 {
@@ -20,6 +19,7 @@ public static class Progress
     readonly static string shipAssemblyStage = nameof(shipAssemblyStage);
     readonly static string numberPartsFoundShip = nameof(numberPartsFoundShip);
     readonly static string kit = nameof(kit);
+    readonly static string guide = nameof(guide);
 
     public static Action OnNewSaveWeapons;
     public static Action OnNewSaveGrenade;
@@ -375,6 +375,17 @@ public static class Progress
         return GSPrefs.GetInt(shipAssemblyStage, 0);
     }
 
+    public static void SaveGuideCompleted()
+    {
+        GSPrefs.SetInt(guide, 1);
+        GSPrefs.Save();
+    }
+
+    public static bool IsGuideCompleted()
+    {
+        return GSPrefs.GetInt(guide, 0) == 1;
+    }
+
     private static void SaveWeaponsSelected(TFG.Generic.Dictionary<WeaponBehaviour.Name, WeaponAttachmentSelected> weapons)
     {
         GSPrefs.SetString(weaponsSelected, JsonUtility.ToJson(weapons).ToString());
@@ -404,19 +415,16 @@ public static class Progress
     private static string GetDefaultWeaponAttachmentSelected()
     {
         var dict = new TFG.Generic.Dictionary<WeaponBehaviour.Name, WeaponAttachmentSelected>();
-
         foreach (WeaponBehaviour.Name name in Enum.GetValues(typeof(WeaponBehaviour.Name)))
         {
             dict.Add(name, new WeaponAttachmentSelected());
         }
-
         return JsonUtility.ToJson(dict).ToString();
     } 
     
     private static string GetDefaultWeaponAttachmentsBought()
     {
         var dict = new TFG.Generic.Dictionary<WeaponBehaviour.Name, WeaponAttachmentsBought>();
-
         foreach (WeaponBehaviour.Name name in Enum.GetValues(typeof(WeaponBehaviour.Name)))
         {
             dict.Add(name, new WeaponAttachmentsBought()
@@ -428,7 +436,6 @@ public static class Progress
                 SkinIndex = new List<int>(),
             });
         }
-
         return JsonUtility.ToJson(dict).ToString();
     }
 

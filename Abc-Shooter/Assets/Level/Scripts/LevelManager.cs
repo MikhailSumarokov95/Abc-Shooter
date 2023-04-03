@@ -12,6 +12,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private TMP_Text currentWaveText;
     private SpawnBots _spawnManager;
     private PlatformManager _platformManager;
+    private bool _isWinGame;
 
     private void OnEnable()
     {
@@ -74,15 +75,6 @@ public class LevelManager : MonoBehaviour
         GameObject.FindGameObjectWithTag("Player").GetComponent<Life>().Respawn();
     }
 
-    public void SetActiveWinPanel(bool value)
-    {
-        if (value) StateGameManager.StateGame = StateGameManager.State.GameOver;
-        else StateGameManager.StateGame = StateGameManager.State.Game;
-        winGamePanel.SetActive(value);
-        shopBanner.SetActive(true);
-        OnPause(value);
-    }
-
     public void SetActivePausePanel(bool value)
     {
         if (value) StateGameManager.StateGame = StateGameManager.State.Pause;
@@ -91,23 +83,14 @@ public class LevelManager : MonoBehaviour
         OnPause(value);
     }
 
-    public void SetActiveWaveEndPanel(bool value)
-    {
-        if (value) StateGameManager.StateGame = StateGameManager.State.WaveEnd;
-        else StateGameManager.StateGame = StateGameManager.State.Game;
-        waveEndPanel.SetActive(value);
-        if (!value && currentWaveText != null) 
-            currentWaveText.text = (int.Parse(currentWaveText.text) + 1).ToString();
-        OnPause(value);
-    }
-
     public void TryRewardRespawn()
     {
         GSConnect.ShowRewardedAd(GSConnect.ContinueReward);
     }
 
-    private void WinGame()
+    public void StartWinGamePanel()
     {
+        if (!_isWinGame) return;
         GSConnect.ShowMidgameAd();
         SetActivePausePanel(false);
         SetActiveWaveEndPanel(false);
@@ -116,11 +99,35 @@ public class LevelManager : MonoBehaviour
         FindObjectOfType<BattlePassRewarder>(true).RewardPerLevel();
     }
 
+    private void WinGame()
+    {
+        _isWinGame = true;
+    }
+
+    private void SetActiveWinPanel(bool value)
+    {
+        if (value) StateGameManager.StateGame = StateGameManager.State.GameOver;
+        else StateGameManager.StateGame = StateGameManager.State.Game;
+        winGamePanel.SetActive(value);
+        shopBanner.SetActive(true);
+        OnPause(value);
+    }
+
     private void EndWave()
     {
         GSConnect.ShowMidgameAd();
         SetActivePausePanel(false);
         SetActiveWaveEndPanel(true);
+    }
+
+    private void SetActiveWaveEndPanel(bool value)
+    {
+        if (value) StateGameManager.StateGame = StateGameManager.State.WaveEnd;
+        else StateGameManager.StateGame = StateGameManager.State.Game;
+        waveEndPanel.SetActive(value);
+        if (!value && currentWaveText != null)
+            currentWaveText.text = (int.Parse(currentWaveText.text) + 1).ToString();
+        OnPause(value);
     }
 
     private void OnPause(bool value)
