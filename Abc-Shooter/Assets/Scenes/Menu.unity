@@ -4745,7 +4745,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 740ae63e3d502e341a91eee773653c53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isMobile: 1
+  isMobile: 0
 --- !u!4 &359611202
 Transform:
   m_ObjectHideFlags: 0

@@ -66,18 +66,16 @@ public class SpawnBots : MonoBehaviour
 
     private Life[] SpawnEnemies(SpawnBot[] spawnEnemy)
     {
+        var numberSpawnPoint = 0;
         var enemy = new List<Life>();
         for (var i = 0; i < spawnEnemy.Length; i ++)
-        {
-            var numberSpawnPoint = 0;
+        {   
             var countEnemy = (int)(spawnEnemy[i].Count + _level.CurrentLevel * plusEnemyWithLevel);
             for (var j = 0; j < countEnemy; j++)
             {
                 var spawnPoint = spawnEnemy[i].SpawnPoints[numberSpawnPoint];
-
                 enemy.Add(Instantiate(spawnEnemy[i].BotPrefs.gameObject, spawnPoint.position, spawnPoint.rotation)
                     .GetComponent<Life>());
-
                 numberSpawnPoint++;
                 numberSpawnPoint = MathPlus.SawChart(numberSpawnPoint, 0, spawnEnemy[i].SpawnPoints.Length - 1);
             }
