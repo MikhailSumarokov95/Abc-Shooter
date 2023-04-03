@@ -19,12 +19,12 @@ public class KillCounter : MonoBehaviour
     private void OnEnable()
     {
         _spawnManager = FindObjectOfType<SpawnBots>();
-        _spawnManager.OnWaveSpawned += StartNewWave;
+        if (_spawnManager != null) _spawnManager.OnWaveSpawned += StartNewWave;
     }
 
     private void OnDisable()
     {
-        _spawnManager.OnWaveSpawned -= StartNewWave;
+        if (_spawnManager != null) _spawnManager.OnWaveSpawned -= StartNewWave;
     }
 
     public void AddKilled()
