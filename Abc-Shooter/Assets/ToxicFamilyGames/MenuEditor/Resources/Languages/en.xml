@@ -21,7 +21,7 @@
 	<text id="Restart">Restart</text>
 	<text id="ContinuePerAds">Continue Per Ads</text>
 	<text id="Continue">Continue</text>
-	<text id="DoubleMoneyPerAds">DoubleMoneyPerAds</text>
+	<text id="DoubleMoneyPerAds">Double Money Per Ads</text>
 	<text id="NextLevel">Next Level</text>
 	<text id="Win">Win</text>
 	<text id="IsSelected">Selected</text>
@@ -33,7 +33,7 @@
 	<text id="Damage">Damage: </text>
 	<text id="wave">Wave</text>
 	<text id="takeTheBestWeapon">Take the best weapon</text>
-	<text id="Bought">Purchased</text>
+	<text id="Bought">Bought</text>
 	<text id="Incline">Slope - Q and E</text>
 	<text id="Jump">Jump - space</text>
 	<text id="WeaponChange">Weapon Change - X</text>
@@ -50,4 +50,20 @@
 	<text id="29Yan">29 YAN</text>
 	<text id="PriceSuperGrenade">5 for 9 YAN</text>
 	<text id="SuperGrenade">Throw Super Grenade - V</text>
+	<text id=" partsInInventory">Parts in inventory</text>
+	<text id="Skin">Skin</text>
+	<text id="BuySparePart">Buy Spare Part for 19YAN</text>
+	<text id="FlyOffThePlanet">Fly off the planet</text>
+	<text id="InstallSparePart">Install Spare Part</text>
+	<text id="PriceKit1">100YAN</text>
+	<text id="PriceKit2">150YAN</text>
+	<text id="PriceKitAll">200YAN</text>
+	<text id="KitAllDescription">
+All weapons
+All skins
+Battlepass
+	</text>
+	<text id="Guide1">Oh my God, what happened to our city! These letters are clearly not friendly! Destroy them</text>
+	<text id="Guide2">You have a weapon to destroy, be careful the ammo is not infinite</text>
+	<text id="Guide3">Hurry up, grab the ship part and run to the base</text>
 </text>

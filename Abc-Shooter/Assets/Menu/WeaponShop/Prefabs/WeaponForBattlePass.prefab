@@ -575,6 +575,7 @@ GameObject:
   - component: {fileID: 5100711378806656504}
   - component: {fileID: 5100711378806656506}
   - component: {fileID: 5100711378806656505}
+  - component: {fileID: 8810491412556919677}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -599,8 +600,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 40, y: -65}
-  m_SizeDelta: {x: 250, y: 50}
+  m_AnchoredPosition: {x: 50, y: -65}
+  m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5100711378806656506
 CanvasRenderer:
@@ -699,6 +700,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &8810491412556919677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5100711378806656455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0779fdcfc4ade214a84512b568669f47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: Bought
 --- !u!1 &5100711378971155367
 GameObject:
   m_ObjectHideFlags: 0
@@ -710,6 +724,7 @@ GameObject:
   - component: {fileID: 5100711378971155416}
   - component: {fileID: 5100711378971155418}
   - component: {fileID: 5100711378971155417}
+  - component: {fileID: 7269488024071443070}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -834,6 +849,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &7269488024071443070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5100711378971155367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0779fdcfc4ade214a84512b568669f47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: BattlePass
 --- !u!1 &5100711378998550170
 GameObject:
   m_ObjectHideFlags: 0
