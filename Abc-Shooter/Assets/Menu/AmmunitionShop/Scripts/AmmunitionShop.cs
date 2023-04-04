@@ -1,5 +1,6 @@
 using InfimaGames.LowPolyShooterPack;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class AmmunitionShop : MonoBehaviour
@@ -22,8 +23,10 @@ public class AmmunitionShop : MonoBehaviour
 
     public void ReplenishAmmunition()
     {
+        var ammunitionWeapon = new Dictionary<WeaponBehaviour.Name, int>();
         for (var i = 0; i < _maxAmmunitionWeapon.Length; i++)
-            Progress.SetAmmunitionCount(_maxAmmunitionWeapon[i].NameWeapon, _maxAmmunitionWeapon[i].Count);
+            ammunitionWeapon.Add(_maxAmmunitionWeapon[i].NameWeapon, _maxAmmunitionWeapon[i].Count);
+        Progress.SetAmmunitionCountAllWeapon(ammunitionWeapon);
         OnReplenished?.Invoke();
     }
 

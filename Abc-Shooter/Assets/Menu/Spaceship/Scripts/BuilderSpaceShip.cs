@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using GameScore;
 
 public class BuilderSpaceShip : MonoBehaviour, IShopPurchase
 {
@@ -53,6 +54,11 @@ public class BuilderSpaceShip : MonoBehaviour, IShopPurchase
     public void AddParts()
     {
         Progress.SetNumberPartsFoundShip(Progress.GetNumberPartsFoundShip() + 1);
+    }
+
+    public void OpenGames()
+    {
+        GS_GamesCollections.Open("ALL");
     }
 
     private void RefreshTextFreeParts()

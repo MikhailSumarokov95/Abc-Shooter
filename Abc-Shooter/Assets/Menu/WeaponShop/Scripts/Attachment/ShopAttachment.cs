@@ -61,27 +61,16 @@ public class ShopAttachment : MonoBehaviour
     public void SetDefaultSetting()
     {
         var weapons = weaponsParentTr.GetComponentsInChildren<WeaponBehaviour>(true);
-
         foreach (var weapon in weapons)
         {
             var weaponAttachmentManager = weapon.GetComponent<WeaponAttachmentManager>();
-
-            Progress.SetSelectScope(weapon.GetName(), weaponAttachmentManager.GetScopeIndex());
-            Progress.SetSelectMuzzle(weapon.GetName(), weaponAttachmentManager.GetMuzzleIndex());
-            Progress.SetSelectLaser(weapon.GetName(), weaponAttachmentManager.GetLaserIndex());
-            Progress.SetSelectGrip(weapon.GetName(), weaponAttachmentManager.GetGripIndex());
-            Progress.SetSelectSkin(weapon.GetName(), weaponAttachmentManager.GetSkinIndex());
-
-            Progress.SetBuyScope(weapon.GetName(), weaponAttachmentManager.GetScopeIndex());
-            Progress.SetBuyMuzzle(weapon.GetName(), weaponAttachmentManager.GetMuzzleIndex());
-            Progress.SetBuyLaser(weapon.GetName(), weaponAttachmentManager.GetLaserIndex());
-            Progress.SetBuyGrip(weapon.GetName(), weaponAttachmentManager.GetGripIndex());
-            Progress.SetBuySkin(weapon.GetName(), weaponAttachmentManager.GetSkinIndex());
+            Progress.SetSelectAttachments(weapon.GetName(), weaponAttachmentManager.GetScopeIndex(), weaponAttachmentManager.GetMuzzleIndex(),
+                weaponAttachmentManager.GetLaserIndex(), weaponAttachmentManager.GetGripIndex(), weaponAttachmentManager.GetSkinIndex());
+            Progress.SetBuyAttachments(weapon.GetName(), weaponAttachmentManager.GetScopeIndex(), weaponAttachmentManager.GetMuzzleIndex(),
+                weaponAttachmentManager.GetLaserIndex(), weaponAttachmentManager.GetGripIndex(), weaponAttachmentManager.GetSkinIndex());
         }
-
         foreach (var weapon in defaultWeapons)
             Progress.SetBuyWeapon(weapon);
-
         Progress.SaveSettedDefaultWeapons();
     }
 }

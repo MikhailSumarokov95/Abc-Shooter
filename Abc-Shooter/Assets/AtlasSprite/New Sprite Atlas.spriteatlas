@@ -72,6 +72,8 @@ SpriteAtlas:
     - {fileID: 2800000, guid: 68a0fbaa6ffa8c44aaf086e9eab972fe, type: 3}
     - {fileID: 2800000, guid: db705b4d5fd72a1468fb894b430aae30, type: 3}
     - {fileID: 2800000, guid: 396b50eb6dfe246cba1ce8c87d0a6b64, type: 3}
+    - {fileID: 2800000, guid: 3a3f6d6316e5c834c92a8afe85ae0837, type: 3}
+    - {fileID: 2800000, guid: 7a85791d9940b9b42b089397aca9e21d, type: 3}
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -83,6 +85,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 7e6735d16e3c7e84ab88aab34f54dbc0, type: 3}
   - {fileID: 21300000, guid: 4cd4e422768a28f42832e55e7fa31194, type: 3}
   - {fileID: 21300000, guid: 19dc3292d298eb94995a5a331a39fd97, type: 3}
+  - {fileID: 21300000, guid: 3a3f6d6316e5c834c92a8afe85ae0837, type: 3}
   - {fileID: 21300000, guid: d44c28151a146ce4ea7ab2b92ad32815, type: 3}
   - {fileID: 21300000, guid: 8a843a1597534a74685121d4e69dbccd, type: 3}
   - {fileID: 21300000, guid: 878aaa2591731a44c8ad9eeb50c6498d, type: 3}
@@ -99,6 +102,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 0797584b8629d42cf8a4b7eaeebf267b, type: 3}
   - {fileID: 21300000, guid: 396b50eb6dfe246cba1ce8c87d0a6b64, type: 3}
   - {fileID: 21300000, guid: e951f33c57c18244f9ef2a9b90963882, type: 3}
+  - {fileID: 21300000, guid: 7a85791d9940b9b42b089397aca9e21d, type: 3}
   - {fileID: 21300000, guid: db705b4d5fd72a1468fb894b430aae30, type: 3}
   - {fileID: 21300000, guid: e758822ec96aeb446b468e792db7863a, type: 3}
   - {fileID: 21300000, guid: 0183e62e536518042b41bc1d06c99770, type: 3}
@@ -112,6 +116,7 @@ SpriteAtlas:
   - SN-02
   - 5
   - SN-01
+  - 7
   - 6
   - AR-02
   - SN-03
@@ -128,6 +133,7 @@ SpriteAtlas:
   - Item_Shopicon_Bullet06
   - Btn_IconTextButton_SlantSquare04_s
   - HG-03
+  - 8
   - Settings
   - AR-01
   - HG-02

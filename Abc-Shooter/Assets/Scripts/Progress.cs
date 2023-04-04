@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using InfimaGames.LowPolyShooterPack;
+using static InfimaGames.LowPolyShooterPack.WeaponBehaviour;
 
 public static class Progress
 {
@@ -120,6 +121,17 @@ public static class Progress
         SaveWeaponsBought(weaponsBought);
     }
 
+    public static void SetBuyAttachments(WeaponBehaviour.Name name, int scopeIndex, int muzzleIndex, int laserIndex, int gripIndex, int skinIndex)
+    {
+        var weaponsBought = LoadWeaponsBought();
+        weaponsBought[name].ScopeIndex.Add(scopeIndex);
+        weaponsBought[name].MuzzleIndex.Add(muzzleIndex);
+        weaponsBought[name].LaserIndex.Add(laserIndex);
+        weaponsBought[name].GripIndex.Add(gripIndex);
+        weaponsBought[name].SkinIndex.Add(skinIndex);
+        SaveWeaponsBought(weaponsBought);
+    }
+
     public static void SetBuySkinsForAllWeapons(int[] skins)
     {
         var weaponsBought = LoadWeaponsBought();
@@ -140,6 +152,14 @@ public static class Progress
     {
         var weaponsBought = LoadWeaponsBought();
         weaponsBought[name].AmmunitionSum = ammunitionCount;
+        SaveWeaponsBought(weaponsBought);
+    }
+
+    public static void SetAmmunitionCountAllWeapon(Dictionary<Name, int> ammunitionWeapon)
+    {
+        var weaponsBought = LoadWeaponsBought();
+        foreach (var weapon in ammunitionWeapon.Keys)
+            weaponsBought[weapon].AmmunitionSum = ammunitionWeapon[weapon];
         SaveWeaponsBought(weaponsBought);
     }
 
@@ -234,6 +254,17 @@ public static class Progress
     public static void SetSelectSkin(WeaponBehaviour.Name name, int skinIndex)
     {
         var weaponsSelected = LoadWeaponsSelected();
+        weaponsSelected[name].SkinIndex = skinIndex;
+        SaveWeaponsSelected(weaponsSelected);
+    }
+
+    public static void SetSelectAttachments(WeaponBehaviour.Name name, int scopeIndex, int muzzleIndex, int laserIndex, int gripIndex, int skinIndex)
+    {
+        var weaponsSelected = LoadWeaponsSelected();
+        weaponsSelected[name].ScopeIndex = scopeIndex;
+        weaponsSelected[name].MuzzleIndex = muzzleIndex;
+        weaponsSelected[name].LaserIndex = laserIndex;
+        weaponsSelected[name].GripIndex = gripIndex;
         weaponsSelected[name].SkinIndex = skinIndex;
         SaveWeaponsSelected(weaponsSelected);
     }
@@ -388,7 +419,7 @@ public static class Progress
 
     private static void SaveWeaponsSelected(TFG.Generic.Dictionary<WeaponBehaviour.Name, WeaponAttachmentSelected> weapons)
     {
-        GSPrefs.SetString(weaponsSelected, JsonUtility.ToJson(weapons).ToString());
+        GSPrefs.SetString(weaponsSelected, JsonUtility.ToJson(weapons));
         GSPrefs.Save();
         OnNewSaveWeapons?.Invoke();
     }
@@ -396,12 +427,12 @@ public static class Progress
     private static TFG.Generic.Dictionary<WeaponBehaviour.Name, WeaponAttachmentSelected> LoadWeaponsSelected()
     {
         return JsonUtility.FromJson<TFG.Generic.Dictionary<WeaponBehaviour.Name, WeaponAttachmentSelected>>
-            (GSPrefs.GetString(weaponsSelected, GetDefaultWeaponAttachmentSelected().ToString()));
+            (GSPrefs.GetString(weaponsSelected, GetDefaultWeaponAttachmentSelected()));
     }
 
     private static void SaveWeaponsBought(TFG.Generic.Dictionary<WeaponBehaviour.Name, WeaponAttachmentsBought> weapons)
     {
-        GSPrefs.SetString(weaponsBought, JsonUtility.ToJson(weapons).ToString());
+        GSPrefs.SetString(weaponsBought, JsonUtility.ToJson(weapons));
         GSPrefs.Save();
         OnNewSaveWeapons?.Invoke();
     }
@@ -409,7 +440,7 @@ public static class Progress
     private static TFG.Generic.Dictionary<WeaponBehaviour.Name, WeaponAttachmentsBought> LoadWeaponsBought()
     {
         return JsonUtility.FromJson<TFG.Generic.Dictionary<WeaponBehaviour.Name, WeaponAttachmentsBought>>
-            (GSPrefs.GetString(weaponsBought, GetDefaultWeaponAttachmentsBought().ToString()));
+            (GSPrefs.GetString(weaponsBought, GetDefaultWeaponAttachmentsBought()));
     }
 
     private static string GetDefaultWeaponAttachmentSelected()
@@ -419,7 +450,7 @@ public static class Progress
         {
             dict.Add(name, new WeaponAttachmentSelected());
         }
-        return JsonUtility.ToJson(dict).ToString();
+        return JsonUtility.ToJson(dict);
     } 
     
     private static string GetDefaultWeaponAttachmentsBought()
@@ -436,7 +467,7 @@ public static class Progress
                 SkinIndex = new List<int>(),
             });
         }
-        return JsonUtility.ToJson(dict).ToString();
+        return JsonUtility.ToJson(dict);
     }
 
     [Serializable]
