@@ -236,7 +236,7 @@ public class GSConnect : MonoBehaviour {
             instance.OnPurchaseSuccess(nameof(purchaseTag));
             return;
         }
-        GS_Payments.Purchase(nameof(purchaseTag));
+        GS_Payments.Purchase(purchaseTag.ToString());
     }
 
     /// <summary>

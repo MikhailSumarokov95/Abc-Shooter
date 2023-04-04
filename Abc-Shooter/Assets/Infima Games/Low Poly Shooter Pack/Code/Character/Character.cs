@@ -6,7 +6,6 @@ using System.Collections;
 using UnityEngine.InputSystem;
 using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
-using static UnityEditor.Timeline.TimelinePlaybackControls;
 
 namespace InfimaGames.LowPolyShooterPack
 {
