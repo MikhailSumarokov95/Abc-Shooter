@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using InfimaGames.LowPolyShooterPack;
 using static InfimaGames.LowPolyShooterPack.WeaponBehaviour;
 
 public static class Progress
@@ -27,13 +26,13 @@ public static class Progress
     public static Action OnNewSaveSuperGrenade;
     public static Action OnNewSaveSensitivity;
 
-    public static bool IsBoughtWeapon(WeaponBehaviour.Name name)
+    public static bool IsBoughtWeapon(Name name)
     {
         var weaponsBought = LoadWeaponsBought();
         return weaponsBought[name].IsBoughtWeapon;
     }
 
-    public static bool IsBoughtScope(WeaponBehaviour.Name name, int scopeIndex)
+    public static bool IsBoughtScope(Name name, int scopeIndex)
     {
         var weaponsBought = LoadWeaponsBought();
         for (int i = 0; i < weaponsBought[name].ScopeIndex.Count; i++)
@@ -41,7 +40,7 @@ public static class Progress
         return false;
     }
     
-    public static bool IsBoughtMuzzle(WeaponBehaviour.Name name, int muzzleIndex)
+    public static bool IsBoughtMuzzle(Name name, int muzzleIndex)
     {
         var weaponsBought = LoadWeaponsBought();
         for (int i = 0; i < weaponsBought[name].MuzzleIndex.Count; i++)
@@ -49,7 +48,7 @@ public static class Progress
         return false;
     } 
     
-    public static bool IsBoughtLaser(WeaponBehaviour.Name name, int laserIndex)
+    public static bool IsBoughtLaser(Name name, int laserIndex)
     {
         var weaponsBought = LoadWeaponsBought();
         for (int i = 0; i < weaponsBought[name].LaserIndex.Count; i++)
@@ -57,7 +56,7 @@ public static class Progress
         return false;
     }  
     
-    public static bool IsBoughtGrip(WeaponBehaviour.Name name, int gripIndex)
+    public static bool IsBoughtGrip(Name name, int gripIndex)
     {
         var weaponsBought = LoadWeaponsBought();
         for (int i = 0; i < weaponsBought[name].GripIndex.Count; i++)
@@ -65,7 +64,7 @@ public static class Progress
         return false;
     }
 
-    public static bool IsBoughtSkin(WeaponBehaviour.Name name, int skinIndex)
+    public static bool IsBoughtSkin(Name name, int skinIndex)
     {
         var weaponsBought = LoadWeaponsBought();
         for (int i = 0; i < weaponsBought[name].SkinIndex.Count; i++)
@@ -73,69 +72,109 @@ public static class Progress
         return false;
     }
 
-    public static int GetAmmunitionCount(WeaponBehaviour.Name name) 
+    public static int[] GetBoughtScope(Name name)
+    {
+        var weaponsBought = LoadWeaponsBought();
+        return weaponsBought[name].ScopeIndex.ToArray();
+    } 
+    
+    public static int[] GetBoughtMuzzle(Name name)
+    {
+        var weaponsBought = LoadWeaponsBought();
+        return weaponsBought[name].MuzzleIndex.ToArray();
+    }   
+
+    public static int[] GetBoughtLaser(Name name)
+    {
+        var weaponsBought = LoadWeaponsBought();
+        return weaponsBought[name].LaserIndex.ToArray();
+    }    
+    
+    public static int[] GetBoughtGrip(Name name)
+    {
+        var weaponsBought = LoadWeaponsBought();
+        return weaponsBought[name].GripIndex.ToArray();
+    }    
+    
+    public static int[] GetBoughtSkin(Name name)
+    {
+        var weaponsBought = LoadWeaponsBought();
+        return weaponsBought[name].SkinIndex.ToArray();
+    }
+
+    public static int GetAmmunitionCount(Name name) 
     {
         var weaponsBought = LoadWeaponsBought();
         return weaponsBought[name].AmmunitionSum;
     }
 
-    public static void SetBuyWeapon(WeaponBehaviour.Name name)
+    public static void SetBuyWeapon(Name name)
     {
         var weaponsBought = LoadWeaponsBought();
         weaponsBought[name].IsBoughtWeapon = true;
         SaveWeaponsBought(weaponsBought);
     }
 
-    public static void SetBuyScope(WeaponBehaviour.Name name, int scopeIndex)
+    public static void SetBuyScope(Name name, int scopeIndex)
     {
         var weaponsBought = LoadWeaponsBought();
+        if (weaponsBought[name].ScopeIndex.Contains(scopeIndex)) return;
         weaponsBought[name].ScopeIndex.Add(scopeIndex);
         SaveWeaponsBought(weaponsBought);
     }
       
-    public static void SetBuyMuzzle(WeaponBehaviour.Name name, int muzzleIndex)
+    public static void SetBuyMuzzle(Name name, int muzzleIndex)
     {
         var weaponsBought = LoadWeaponsBought();
+        if (weaponsBought[name].MuzzleIndex.Contains(muzzleIndex)) return;
         weaponsBought[name].MuzzleIndex.Add(muzzleIndex);
         SaveWeaponsBought(weaponsBought);
     }
        
-    public static void SetBuyLaser(WeaponBehaviour.Name name, int laserIndex)
+    public static void SetBuyLaser(Name name, int laserIndex)
     {
         var weaponsBought = LoadWeaponsBought();
+        if (weaponsBought[name].LaserIndex.Contains(laserIndex)) return;
         weaponsBought[name].LaserIndex.Add(laserIndex);
         SaveWeaponsBought(weaponsBought);
     }
       
-    public static void SetBuyGrip(WeaponBehaviour.Name name, int gripIndex)
+    public static void SetBuyGrip(Name name, int gripIndex)
     {
         var weaponsBought = LoadWeaponsBought();
+        if (weaponsBought[name].GripIndex.Contains(gripIndex)) return;
         weaponsBought[name].GripIndex.Add(gripIndex);
         SaveWeaponsBought(weaponsBought);
     }
 
-    public static void SetBuySkin(WeaponBehaviour.Name name, int skinIndex)
+    public static void SetBuySkin(Name name, int skinIndex)
     {
         var weaponsBought = LoadWeaponsBought();
+        if (weaponsBought[name].SkinIndex.Contains(skinIndex)) return;
         weaponsBought[name].SkinIndex.Add(skinIndex);
         SaveWeaponsBought(weaponsBought);
     }
 
-    public static void SetBuyAttachments(WeaponBehaviour.Name name, int scopeIndex, int muzzleIndex, int laserIndex, int gripIndex, int skinIndex)
+    public static void SetBuyAttachments(Name name, int scopeIndex, int muzzleIndex, int laserIndex, int gripIndex, int skinIndex)
     {
         var weaponsBought = LoadWeaponsBought();
-        weaponsBought[name].ScopeIndex.Add(scopeIndex);
-        weaponsBought[name].MuzzleIndex.Add(muzzleIndex);
-        weaponsBought[name].LaserIndex.Add(laserIndex);
-        weaponsBought[name].GripIndex.Add(gripIndex);
-        weaponsBought[name].SkinIndex.Add(skinIndex);
+        if (!weaponsBought[name].ScopeIndex.Contains(scopeIndex)) 
+            weaponsBought[name].ScopeIndex.Add(scopeIndex);
+        if (!weaponsBought[name].MuzzleIndex.Contains(muzzleIndex)) 
+            weaponsBought[name].MuzzleIndex.Add(muzzleIndex);
+        if (!weaponsBought[name].LaserIndex.Contains(laserIndex)) 
+            weaponsBought[name].LaserIndex.Add(laserIndex);
+        if (!weaponsBought[name].GripIndex.Contains(gripIndex)) 
+            weaponsBought[name].GripIndex.Add(gripIndex);
+        if (!weaponsBought[name].SkinIndex.Contains(skinIndex)) 
+            weaponsBought[name].SkinIndex.Add(skinIndex);
         SaveWeaponsBought(weaponsBought);
     }
 
     public static void SetBuySkinsForAllWeapons(int[] skins)
     {
         var weaponsBought = LoadWeaponsBought();
-        foreach (WeaponBehaviour.Name weapon in Enum.GetValues(typeof(WeaponBehaviour.Name)))
+        foreach (Name weapon in Enum.GetValues(typeof(Name)))
         {
             for (var i = 0; i < skins.Length; i++)
             {
@@ -148,7 +187,7 @@ public static class Progress
         SaveWeaponsBought(weaponsBought);
     }
 
-    public static void SetAmmunitionCount(WeaponBehaviour.Name name, int ammunitionCount)
+    public static void SetAmmunitionCount(Name name, int ammunitionCount)
     {
         var weaponsBought = LoadWeaponsBought();
         weaponsBought[name].AmmunitionSum = ammunitionCount;
@@ -163,102 +202,102 @@ public static class Progress
         SaveWeaponsBought(weaponsBought);
     }
 
-    public static bool IsSelectedScope(WeaponBehaviour.Name name, int scopeIndex)
+    public static bool IsSelectedScope(Name name, int scopeIndex)
     {
         var weaponsSelected = LoadWeaponsSelected();
         return weaponsSelected[name].ScopeIndex == scopeIndex;
     }
 
-    public static bool IsSelectedMuzzle(WeaponBehaviour.Name name, int muzzleIndex)
+    public static bool IsSelectedMuzzle(Name name, int muzzleIndex)
     {
         var weaponsSelected = LoadWeaponsSelected();
         return weaponsSelected[name].MuzzleIndex == muzzleIndex;
     }  
     
-    public static bool IsSelectedLaser(WeaponBehaviour.Name name, int laserIndex)
+    public static bool IsSelectedLaser(Name name, int laserIndex)
     {
         var weaponsSelected = LoadWeaponsSelected();
         return weaponsSelected[name].LaserIndex == laserIndex;
     }
      
-    public static bool IsSelectedGrip(WeaponBehaviour.Name name, int gripIndex)
+    public static bool IsSelectedGrip(Name name, int gripIndex)
     {
         var weaponsSelected = LoadWeaponsSelected();
         return weaponsSelected[name].GripIndex == gripIndex;
     }
 
-    public static bool IsSelectedSkin(WeaponBehaviour.Name name, int skinIndex)
+    public static bool IsSelectedSkin(Name name, int skinIndex)
     {
         var weaponsSelected = LoadWeaponsSelected();
         return weaponsSelected[name].SkinIndex == skinIndex;
     }
 
-    public static int GetSelectedScope(WeaponBehaviour.Name name)
+    public static int GetSelectedScope(Name name)
     {
         var weaponsSelected = LoadWeaponsSelected();
         return weaponsSelected[name].ScopeIndex;
     }
     
-    public static int GetSelectedMuzzle(WeaponBehaviour.Name name)
+    public static int GetSelectedMuzzle(Name name)
     {
         var weaponsSelected = LoadWeaponsSelected();
         return weaponsSelected[name].MuzzleIndex;
     }  
     
-    public static int GetSelectedLaser(WeaponBehaviour.Name name)
+    public static int GetSelectedLaser(Name name)
     {
         var weaponsSelected = LoadWeaponsSelected();
         return weaponsSelected[name].LaserIndex;
     }
 
-    public static int GetSelectedGrip(WeaponBehaviour.Name name)
+    public static int GetSelectedGrip(Name name)
     {
         var weaponsSelected = LoadWeaponsSelected();
         return weaponsSelected[name].GripIndex;
     }
 
-    public static int GetSelectedSkin(WeaponBehaviour.Name name)
+    public static int GetSelectedSkin(Name name)
     {
         var weaponsSelected = LoadWeaponsSelected();
         return weaponsSelected[name].SkinIndex;
     }
 
-    public static void SetSelectScope(WeaponBehaviour.Name name, int scopeIndex)
+    public static void SetSelectScope(Name name, int scopeIndex)
     {
         var weaponsSelected = LoadWeaponsSelected();
         weaponsSelected[name].ScopeIndex = scopeIndex;
         SaveWeaponsSelected(weaponsSelected);
     }
 
-    public static void SetSelectMuzzle(WeaponBehaviour.Name name, int muzzleIndex)
+    public static void SetSelectMuzzle(Name name, int muzzleIndex)
     {
         var weaponsSelected = LoadWeaponsSelected();
         weaponsSelected[name].MuzzleIndex = muzzleIndex;
         SaveWeaponsSelected(weaponsSelected);
     }
       
-    public static void SetSelectLaser(WeaponBehaviour.Name name, int laserIndex)
+    public static void SetSelectLaser(Name name, int laserIndex)
     {
         var weaponsSelected = LoadWeaponsSelected();
         weaponsSelected[name].LaserIndex = laserIndex;
         SaveWeaponsSelected(weaponsSelected);
     }
      
-    public static void SetSelectGrip(WeaponBehaviour.Name name, int gripIndex)
+    public static void SetSelectGrip(Name name, int gripIndex)
     {
         var weaponsSelected = LoadWeaponsSelected();
         weaponsSelected[name].GripIndex = gripIndex;
         SaveWeaponsSelected(weaponsSelected);
     }
 
-    public static void SetSelectSkin(WeaponBehaviour.Name name, int skinIndex)
+    public static void SetSelectSkin(Name name, int skinIndex)
     {
         var weaponsSelected = LoadWeaponsSelected();
         weaponsSelected[name].SkinIndex = skinIndex;
         SaveWeaponsSelected(weaponsSelected);
     }
 
-    public static void SetSelectAttachments(WeaponBehaviour.Name name, int scopeIndex, int muzzleIndex, int laserIndex, int gripIndex, int skinIndex)
+    public static void SetSelectAttachments(Name name, int scopeIndex, int muzzleIndex, int laserIndex, int gripIndex, int skinIndex)
     {
         var weaponsSelected = LoadWeaponsSelected();
         weaponsSelected[name].ScopeIndex = scopeIndex;
@@ -417,36 +456,36 @@ public static class Progress
         return GSPrefs.GetInt(guide, 0) == 1;
     }
 
-    private static void SaveWeaponsSelected(TFG.Generic.Dictionary<WeaponBehaviour.Name, WeaponAttachmentSelected> weapons)
+    private static void SaveWeaponsSelected(TFG.Generic.Dictionary<Name, WeaponAttachmentSelected> weapons)
     {
         GSPrefs.SetString(weaponsSelected, JsonUtility.ToJson(weapons));
         GSPrefs.Save();
         OnNewSaveWeapons?.Invoke();
     }
 
-    private static TFG.Generic.Dictionary<WeaponBehaviour.Name, WeaponAttachmentSelected> LoadWeaponsSelected()
+    private static TFG.Generic.Dictionary<Name, WeaponAttachmentSelected> LoadWeaponsSelected()
     {
-        return JsonUtility.FromJson<TFG.Generic.Dictionary<WeaponBehaviour.Name, WeaponAttachmentSelected>>
+        return JsonUtility.FromJson<TFG.Generic.Dictionary<Name, WeaponAttachmentSelected>>
             (GSPrefs.GetString(weaponsSelected, GetDefaultWeaponAttachmentSelected()));
     }
 
-    private static void SaveWeaponsBought(TFG.Generic.Dictionary<WeaponBehaviour.Name, WeaponAttachmentsBought> weapons)
+    private static void SaveWeaponsBought(TFG.Generic.Dictionary<Name, WeaponAttachmentsBought> weapons)
     {
         GSPrefs.SetString(weaponsBought, JsonUtility.ToJson(weapons));
         GSPrefs.Save();
         OnNewSaveWeapons?.Invoke();
     }
 
-    private static TFG.Generic.Dictionary<WeaponBehaviour.Name, WeaponAttachmentsBought> LoadWeaponsBought()
+    private static TFG.Generic.Dictionary<Name, WeaponAttachmentsBought> LoadWeaponsBought()
     {
-        return JsonUtility.FromJson<TFG.Generic.Dictionary<WeaponBehaviour.Name, WeaponAttachmentsBought>>
+        return JsonUtility.FromJson<TFG.Generic.Dictionary<Name, WeaponAttachmentsBought>>
             (GSPrefs.GetString(weaponsBought, GetDefaultWeaponAttachmentsBought()));
     }
 
     private static string GetDefaultWeaponAttachmentSelected()
     {
-        var dict = new TFG.Generic.Dictionary<WeaponBehaviour.Name, WeaponAttachmentSelected>();
-        foreach (WeaponBehaviour.Name name in Enum.GetValues(typeof(WeaponBehaviour.Name)))
+        var dict = new TFG.Generic.Dictionary<Name, WeaponAttachmentSelected>();
+        foreach (Name name in Enum.GetValues(typeof(Name)))
         {
             dict.Add(name, new WeaponAttachmentSelected());
         }
@@ -455,8 +494,8 @@ public static class Progress
     
     private static string GetDefaultWeaponAttachmentsBought()
     {
-        var dict = new TFG.Generic.Dictionary<WeaponBehaviour.Name, WeaponAttachmentsBought>();
-        foreach (WeaponBehaviour.Name name in Enum.GetValues(typeof(WeaponBehaviour.Name)))
+        var dict = new TFG.Generic.Dictionary<Name, WeaponAttachmentsBought>();
+        foreach (Name name in Enum.GetValues(typeof(Name)))
         {
             dict.Add(name, new WeaponAttachmentsBought()
             {

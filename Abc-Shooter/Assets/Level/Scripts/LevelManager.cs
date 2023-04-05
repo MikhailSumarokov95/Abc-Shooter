@@ -10,6 +10,8 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject lossPanel;
     [SerializeField] private GameObject shopBanner;
     [SerializeField] private TMP_Text currentWaveText;
+    [SerializeField] private GameObject arrowEndGame;
+    [SerializeField] private TMP_Text textEndGame;
     private SpawnBots _spawnManager;
     private PlatformManager _platformManager;
     private bool _isWinGame;
@@ -102,6 +104,8 @@ public class LevelManager : MonoBehaviour
     private void WinGame()
     {
         _isWinGame = true;
+        arrowEndGame.gameObject.SetActive(true);
+        textEndGame.gameObject.SetActive(true);
     }
 
     private void SetActiveWinPanel(bool value)

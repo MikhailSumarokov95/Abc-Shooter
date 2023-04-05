@@ -2,9 +2,8 @@ public class SelectorMuzzle : SelectorAttachment
 {
     public override void InitAttachment()
     {
-        _attachmenAbsenteeNumber = 0;
-        _countAttachment = _weaponAttachmentManager.GetGripBehaviourCount();
-        SetNumberAttachment(Progress.GetSelectedMuzzle(_shop.CurrentWeaponName));
+        _countAttachment = _weaponAttachmentManager.GetMuzzleBehaviourCount();
+        _attachmentAbsenteeNumber = 0;
     }
 
     public override void SetActiveAttachment(int index)
@@ -15,7 +14,6 @@ public class SelectorMuzzle : SelectorAttachment
     public override void BuyAttachment()
     {
         if (!_money.SpendMoney(cast)) return;
-
         Progress.SetBuyMuzzle(_shop.CurrentWeaponName, _currentAttachment);
         ScrollThrough(0);
     }
@@ -34,5 +32,15 @@ public class SelectorMuzzle : SelectorAttachment
     public override bool IsBoughtAttachment(int index)
     {
         return Progress.IsBoughtMuzzle(_shop.CurrentWeaponName, index);
+    }
+
+    public override int[] BoughtAttachments()
+    {
+        return Progress.GetBoughtMuzzle(_shop.CurrentWeaponName);
+    }
+
+    public override int SelectedAttachments()
+    {
+        return Progress.GetSelectedMuzzle(_shop.CurrentWeaponName);
     }
 }

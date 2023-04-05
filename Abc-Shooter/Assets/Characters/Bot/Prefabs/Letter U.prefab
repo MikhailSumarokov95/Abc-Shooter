@@ -721,7 +721,7 @@ MonoBehaviour:
   currentHealth: 0
   currentHealthText: {fileID: 0}
   takeDamageSoundPref: {fileID: 0}
-  maxHealth: 50
+  maxHealth: 75
 --- !u!114 &1596307541012144141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -790,7 +790,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _distanceAttack: 2
-  damage: 3
+  damage: 5
 --- !u!114 &4214069443085134569
 MonoBehaviour:
   m_ObjectHideFlags: 0

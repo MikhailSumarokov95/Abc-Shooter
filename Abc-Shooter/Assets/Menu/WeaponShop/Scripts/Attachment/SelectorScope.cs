@@ -2,8 +2,7 @@ public class SelectorScope : SelectorAttachment
 {
     public override void InitAttachment()
     {
-        _countAttachment = _weaponAttachmentManager.GetGripBehaviourCount();
-        SetNumberAttachment(Progress.GetSelectedScope(_shop.CurrentWeaponName));
+        _countAttachment = _weaponAttachmentManager.GetScopeBehaviourCount();
     }
 
     public override void SetActiveAttachment(int index)
@@ -14,7 +13,6 @@ public class SelectorScope : SelectorAttachment
     public override void BuyAttachment()
     {
         if (!_money.SpendMoney(cast)) return;
-
         Progress.SetBuyScope(_shop.CurrentWeaponName, _currentAttachment);
         ScrollThrough(0);
     }
@@ -33,5 +31,15 @@ public class SelectorScope : SelectorAttachment
     public override bool IsBoughtAttachment(int index)
     {
         return Progress.IsBoughtScope(_shop.CurrentWeaponName, index);
+    }
+
+    public override int[] BoughtAttachments()
+    {
+        return Progress.GetBoughtScope(_shop.CurrentWeaponName);
+    }
+
+    public override int SelectedAttachments()
+    {
+        return Progress.GetSelectedScope(_shop.CurrentWeaponName);
     }
 }

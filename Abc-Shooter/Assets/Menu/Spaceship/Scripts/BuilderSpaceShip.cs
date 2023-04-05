@@ -56,11 +56,6 @@ public class BuilderSpaceShip : MonoBehaviour, IShopPurchase
         Progress.SetNumberPartsFoundShip(Progress.GetNumberPartsFoundShip() + 1);
     }
 
-    public void OpenGames()
-    {
-        GS_GamesCollections.Open("ALL");
-    }
-
     private void RefreshTextFreeParts()
     {
         freePartsText.text = (Progress.GetNumberPartsFoundShip() - Progress.GetShipAssemblyStage()).ToString();

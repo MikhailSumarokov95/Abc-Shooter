@@ -290,7 +290,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 0.75
+  m_Speed: 3
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -318,7 +318,7 @@ MonoBehaviour:
   currentHealth: 0
   currentHealthText: {fileID: 0}
   takeDamageSoundPref: {fileID: 0}
-  maxHealth: 150
+  maxHealth: 300
 --- !u!114 &9084956833982579905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -387,7 +387,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _distanceAttack: 10
-  damage: 10
+  damage: 15
 --- !u!114 &-6258240371398606600
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -400,7 +400,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33a328cb9cadc6e468e5af9511579898, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chance: 3
+  chance: 10
   partSpaceShip:
   - {fileID: 7772894865558777032, guid: 825c9b508e2b75a409e34a7731251604, type: 3}
   - {fileID: 7772894865558777032, guid: 825c9b508e2b75a409e34a7731251604, type: 3}

@@ -1,8 +1,9 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 using InfimaGames.LowPolyShooterPack;
 using TMPro;
+using System.Collections.Generic;
+using System;
 
 public abstract class SelectorAttachment : MonoBehaviour
 {
@@ -15,8 +16,10 @@ public abstract class SelectorAttachment : MonoBehaviour
     protected ShopAttachment _shop;
     protected WeaponAttachmentManager _weaponAttachmentManager;
     protected int _countAttachment;
+    protected int _numberAttachment;
     protected Money _money;
-    protected int _attachmenAbsenteeNumber = -1 ;
+    protected int _attachmentAbsenteeNumber = -1;
+    protected int[] _attachmentNumberSorted;
 
     private void Start()
     {
@@ -27,43 +30,25 @@ public abstract class SelectorAttachment : MonoBehaviour
     {
         _shop = shop;
         _weaponAttachmentManager = weaponAttachmentManager;
-
         InitAttachment();
-        ScrollThrough(0);
+        SortAttachment();
+        SetNumberAttachment(0);
     }
 
     public void ScrollThrough(int direction)
     {
-        var nextAttachment = Math.Sign(direction) + _currentAttachment;
-        nextAttachment = MathPlus.SawChart(nextAttachment, _attachmenAbsenteeNumber, _countAttachment - 1);
-        _currentAttachment = nextAttachment;
-
-        SetActiveAttachment(nextAttachment);
-
-        buyButton.gameObject.SetActive(false);
-        selectButton.gameObject.SetActive(false);
-        selectedButton.gameObject.SetActive(false);
-
-        if (IsSelectedAttachment(nextAttachment))
-        {
-            selectedButton.gameObject.SetActive(true);
-        }
-
-        else if (IsBoughtAttachment(nextAttachment))
-        {
-            selectButton.gameObject.SetActive(true);
-        }
-
-        else
-        {
-            buyButton.gameObject.SetActive(true);
-            buyText.text = cast.ToString();
-        }
+        _numberAttachment = Math.Sign(direction) + _numberAttachment;
+        _numberAttachment = ToxicFamilyGames.Math.SawChart(_numberAttachment, 0, _attachmentNumberSorted.Length - 1);
+        _currentAttachment = _attachmentNumberSorted[_numberAttachment];
+        SetActiveAttachment(_currentAttachment);
+        InitButton(_currentAttachment);
+        print("_numberAttachment: " + _numberAttachment);
+        print("_currentAttachment: " + _currentAttachment);
     }
 
     public void SetNumberAttachment(int number)
     {
-        _currentAttachment = number;
+        _numberAttachment = number;
         ScrollThrough(0);
     }
 
@@ -73,4 +58,51 @@ public abstract class SelectorAttachment : MonoBehaviour
     public abstract void SelectAttachment();
     public abstract bool IsSelectedAttachment(int index);
     public abstract bool IsBoughtAttachment(int index);
+    public abstract int[] BoughtAttachments();
+    public abstract int SelectedAttachments();
+
+    private void InitButton(int attachment)
+    {
+        buyButton.gameObject.SetActive(false);
+        selectButton.gameObject.SetActive(false);
+        selectedButton.gameObject.SetActive(false);
+        if (IsSelectedAttachment(attachment))
+        {
+            selectedButton.gameObject.SetActive(true);
+        }
+        else if (IsBoughtAttachment(attachment))
+        {
+            selectButton.gameObject.SetActive(true);
+        }
+        else
+        {
+            buyButton.gameObject.SetActive(true);
+            buyText.text = cast.ToString();
+        }
+    }
+
+    private void SortAttachment()
+    {
+        var listSelectedAndBoughtAttachment = new List<int>() { SelectedAttachments() };
+        var boughtAttachments = BoughtAttachments();
+        foreach (var attachment in boughtAttachments)
+        {
+            if (!listSelectedAndBoughtAttachment.Contains(attachment))
+            {
+                listSelectedAndBoughtAttachment.Add(attachment);
+            }
+        }
+        var attachmentNumberSorted = new List<int>();
+        attachmentNumberSorted.AddRange(listSelectedAndBoughtAttachment);
+        for (var i = 0; i < _countAttachment; i++)
+        {
+            if (listSelectedAndBoughtAttachment.Contains(i)) continue;
+            attachmentNumberSorted.Add(i);
+        }
+        if (!listSelectedAndBoughtAttachment.Contains(_attachmentAbsenteeNumber))
+        {
+            listSelectedAndBoughtAttachment.Add(_attachmentAbsenteeNumber);
+        }
+        _attachmentNumberSorted = attachmentNumberSorted.ToArray();
+    }
 }

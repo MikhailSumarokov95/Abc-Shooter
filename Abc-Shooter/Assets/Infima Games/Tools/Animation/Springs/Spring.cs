@@ -128,7 +128,7 @@ namespace InfimaGames
             float steps = Mathf.Ceil(deltaTime / _stepSize);
             for (var i = 0; i < steps; i++)
             {
-                float dt = Math.Abs(i - (steps - 1)) < 0.01f ? deltaTime - i * _stepSize : _stepSize;
+                float dt = System.Math.Abs(i - (steps - 1)) < 0.01f ? deltaTime - i * _stepSize : _stepSize;
 
                 x += v * dt + a * (dt * dt * 0.5f);
                 // springForce = -k * (x - endValue)

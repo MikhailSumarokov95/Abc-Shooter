@@ -1102,7 +1102,7 @@ namespace InfimaGames.LowPolyShooterPack
 				return false;
 
 			//This blocks running backwards, or while fully moving sideways.
-			if (axisMovement.y <= 0 || Math.Abs(Mathf.Abs(axisMovement.x) - 1) < 0.01f)
+			if (axisMovement.y <= 0 || System.Math.Abs(Mathf.Abs(axisMovement.x) - 1) < 0.01f)
 				return false;
 
 			//Return.
