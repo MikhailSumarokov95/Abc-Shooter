@@ -8,7 +8,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject pausePanel;
     [SerializeField] private GameObject waveEndPanel;
     [SerializeField] private GameObject lossPanel;
-    [SerializeField] private GameObject shopBanner;
+    [SerializeField] private GameObject[] shopBanners;
     [SerializeField] private TMP_Text currentWaveText;
     [SerializeField] private GameObject arrowEndGame;
     [SerializeField] private TMP_Text textEndGame;
@@ -66,7 +66,7 @@ public class LevelManager : MonoBehaviour
         OnPause(true);
         StateGameManager.StateGame = StateGameManager.State.Pause;
         lossPanel.SetActive(true);
-        shopBanner.SetActive(true);
+        shopBanners[Random.Range(0, shopBanners.Length)].gameObject.SetActive(true);
     }
 
     public void Respawn()
@@ -113,7 +113,7 @@ public class LevelManager : MonoBehaviour
         if (value) StateGameManager.StateGame = StateGameManager.State.GameOver;
         else StateGameManager.StateGame = StateGameManager.State.Game;
         winGamePanel.SetActive(value);
-        shopBanner.SetActive(true);
+        shopBanners[Random.Range(0, shopBanners.Length)].gameObject.SetActive(true);
         OnPause(value);
     }
 

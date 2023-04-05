@@ -42,8 +42,6 @@ public abstract class SelectorAttachment : MonoBehaviour
         _currentAttachment = _attachmentNumberSorted[_numberAttachment];
         SetActiveAttachment(_currentAttachment);
         InitButton(_currentAttachment);
-        print("_numberAttachment: " + _numberAttachment);
-        print("_currentAttachment: " + _currentAttachment);
     }
 
     public void SetNumberAttachment(int number)

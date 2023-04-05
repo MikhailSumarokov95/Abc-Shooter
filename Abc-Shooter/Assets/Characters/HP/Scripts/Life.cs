@@ -13,7 +13,6 @@ public class Life : MonoBehaviour
         if (IsDid) return;
         IsDid = true;
         OnDid?.Invoke();
-
         if (CompareTag("Player"))
         {
             FindObjectOfType<LevelManager>().Did();
