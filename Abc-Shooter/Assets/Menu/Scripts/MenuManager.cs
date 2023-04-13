@@ -6,8 +6,9 @@ public class MenuManager : MonoBehaviour
 {
     [SerializeField] private Character player;
     [SerializeField] private GameObject gameUI;
+    [SerializeField] private GameObject pausePanel;
     private PlatformManager _platformManager;
-    
+  
     private void Awake()
     {
         if (!Application.isEditor) PlayerPrefs.SetString("selectedLanguage", GS_Language.Current());
@@ -24,6 +25,18 @@ public class MenuManager : MonoBehaviour
     {
         _platformManager = FindObjectOfType<PlatformManager>();
         OnPause(false);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape) && StateGameManager.StateGame == StateGameManager.State.Game)
+            SetActivePausePanel(true);
+    }
+
+    public void SetActivePausePanel(bool value)
+    {
+        OnPause(value);
+        pausePanel.SetActive(value);
     }
 
     public void OnPause(bool value)
